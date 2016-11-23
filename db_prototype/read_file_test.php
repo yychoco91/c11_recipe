@@ -24,36 +24,54 @@
         $.ajax({
             dataType: 'json',
             method: 'get',
-            url:'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=1',
+            url:'recipe/spoon_random.php',
             headers: spoonAccess,
             success: function(resp){
                 console.log('Success', resp);
                 var ingredientsList = [];
                 var recipesList = [];
                 var returnQuery = resp.recipes;
-                console.log(resp.recipes);
+                //Iterate through recipes from resp
                 for(var i = 0; i < returnQuery.length; i++) {
                     var currentRecipe = returnQuery[i];
+                    //Creates recipe obj
                     var recipe = {
                         img: currentRecipe.image,
                         url: currentRecipe.sourceUrl,
                         author: currentRecipe.sourceName,
-                        name: currentRecipe.title
+                        name: currentRecipe.title,
+                        ingredients: []
                     };
-                    recipesList.push(recipe);
+                    //Iterates through ingredient in recipes from resp
                     for(var j = 0; j < returnQuery[i].extendedIngredients.length; j++) {
-                        if (ingredientsList.indexOf(returnQuery[i].extendedIngredients[j].name) === -1) {
-                            ingredientsList.push(returnQuery[i].extendedIngredients[j].name);
+                        var currentIngredient = returnQuery[i].extendedIngredients[j];
+                        //Creates ingredient obj
+                        var theIngredient= {
+                            amount: currentIngredient.amount,
+                            amountType: currentIngredient.unit,
+                            name: currentIngredient.name
+                        };
+
+                        recipe.ingredients.push(theIngredient);
+
+                        if (ingredientsList.indexOf(currentIngredient.name) === -1) {
+                            ingredientsList.push(currentIngredient.name);
                         }
                     }
+
+                    recipesList.push(recipe);
+
                 }
                 console.log('Ingredients List Complete: ', ingredientsList, ' Recipes: ', recipesList);
-
                 sendRecipe(ingredientsList, recipesList);
             }
         });
     }
-
+    /**
+     * sendRecipe - ajax call to php page to send data to mySQL
+     * @param {Array} ingredients
+     * @param {Object[]} recipes
+     */
     function sendRecipe(ingredients, recipes){
         var dataToSend = {ingredientData: ingredients, recipeData: recipes};
         console.log('Hello');
