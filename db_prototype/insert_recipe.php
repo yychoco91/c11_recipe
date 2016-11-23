@@ -8,8 +8,8 @@
  */
 //require_once("connect.php");
 
-$ingredientsList = $_POST;
-$ingredientsList['success'] = true;
+$ingredientsList = $_POST['ingredientData'];
+$recipeData = $_POST['recipeData'];
 
 $ingredientsListJson = json_encode($ingredientsList);
 print($ingredientsListJson);

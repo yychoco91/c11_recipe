@@ -74,7 +74,7 @@
      */
     function sendRecipe(ingredients, recipes){
         var dataToSend = {ingredientData: ingredients, recipeData: recipes};
-        console.log('Hello');
+        //console.log('Hello');
         $.ajax({
             method: 'post',
             url: 'insert_recipe.php',
