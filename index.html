@@ -38,7 +38,6 @@
     </main>
 </div>
 -->
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-2 sidenav">
@@ -66,7 +65,7 @@
                     <div class="card">
                         <img src="http://placehold.it/140x100" class="thumbnail" width="100%">
                         <div class="card-block">
-                            <h4 class="card-title">My Recipe</h4>
+                            <h4 class="card-title"></h4>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
@@ -77,7 +76,7 @@
                     <div class="card">
                         <img src="http://placehold.it/140x100" class="thumbnail" width="100%">
                         <div class="card-block">
-                            <h4 class="card-title">My Recipe</h4>
+                            <h4 class="card-title"></h4>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
@@ -88,7 +87,7 @@
                     <div class="card">
                         <img src="http://placehold.it/140x100" class="thumbnail" width="100%">
                         <div class="card-block">
-                            <h4 class="card-title">My Recipe</h4>
+                            <h4 class="card-title"></h4>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
@@ -98,7 +97,7 @@
                     <div class="card">
                         <img src="http://placehold.it/140x100" class="thumbnail" width="100%">
                         <div class="card-block">
-                            <h4 class="card-title">My Recipe</h4>
+                            <h4 class="card-title"></h4>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
@@ -109,6 +108,63 @@
         </div>
     </div>
 </div>
+<script>
+    $("#ajaxButton").click(function () {
+        console.log("ajax clicked");
+        $.ajax({
+            url: "json.php",
+            dataType: "json",
+            method: "post",
+            success: function (resp) {
+                console.log('Ajax success');
+                console.log("The data", resp);
+
+                for (var i = 0; i < resp.data.length; i++) {
+
+                    var recipeName = resp.data[i].recipe_name;
+                    var ingredients = resp.data[i].ingredients;
+
+                    var theRow = $("<div>", {
+                        class: "container row"
+                    });
+                    var theDiv = $("<div>", {
+                        class: "col-md-3 col-sm-6"
+                    });
+                    var outterDiv = $("<div>", {
+                        class: "card"
+                    });
+                    var img = $("<img>", {
+                        src: "http://placehold.it/140x100",
+                        class: "thumbnail",
+                        width: "25%"
+                    });
+                    var innerDiv = $("<div>", {
+                        class: "card-block"
+                    });
+                    var h4 = $("<h4>", {
+                        class: "card-title",
+                        text: recipeName
+                    });
+                    var p = $("<p>", {
+                        class: "card-text",
+                        text: ingredients
+                    });
+
+                    var butt = $("<button>", {
+                        class: "btn btn-primary",
+                        text: "Go somewhere"
+                    });
+
+                    theRow.append(theDiv, outterDiv, img, innerDiv, h4, p, butt);
+                    $("#stuff").append(theRow);
+                    console.log("test")
+
+
+                }
+            }
+        })
+    })
+</script>
 
 </body>
 

@@ -2,32 +2,40 @@
 <html>
 
 <head>
-    <script data-require="jquery@2.2.4" data-semver="2.2.4"
-            src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery.min.js"></script>
-    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet"
-          type="text/css"/>
-    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <!--Material Design Lite-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
     <style>
-        .container {
+
+        .hcon {
             text-align: center;
-            font-size: 20px;
-            font-family: cursive;
         }
 
         span {
-            font-size: 30;
+
             font-weight: bold;
             text-decoration: underline;
+            text-align: center;
+            font-size: 20px;
+            font-family: cursive;
         }
 
         .content {
             text-align: center;
         }
 
-        div, .soMed {
+        .socMed {
             text-align: right;
         }
+
     </style>
     <script type="text/javascript">
         var switchTo5x = true;
@@ -44,36 +52,74 @@
 </head>
 
 <body>
-<div class="container well">
-    <div class="socMed">
-        <span class='st_facebook_large' displayText='Facebook'></span>
-        <span class='st_googleplus_large' displayText='Google +'></span>
-        <span class='st_twitter_large' displayText='Tweet'></span>
-        <span class='st_pinterest_large' displayText='Pinterest'></span>
-        <span class='st_email_large' displayText='Email'></span>
+<div class="container-fluid or">
+    <div class="well">
+        <div class="socMed">
+            <span class='st_facebook_large' displayText='Facebook'></span>
+            <span class='st_googleplus_large' displayText='Google +'></span>
+            <span class='st_twitter_large' displayText='Tweet'></span>
+            <span class='st_pinterest_large' displayText='Pinterest'></span>
+            <span class='st_email_large' displayText='Email'></span>
+        </div>
+        <div class="hcon">
+            <span>Ingredients of Doom<br></span>
+            <br>
+            <div class="addedIngredients"></div>
+        </div>
     </div>
-    <span>Ingredients of Doom</span>
     <hr>
+    <div class="content">
+        <input type="text" placeholder="Choose your poison" id="poison">
+        <br/>
+        <button id="add" onclick="getValue()">Press Me</button>
+
+
+        <hr>
+        <button class="btn-active ing" value="Monosodium Glutamate (MSG)">Monosodium Glutamate (MSG)</button>
+        <button class="btn-active ing" value="Aspartame">Aspartame</button>
+        <button class="btn-active ing" value="High Fructose Corn Syrup (HFCS)">High Fructose Corn Syrup (HFCS)</button>
+        <button class="btn-active ing" value="Agave Nectar">Agave Nectar</button>
+        <button class="btn-active ing" value="Artificial Food Coloring">Artificial Food Coloring</button>
+        <button class="btn-active ing" value="BHA and BHT">BHA and BHT</button>
+        <button class="btn-active ing" value="Sodium Nitrite and Sodium Nitrate">Sodium Nitrite and Sodium Nitrate
+        </button>
+        <button class="btn-active ing" value="Potassium Bromate">Potassium Bromate</button>
+        <button class="btn-active ing" value="Recombinant Bovine Growth Hormone (rBGH)">Recombinant Bovine Growth
+            Hormone (rBGH)
+        </button>
+        <button class="btn-active ing" value="Refined Vegetable Oil">Refined Vegetable Oil</button>
+    </div>
 </div>
+
 <hr>
-<div class="content">
-    <input type="text" placeholder="Choose your poison" id="poison">
-    <br/>
-    <button id="add" onclick="getValue()">Press Me</button>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2 sidenav">
+
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#fridge">My Fridge</a></li>
+                <li><a href="#recipes">My Recipes</a></li>
+            </ul>
+        </div>
 
 
-    <hr>
-    <button class="ing" value="Monosodium Glutamate (MSG)">Monosodium Glutamate (MSG)</button>
-    <button class="ing" value="Aspartame">Aspartame</button>
-    <button class="ing" value="High Fructose Corn Syrup (HFCS)">High Fructose Corn Syrup (HFCS)</button>
-    <button class="ing" value="Agave Nectar">Agave Nectar</button>
-    <button class="ing" value="Artificial Food Coloring">Artificial Food Coloring</button>
-    <button class="ing" value="BHA and BHT">BHA and BHT</button>
-    <button class="ing" value="Sodium Nitrite and Sodium Nitrate">Sodium Nitrite and Sodium Nitrate</button>
-    <button class="ing" value="Potassium Bromate">Potassium Bromate</button>
-    <button class="ing" value="Recombinant Bovine Growth Hormone (rBGH)">Recombinant Bovine Growth Hormone (rBGH)
-    </button>
-    <button class="ing" value="Refined Vegetable Oil">Refined Vegetable Oil</button>
+        <div class="col-sm-10">
+            <div class="jumbotron text-center ">
+                <h1>What Should I Make?</h1>
+                <p>Bringing the best recipes to your home</p>
+                <form class="form-inline">
+                    <input type="email" class="form-control" size="50" placeholder="Enter your ingredients" required>
+                    <button type="button" class="btn btn-danger">Go</button>
+                </form>
+            </div>
+
+            <div class="row">
+                <div id="stuff"></div>
+            </div>
+
+        </div>
+    </div>
 </div>
 
 <script>
@@ -83,8 +129,8 @@
     $('.ing').click(function () {
         var val = $(this).attr("value");
         fridge.push(val);
-        console.log("Ingredients Added to Fridge", fridge)
-        view()
+        console.log("Ingredients Added to Fridge", fridge);
+        view();
 
     });
 
@@ -120,17 +166,72 @@
     var view = function () {
         var death = $("<button>").text(fridge[fridge.length - 1] + " x").addClass("addedIng");
         addClickHandlerToRemovableIngredient(death);
-        $(".container").append(death)
+        $(".addedIngredients").append(death);
     };
 
-    $.ajax({
-        url: "json.php",
-        dataType: "json",
-        method: "post",
-        success: function (data) {
-            console.log(data)
-        }
-    })
+    $("document").ready(function () {
+        console.log("ajax clicked");
+        $.ajax({
+            url: "json.php",
+            dataType: "json",
+            method: "post",
+            success: function (resp) {
+                console.log('Ajax success');
+                console.log("The data", resp);
+
+                for (var i = 0; i < resp.data.length; i++) {
+
+                    var recipeName = resp.data[i].recipe_name;
+                    var ingredients = resp.data[i].ingredients;
+
+                    var theDiv = $("<div>", {
+                        class: "col-md-3 col-sm-6"
+                    });
+                    var outterDiv = $("<div>", {
+                        class: "card"
+                    });
+                    var img = $("<img>", {
+                        src: "http://placehold.it/140x100",
+                        class: "thumbnail",
+                        width: "100%"
+                    });
+                    var innerDiv = $("<div>", {
+                        class: "card-block"
+                    });
+                    var h4 = $("<h4>", {
+                        class: "card-title",
+                        text: recipeName
+                    });
+                    var p = $("<p>", {
+                        class: "card-text",
+                        text: ingredients
+                    });
+
+                    var butt = $("<button>", {
+                        class: "btn btn-primary",
+                        text: "Go somewhere"
+                    });
+
+
+                    theDiv.append(outterDiv);
+                    outterDiv.append(img, innerDiv);
+                    innerDiv.append(h4, p, butt);
+
+
+                    $("#stuff").append(theDiv);
+                    console.log("test")
+
+
+                }
+            }
+        })
+    });
+    /*
+     modal
+     Recipe Title
+     ingredients
+     */
+
 </script>
 </body>
 </html>
