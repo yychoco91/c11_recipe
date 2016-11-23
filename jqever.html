@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <!--jQuery UI-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 
     <!--Material Design Lite-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -109,7 +114,7 @@
                 <h1>What Should I Make?</h1>
                 <p>Bringing the best recipes to your home</p>
                 <form class="form-inline">
-                    <input type="email" class="form-control" size="50" placeholder="Enter your ingredients" required>
+                    <input type="text" class="form-control" id="ingredientInput" size="50" placeholder="Enter your ingredients" required>
                     <button type="button" class="btn btn-danger">Go</button>
                 </form>
             </div>
@@ -123,6 +128,25 @@
 </div>
 
 <script>
+
+    var autoComplete = function (){
+        var availableIng = [
+            "Monosodium Glutamate (MSG)",
+            "Aspartame",
+            "High Fructose Corn Syrup (HFCS)",
+            "Agave Nectar",
+            "Artificial Food Coloring",
+            "BHA and BHT",
+            "Sodium Nitrite and Sodium Nitrate",
+            "Potassium Bromate",
+            "Recombinant Bovine Growth Hormone (rBGH)",
+            "Refined Vegetable Oil",
+        ];
+
+        $( "#poison" ).autocomplete({
+            source: availableIng
+        });
+    };
 
     var fridge = [];
 
@@ -170,7 +194,23 @@
     };
 
     $("document").ready(function () {
+        autoComplete();
         console.log("ajax clicked");
+        receipeInfo()
+    });
+    //Ingredients Array
+    var ingredientsArray = [];
+    console.log("Ingredients Array ", ingredientsArray)
+    $("#ingredientInput").autocomplete({
+        source: ingredientsArray
+    });
+
+    //Auto Complete Ingredients
+    var au
+
+
+    //ajax call to json.php
+    var receipeInfo = function () {
         $.ajax({
             url: "json.php",
             dataType: "json",
@@ -183,6 +223,9 @@
 
                     var recipeName = resp.data[i].recipe_name;
                     var ingredients = resp.data[i].ingredients;
+
+                    ingredientsArray.push(ingredients);
+
 
                     var theDiv = $("<div>", {
                         class: "col-md-3 col-sm-6"
@@ -220,12 +263,10 @@
 
                     $("#stuff").append(theDiv);
                     console.log("test")
-
-
                 }
             }
         })
-    });
+    };
     /*
      modal
      Recipe Title
