@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width">
     <title>API Get Ingredients</title>
     <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
-    <script src="connect.php"></script>
+    <script src="apikey.js"></script>
 </head>
 <body>
 <button onclick="getRecipes();">Get and Send Recipes</button>
@@ -40,6 +40,7 @@
                         url: currentRecipe.sourceUrl,
                         author: currentRecipe.sourceName,
                         name: currentRecipe.title,
+                        givenId: currentRecipe.id,
                         ingredients: []
                     };
                     //Iterates through ingredient in recipes from resp
@@ -49,7 +50,8 @@
                         var theIngredient= {
                             amount: currentIngredient.amount,
                             amountType: currentIngredient.unit,
-                            name: currentIngredient.name
+                            name: currentIngredient.name,
+                            originStr: currentIngredient.originalString
                         };
 
                         recipe.ingredients.push(theIngredient);
@@ -74,7 +76,7 @@
      */
     function sendRecipe(ingredients, recipes){
         var dataToSend = {ingredientData: ingredients, recipeData: recipes};
-        //console.log('Hello');
+        //console.log('ingredients: ', ingredients, ' recipes ', recipes);
         $.ajax({
             method: 'post',
             url: 'insert_recipe.php',
