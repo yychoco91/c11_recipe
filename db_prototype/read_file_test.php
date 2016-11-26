@@ -24,7 +24,7 @@
         $.ajax({
             dataType: 'json',
             method: 'get',
-            url:'recipe/spoon_random.php',
+            url:'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=30',
             headers: spoonAccess,
             success: function(resp){
                 console.log('Success', resp);
