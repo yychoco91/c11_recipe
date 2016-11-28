@@ -3,6 +3,8 @@
     color: #ffffff;
     background-image: url("images/food photo2.jpg");
     background-size: cover;
+    padding-top: 66px;
+    padding-bottom: 66px;
 }
 
 .row{
@@ -45,7 +47,6 @@
     position: relative;
     overflow: hidden;
     width: 100%;
-
     height: 5000px; /* Temp: Simulates a tall page. */
 }
 #site-canvas {
@@ -82,7 +83,13 @@
     padding: 15px;
 }
 
+.thumbnail {
+    height: 300px;
 
-
-
+}
+.container-fluid{
+    /*background-image: url("images/bamboo_texture.png");
+    background-size: cover;*/
+    background-color: blanchedalmond;
+}
 
