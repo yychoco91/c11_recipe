@@ -15,3 +15,13 @@ function toggleNav() {
         $('#site-wrapper').addClass('show-nav');
     }
 }
+
+$(document).ready(function () {
+    $('img').on('click', function () {
+        var image = $(this).attr('src');
+        //alert(image);
+        $('#myModal').on('show.bs.modal', function () {
+            $(".showImage").attr("src", image);
+        });
+    });
+});
