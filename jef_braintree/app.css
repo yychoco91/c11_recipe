@@ -1590,7 +1590,7 @@ header.main .braintree {
     animation-delay: 0s; }
 
 .notice-wrapper {
-    font-family: "BT Mono medium", "Helvetica Neue", Helvetica, Sans-serif;
+    font-family: "BT Mono medium", "Helvetica Neue", Helvetica, Sans-serif, serif;
     text-align: center;
     width: 100%;
     overflow: hidden; }

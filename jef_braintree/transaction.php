@@ -7,7 +7,7 @@
     require_once("braintree_header.php");
     if (isset($_GET["id"])) {
         $transaction = Braintree\Transaction::find($_GET["id"]);
-
+        print_r("$transaction");
         $transactionSuccessStatuses = [
             Braintree\Transaction::AUTHORIZED,
             Braintree\Transaction::AUTHORIZING,

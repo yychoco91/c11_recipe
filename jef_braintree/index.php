@@ -33,17 +33,23 @@
                 </label>
             </section>
 
-            <button class="button" type="submit"><span>Test Transaction</span></button>
+            <button class="button" type="submit" onclick=""><span>Test Transaction</span></button>
         </form>
     </div>
 </div>
+
+<form>
+    <div id="dropin-container"></div>
+</form>
 
 <script src="https://js.braintreegateway.com/js/braintree-2.27.0.min.js"></script>
 <script>
     var checkout = new Demo({
         formID: 'payment-form'
     });
-    var client_token = "<?php echo(Braintree\ClientToken::generate()); ?>";
+    var client_token = "<?php echo(Braintree\ClientToken::generate([
+//        "customerId" => "54027778"
+    ])); ?>";
     braintree.setup(client_token, "dropin", {
         container: "bt-dropin"
     });
