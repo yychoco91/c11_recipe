@@ -48,7 +48,7 @@
         formID: 'payment-form'
     });
     var client_token = "<?php echo(Braintree\ClientToken::generate([
-//        "customerId" => "54027778"
+        "customerId" => "54027778"
     ])); ?>";
     braintree.setup(client_token, "dropin", {
         container: "bt-dropin"
