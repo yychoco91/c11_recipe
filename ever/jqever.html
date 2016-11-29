@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!--jQuery UI-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!--Material Design Lite-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <link rel="stylesheet" href="../style.css">
+
+    <script src="ever.js"></script>
+    <script src="script.js"></script>
+
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2 sidenav">
+
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#fridge">My Fridge</a></li>
+                <li><a href="#recipes">My Recipes</a></li>
+            </ul>
+        </div>
+
+
+        <div class="col-sm-10">
+            <div class="jumbotron text-center ">
+                <h1>What Should I Make?</h1>
+                <p>Bringing the best recipes to your home</p>
+                <form class="form-inline">
+                    <input type="text" class="form-control" id="ingredientInput" size="50" placeholder="Enter your ingredients" required>
+                    <button type="button" class="btn btn-danger">Go</button>
+                </form>
+            </div>
+
+            <div class="row">
+                <div id="stuff"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div id="myModal" class="modal fade" role="dialog">   <!--Note:Modal cannot be placed inside nested divs, so move it outside of the main div-->
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">My Recipe</h4>
+            </div>
+
+            <div class="modal-body">
+                <img class="showImage img-responsive" src="">
+                <div class="ingContainer"></div>
+                <!--<p>Servings: 5 </p>-->
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

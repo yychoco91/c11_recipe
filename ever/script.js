@@ -17,12 +17,17 @@ function toggleNav() {
 }
 
 $(document).ready(function () {
-    $('img').on('click', function () {
+    $('#stuff').on('click', 'img', function () {
         var image = $(this).attr('src');
         //alert(image);
         console.log('Modal img should be:', image);
-        $('#myModal').on('show.bs.modal', function () {
-            $(".showImage").attr("src", image);
-        });
+        $("#myModal .showImage").attr("src", image);
+        $('#myModal .modal-body .ingContainer').html($(this).next().find('.ingDiv').html());
+
+        console.log($(this).next().find('.ingDiv').html());
+        // $('body').on('show.bs.modal', '#myModal',function () {
+        //     console.log('Show modal called');
+        //
+        // });
     });
 });
