@@ -6,27 +6,21 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit08a4203c627776b76931b7315fe51407
 {
+    public static $files = array (
+        '7e702cccdb9dd904f2ccf22e5f37abae' => __DIR__ . '/..' . '/facebook/php-sdk-v4/src/Facebook/polyfills.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
-        'B' => 
+        'F' => 
         array (
-            'Braintree\\' => 10,
+            'Facebook\\' => 9,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Braintree\\' => 
+        'Facebook\\' => 
         array (
-            0 => __DIR__ . '/..' . '/braintree/braintree_php/lib/Braintree',
-        ),
-    );
-
-    public static $prefixesPsr0 = array (
-        'B' => 
-        array (
-            'Braintree' => 
-            array (
-                0 => __DIR__ . '/..' . '/braintree/braintree_php/lib',
-            ),
+            0 => __DIR__ . '/..' . '/facebook/php-sdk-v4/src/Facebook',
         ),
     );
 
@@ -35,7 +29,6 @@ class ComposerStaticInit08a4203c627776b76931b7315fe51407
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit08a4203c627776b76931b7315fe51407::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit08a4203c627776b76931b7315fe51407::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit08a4203c627776b76931b7315fe51407::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }
