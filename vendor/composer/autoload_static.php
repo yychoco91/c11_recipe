@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit08a4203c627776b76931b7315fe51407
+class ComposerStaticInitc547e02db5f1e5eaebab72932e9085d3
 {
     public static $files = array (
         '7e702cccdb9dd904f2ccf22e5f37abae' => __DIR__ . '/..' . '/facebook/php-sdk-v4/src/Facebook/polyfills.php',
@@ -15,6 +15,10 @@ class ComposerStaticInit08a4203c627776b76931b7315fe51407
         array (
             'Facebook\\' => 9,
         ),
+        'B' => 
+        array (
+            'Braintree\\' => 10,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -22,13 +26,28 @@ class ComposerStaticInit08a4203c627776b76931b7315fe51407
         array (
             0 => __DIR__ . '/..' . '/facebook/php-sdk-v4/src/Facebook',
         ),
+        'Braintree\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/braintree/braintree_php/lib/Braintree',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'B' => 
+        array (
+            'Braintree' => 
+            array (
+                0 => __DIR__ . '/..' . '/braintree/braintree_php/lib',
+            ),
+        ),
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit08a4203c627776b76931b7315fe51407::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit08a4203c627776b76931b7315fe51407::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitc547e02db5f1e5eaebab72932e9085d3::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitc547e02db5f1e5eaebab72932e9085d3::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitc547e02db5f1e5eaebab72932e9085d3::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }
