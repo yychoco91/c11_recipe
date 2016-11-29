@@ -6,7 +6,7 @@
  * Date: 11/20/16
  * Time: 11:57 AM
  */
-require_once("connect.php");
+require_once("config/connect.php");
 
 //mySQL queries
 
@@ -97,9 +97,9 @@ function insertRecipesAndItsIngredients($connect, $recipesList){
     $queryInsertIngred->close();
 }
 
-insertIngredientsIntoIngTable($conn, $ingredientsListData);
+//insertIngredientsIntoIngTable($conn, $ingredientsListData);
 
-insertRecipesAndItsIngredients($conn, $recipeListData);
+//insertRecipesAndItsIngredients($conn, $recipeListData);
 
 $conn->close();
 ?>
