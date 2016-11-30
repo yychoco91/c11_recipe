@@ -16,27 +16,33 @@ var recipe_info_from_jsonphp_file = function () {
         dataType: "json",
         method: "post",
         success: function (response) {
-            console.log("data from json.php\n", response);
 
+            console.log("data from json.php\n", response);
             ingredientsArray = response.ingredientData;
             //console.log(ingredientsArray);
-
-            $( "#ingredientInput" ).autocomplete({
+            $("#ingredientInput").autocomplete({
                 source: ingredientsArray
             });
 
-            // console.log("hi0")
-            var name;
+            var authorName;
+            var recipeName;
+            var imgSrc;
+            var url;
+
+            var ingName;
+            var amount;
+            var amountType;
+            var designatedIngredients;
 
             for (var i = 0; i < response.recipeData.length; i++) {
-                // console.log("==========RECIPE_NAME==========")
-                var imgSrc = response.recipeData[i].img;
-                console.log(imgSrc);
-                var recipeName = response.recipeData[i].name;
+
+                authorName = response.recipeData[i].author;
+                recipeName = response.recipeData[i].name;
+                imgSrc = response.recipeData[i].img;
+                url = response.recipeData[i].url;
 
                 var theDiv = $("<div>", {
                     class: "col-md-3 col-sm-6",
-
                 });
                 var outterDiv = $("<div>", {
                     class: "card"
@@ -51,24 +57,22 @@ var recipe_info_from_jsonphp_file = function () {
                 });
                 var innerDiv = $("<div>", {
                     class: "card-block",
-                    height:"180px"         //set the height of card-block cards in following rows will line up correctly
+                    height: "180px"         //set the height of card-block cards in following rows will line up correctly
                 });
-                var h4 = $("<h4>", {
+                var h3 = $("<h3>", {
                     class: "card-title",
                     text: recipeName
                 });
-                // var butt = $("<button>", {
-                //     class: "btn btn-primary",
-                //     text: "Go somewhere"
-                // });
-                // var modalBody = $("<div>", {
-                //     // class: "modal-body",
-                // })
 
-                console.log('IMG ELE:', img);
+                var recipeUrl=$("<p>",{
+                   text:url
+                });
+
+                $(".modal-body").append(recipeUrl);
+
                 theDiv.append(outterDiv);
                 outterDiv.append(img, innerDiv);
-                innerDiv.append(h4); //butt
+                innerDiv.append(h3); //butt
 
                 var ingDiv = $('<div>', {
                     class: 'ingDiv',
@@ -77,14 +81,12 @@ var recipe_info_from_jsonphp_file = function () {
 
                 $("#stuff").append(theDiv);
 
-                for(var j = 0; j < response.recipeData[i].ingredients.length; j++){
-                    // console.log("-------INGREDIENT_NAME-------");
-                    name = response.recipeData[i].ingredients[j].name;
-                    var amount = response.recipeData[i].ingredients[j].amount;
-                    var amountType = response.recipeData[i].ingredients[j].amountType;
-                    // console.log(name)
+                for (var j = 0; j < response.recipeData[i].ingredients.length; j++) {
 
-                    var designatedIngredients = Math.round(amount) + " " + amountType + " " + name ;
+                    ingName = response.recipeData[i].ingredients[j].name;
+                    amount = response.recipeData[i].ingredients[j].amount;
+                    amountType = response.recipeData[i].ingredients[j].amountType;
+                    designatedIngredients = Math.round(amount) + " " + amountType + " " + ingName;
 
                     var p = $("<p>", {
                         class: "card-text",

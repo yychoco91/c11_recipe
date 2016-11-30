@@ -19,12 +19,19 @@ function toggleNav() {
 $(document).ready(function () {
     $('#stuff').on('click', 'img', function () {
         var image = $(this).attr('src');
+        var recipeTitle = $(this).parent().find(".card-title").text();
+        var recipeUrl = $(this).parent().find()
+        // console.log(recipeTitle);
+        //var modalHeader = $(this).text(recipeTitle);
         //alert(image);
-        console.log('Modal img should be:', image);
+        // console.log('Modal img should be:', image); // no
         $("#myModal .showImage").attr("src", image);
-        $('#myModal .modal-body .ingContainer').html($(this).next().find('.ingDiv').html());
+        $('#myModal .ingContainer').html($(this).next().find('.ingDiv').html());
 
-        console.log($(this).next().find('.ingDiv').html());
+        $("#myModal .modal-header").text(recipeTitle);
+        // console.log($(this).next().find('.ingDiv').html()); //no
+
+
         // $('body').on('show.bs.modal', '#myModal',function () {
         //     console.log('Show modal called');
         //
