@@ -32,11 +32,11 @@ var recipe_info_from_jsonphp_file = function () {
                 // console.log("==========RECIPE_NAME==========")
                 var imgSrc = response.recipeData[i].img;
                 console.log(imgSrc);
+
                 var recipeName = response.recipeData[i].name;
 
                 var theDiv = $("<div>", {
                     class: "col-md-3 col-sm-6",
-
                 });
                 var outterDiv = $("<div>", {
                     class: "card"
@@ -57,6 +57,14 @@ var recipe_info_from_jsonphp_file = function () {
                     class: "card-title",
                     text: recipeName
                 });
+                var title=$('<h4>',{
+                    text:recipeName,
+                    class:'modal-title',
+                    id: 'myModalLabel'
+                });
+
+                $(".modal-header").append(title);
+
                 // var butt = $("<button>", {
                 //     class: "btn btn-primary",
                 //     text: "Go somewhere"
