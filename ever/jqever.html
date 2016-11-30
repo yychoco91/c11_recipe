@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../style.css">
 
     <script src="ever.js"></script>
-    <script src="script.js"></script>
+    <!--<script src="script.js"></script>-->
 
 
 </head>
@@ -63,10 +63,17 @@
                         </h4>
                     </div>
                     <div id="collapse1" class="panel-collapse collapse in">
-                        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat.
+                        <div class="panel-body" id="ingredientButtons" style="display:inline-block; margin: 13px">
+                            <button class="btn btn-info topIng" value="87">Eggs</button>
+                            <button class="btn btn-info topIng" value="13">Flour</button>
+                            <button class="btn btn-info topIng" value="16">Milk</button>
+                            <button class="btn btn-info topIng" value="90">Vegetable Oil</button>
+                            <button class="btn btn-info topIng" value="183">Tomatoes</button>
+                            <button class="btn btn-info topIng" value="31">Parmesan Cheese</button>
+                            <button class="btn btn-info topIng" value="121">Sugar</button>
+                            <button class="btn btn-info topIng" value="110">Chicken Broth</button>
+                            <button class="btn btn-info topIng" value="61">Onions</button>
+                            <button class="btn btn-info topIng" value="48">White Vinegar</button>
                         </div>
                     </div>
                 </div>
@@ -111,13 +118,13 @@
         <div class="container-fluid">
             <div class="row">
 
-                <div class="col-sm-12 ">
+                <div class="col-sm-12">
                     <div class="jumbotron text-center ">
                         <h1>What Should I Make?</h1>
                         <p>Bringing the best recipes to your home</p>
                         <form class="form-inline">
-                            <input type="text" id="ingredientInput" class="form-control" size="50" placeholder="What's in your fridge?"
-                                   required>
+
+                            <input type="text" class="form-control" id="ingredientInput" size="50" placeholder="What's in your fridge?"required>
                             <button type="button" class="btn btn-danger">Go</button>
                         </form>
                     </div>
