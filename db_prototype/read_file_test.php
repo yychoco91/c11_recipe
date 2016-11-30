@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width">
     <title>API Get Ingredients</title>
     <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
-    <script src="apikey.js"></script>
+    <script src="config/apikey.js"></script>
 </head>
 <body>
 <button onclick="getRecipes();">Get and Send Recipes</button>
