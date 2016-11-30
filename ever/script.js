@@ -16,6 +16,7 @@ function toggleNav() {
     }
 }
 
+/*
 $(document).ready(function () {
     $('#stuff').on('click', 'img', function () {
         var image = $(this).attr('src');
@@ -38,3 +39,4 @@ $(document).ready(function () {
         // });
     });
 });
+    */
