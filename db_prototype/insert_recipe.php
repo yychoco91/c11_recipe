@@ -6,7 +6,7 @@
  * Date: 11/20/16
  * Time: 11:57 AM
  */
-require_once("connect.php");
+require_once("config/connect.php");
 
 //mySQL queries
 
@@ -46,14 +46,14 @@ function insertIngredientsIntoIngTable($connect, $ingredientsList) {
  */
 function insertRecipesAndItsIngredients($connect, $recipesList){
     //prepare for recipe insert
-    $queryRecipe = "INSERT IGNORE INTO `recipes` (`given_id`, `name`, `author`, `url`, `picture_url`) VALUES (?, ?, ?, ?, ?)";
+    $queryRecipe = "INSERT IGNORE INTO `recipes` (`given_ID`, `name`, `author`, `url`, `picture_url`) VALUES (?, ?, ?, ?, ?)";
     $queryInsertRecipe = $connect->prepare($queryRecipe);
 
     //set recipe binding parameters
     $queryInsertRecipe->bind_param('issss', $r_id, $r_name, $r_author, $r_url, $r_img);
 
     //prepare for ingredient insert
-    $queryIngred = "INSERT IGNORE INTO `ingredientsToRecipe` (`ingred_id`, `recipe_id`, `name`, `name_str`, `count_type`, `count`) VALUES (?, ?, ?, ? , ?, ?)";
+    $queryIngred = "INSERT IGNORE INTO `ingredientsToRecipe` (`ingred_ID`, `recipe_ID`, `name`, `name_str`, `count_type`, `count`) VALUES (?, ?, ?, ? , ?, ?)";
     $queryInsertIngred = $connect->prepare($queryIngred);
 
     //set ingredients binding parameters
@@ -75,9 +75,9 @@ function insertRecipesAndItsIngredients($connect, $recipesList){
         foreach ($recipe['ingredients'] as $ingredient) {
                 $ingNameForSql = $ingredient['name'];
                 //Get ingredient id that matches recipe ingredient
-                if($result = $connect->query("SELECT `ID` FROM `ingredient` WHERE `name`='$ingNameForSql'")){
+                if($result = $connect->query("SELECT `ingred_ID` FROM `ingredient` WHERE `name`='$ingNameForSql'")){
                    $ingFromSql = $result->fetch_assoc();
-                    $sqlIngID = $ingFromSql['ID'];
+                    $sqlIngID = $ingFromSql['ingred_ID'];
                     //print_r("Ingredient ID for " . $ingredient['name'] . " : ".$sqlIngID);
                 }
 
@@ -97,9 +97,9 @@ function insertRecipesAndItsIngredients($connect, $recipesList){
     $queryInsertIngred->close();
 }
 
-insertIngredientsIntoIngTable($conn, $ingredientsListData);
+//insertIngredientsIntoIngTable($conn, $ingredientsListData);
 
-insertRecipesAndItsIngredients($conn, $recipeListData);
+//insertRecipesAndItsIngredients($conn, $recipeListData);
 
 $conn->close();
 ?>
