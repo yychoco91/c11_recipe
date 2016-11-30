@@ -19,10 +19,14 @@
         });
 
         function getIngredients(){
+            var usersIngred = {
+                ingredients: [1,2]
+            };
             $.ajax({
-                url: 'whatcanimake_db.php/?request=get',
-                method: 'get',
+                url: 'get_recipes.php',
+                method: 'post',
                 dataType: 'JSON',
+                data: usersIngred,
                 success: function(response) {
                     console.log('Look, it works! ', response);
                 }

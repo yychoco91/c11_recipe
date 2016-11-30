@@ -21,21 +21,31 @@ if ($conn->connect_errno) {
     print(json_encode($output));
     exit();
 }
-//$query_scoring_part = '0';
-//foreach ($selected_ingredients as $ingredient_id) {
-//    $query_scoring_part .= ' + (
-//                                SELECT COUNT(*)
-//                                FROM ingredients_to_recipes itr
-//                                WHERE itr.recipe_id=r.recipe_id
-//                                    AND itr.ingredient_id=' . $ingredient_id . '
-//                               )';
-//}
-//$query_temp = 'SELECT column names go here, ' . $query_scoring_part . ' AS match_count
-//               FROM recipes r
-//               ORDER BY match_count DESC
-//              ';
-//
-//$sample = 'SELECT r.*,
+
+//expecting array of id.
+$selected_ingredients = $_POST['ingredients'];
+//print_r($selected_ingredients);
+
+/**
+ * Review this code
+ * this scores recipes depending how many ingredients are matched
+ */
+$query_scoring_part = '0';
+foreach ($selected_ingredients as $ingredient_id) {
+    $query_scoring_part .= ' + (
+                                SELECT COUNT(*)
+                                FROM ingredientsToRecipe itr
+                                WHERE itr.recipe_id=r.recipe_id
+                                    AND itr.ingred_id=' . $ingredient_id . '
+                               )';
+}
+$query_temp = 'SELECT r.`recipe_ID`, r.`name`, r.`author`, r.`url`, r.`picture_url`, ' . $query_scoring_part . ' AS match_count
+               FROM recipes r
+               ORDER BY match_count DESC
+               LIMIT 20
+              ';
+
+//$sample_query_temp = 'SELECT r.*,
 //                    (
 //                        0
 //                        + (
@@ -53,19 +63,22 @@ if ($conn->connect_errno) {
 //
 //                    ) AS match_count
 //               FROM recipes r
-//               ORDER BY match_count DESC';
+//               ORDER BY match_count DESC LIMIT 20';
 
-if ($result = $conn->query("SELECT `ID`,`name`,`author`,`url`,`picture_url` FROM `recipe` WHERE `ID`=7")) {
+if ($result = $conn->query($query_temp)) {
+    //print('Query okay');
     while ($row = $result->fetch_assoc()) {
         $recipe = [
-            'id'=>$row['ID'],
+            'id'=>$row['recipe_ID'],
             'name'=>$row['name'],
             'author'=>$row['author'],
             'url'=>$row['url'],
             'img'=>$row['picture_url'],
             'ingredient'=>[]
         ];
-        $r_ID = $row['ID'];
+        $r_ID = $row['recipe_ID'];
+
+        //print_r($recipe);
 
         if($ingredients = $conn->query("SELECT `name`,`name_str`,`count_type`,`count` FROM `ingredientsToRecipe` WHERE `recipe_id`='$r_ID'")){
 
@@ -89,3 +102,4 @@ $result->close();
 print(json_encode($output));
 
 ?>
+
