@@ -97,11 +97,11 @@ if ($result = $conn->query($query_temp)) {
     }
 
     $output['success'] = true;
+    $result->close();
 }else{
-    print('error');
+    $output['data'] = 'Failed to connect to DB';
 }
 
-$result->close();
 print(json_encode($output));
 
 ?>
