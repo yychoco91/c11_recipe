@@ -23,7 +23,7 @@ if ($conn->connect_errno) {
 }
 
 //expecting array of id.
-$selected_ingredients = $_POST['ingredients'];
+$userIngredients = $_POST['ingredients'];
 //print_r($selected_ingredients);
 
 /**
@@ -31,7 +31,8 @@ $selected_ingredients = $_POST['ingredients'];
  * this scores recipes depending how many ingredients are matched
  */
 $query_scoring_part = '0';
-foreach ($selected_ingredients as $ingredient_id) {
+
+foreach ($userIngredients as $ingredient_id) {
     $query_scoring_part .= ' + (
                                 SELECT COUNT(*)
                                 FROM ingredientsToRecipe itr
@@ -39,13 +40,15 @@ foreach ($selected_ingredients as $ingredient_id) {
                                     AND itr.ingred_id=' . $ingredient_id . '
                                )';
 }
+
 $query_temp = 'SELECT r.`recipe_ID`, r.`name`, r.`author`, r.`url`, r.`picture_url`, ' . $query_scoring_part . ' AS match_count
                FROM recipes r
                ORDER BY match_count DESC
                LIMIT 20
               ';
 
-//$sample_query_temp = 'SELECT r.*,
+//Sample
+//SELECT r.*,
 //                    (
 //                        0
 //                        + (
@@ -63,7 +66,7 @@ $query_temp = 'SELECT r.`recipe_ID`, r.`name`, r.`author`, r.`url`, r.`picture_u
 //
 //                    ) AS match_count
 //               FROM recipes r
-//               ORDER BY match_count DESC LIMIT 20';
+//               ORDER BY match_count DESC LIMIT 20
 
 if ($result = $conn->query($query_temp)) {
     //print('Query okay');
@@ -81,7 +84,6 @@ if ($result = $conn->query($query_temp)) {
         //print_r($recipe);
 
         if($ingredients = $conn->query("SELECT `name`,`name_str`,`count_type`,`count` FROM `ingredientsToRecipe` WHERE `recipe_id`='$r_ID'")){
-
             while($ing = $ingredients->fetch_assoc()){
                 $recipe['ingredient'][] = [
                     'name'=>$ing['name'],
@@ -91,8 +93,9 @@ if ($result = $conn->query($query_temp)) {
                 ];
             }
         }
+        $output['data'][]=$recipe;
     }
-    $output['data'][]=$recipe;
+
     $output['success'] = true;
 }else{
     print('error');
