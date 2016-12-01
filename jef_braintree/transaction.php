@@ -1,13 +1,14 @@
 <html>
 <?php require_once("braintree_head.php"); ?>
 <body>
-
 <?php
     require_once("braintree_init.php");
     require_once("braintree_header.php");
     if (isset($_GET["id"])) {
         $transaction = Braintree\Transaction::find($_GET["id"]);
-        print_r("$transaction");
+        print("<pre>");
+        print_r($transaction);
+        print("</pre>");
         $transactionSuccessStatuses = [
             Braintree\Transaction::AUTHORIZED,
             Braintree\Transaction::AUTHORIZING,
@@ -28,7 +29,6 @@
         }
     }
 ?>
-
 <div class="wrapper">
     <div class="response container">
         <div class="content">
