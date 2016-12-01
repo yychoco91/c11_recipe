@@ -24,13 +24,32 @@ $result = Braintree_Transaction::sale([
         'submitForSettlement' => true
     ]
 ]);
+//$result = Braintree\Customer::create([
+//    'firstName' => $_POST['first_name'],
+//    'lastName' => $_POST['last_name'],
+//    'email' => $_POST['user_email'],
+//    'phone' => $_POST['user_phone'],
+
+    // we can create a credit card at the same time
+//    'creditCard' => [
+//        'cardholderName' => $_POST['full_name'],
+//        'number' => $_POST['card_number'],
+//        'expirationMonth' => $_POST['expiry_month'],
+//        'expirationYear' => $_POST['expiry_year'],
+//        'cvv' => $_POST['card_cvv'],
+//        'billingAddress' => [
+//            'firstName' => $_POST['first_name'],
+//            'lastName' => $_POST['last_name']
+//        ]
+//    ]
+//]);
 if ($result->success || !is_null($result->transaction)) {
     $transaction = $result->transaction;
     header("Location: transaction.php?id=" . $transaction->id);
 } else {
     $errorString = "";
 
-    foreach($result->errors->deepAll() as $error) {
+    foreach ($result->errors->deepAll() as $error) {
         $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
     }
     $_SESSION["errors"] = $errorString;

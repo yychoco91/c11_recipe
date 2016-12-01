@@ -36,7 +36,6 @@ class Configuration
 
     public function __construct($attribs = [])
     {
-        print("\n\n***".print_r($attribs,true)."***\n\n");
         foreach ($attribs as $kind => $value) {
             if ($kind == 'environment') {
                 CredentialsParser::assertValidEnvironment($value);
