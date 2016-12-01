@@ -93,3 +93,7 @@
     background-color: blanchedalmond;
 }
 
+#ingredientButtons .panel-body{
+    display: inline-block;
+    margin: 13px;
+}

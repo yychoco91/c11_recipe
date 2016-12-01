@@ -5,59 +5,148 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!--jQuery UI-->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <!--Material Design Lite-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
-    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
     <link rel="stylesheet" href="../style.css">
 
     <script src="ever.js"></script>
-    <script src="script.js"></script>
+    <!--<script src="script.js"></script>-->
+
 
 </head>
 
 <body>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-2 sidenav">
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand toggle-nav" href="#" style="color: white"><i class="fa fa-bars"></i>Menu</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" style="color: white">Link</a></li>
+                <li><a href="#" style="color: white">Link</a></li>
+                <li><a href="#" style="color: white">Link</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="site-wrapper">
+
+    <div id="site-canvas">
+
+        <div id="site-menu">
+            <a href="#" class="toggle-nav" style="color: pink; font-size: 20px;"><i class="fa fa-times"></i></a>
+            <h2>My Menu</h2>
+            <br>
+            <form class="form-inline">
+                <input type="email" class="form-control" placeholder="Enter your ingredients" size="30">
+            </form>
+            <br>
+
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <i class="fa fa-shopping-basket"></i>&nbsp;&nbsp; <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Ingredient
+                            Suggestions</a>
+                        </h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse in">
+                        <div class="panel-body" id="ingredientButtons" style="display:inline-block; margin: 13px">
+                            <button class="btn btn-info topIng" value="87">Eggs</button>
+                            <button class="btn btn-info topIng" value="13">Flour</button>
+                            <button class="btn btn-info topIng" value="16">Milk</button>
+                            <button class="btn btn-info topIng" value="90">Vegetable Oil</button>
+                            <button class="btn btn-info topIng" value="183">Tomatoes</button>
+                            <button class="btn btn-info topIng" value="31">Parmesan Cheese</button>
+                            <button class="btn btn-info topIng" value="121">Sugar</button>
+                            <button class="btn btn-info topIng" value="110">Chicken Broth</button>
+                            <button class="btn btn-info topIng" value="61">Onions</button>
+                            <button class="btn btn-info topIng" value="48">White Vinegar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <i class="fa fa-cutlery"></i>&nbsp;&nbsp;&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">My Recipes</a>
+                        </h4>
+                    </div>
+                    <div id="collapse2" class="panel-collapse collapse in">
+                        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                            commodo consequat.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <i class="fa fa-filter"></i>&nbsp;&nbsp;&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Dietary Restrictions </a>
+                        </h4>
+                    </div>
+                    <div id="collapse3" class="panel-collapse collapse in">
+                        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                            commodo consequat.
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <ul class="nav nav-pills nav-stacked">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#fridge">My Fridge</a></li>
-                <li><a href="#recipes">My Recipes</a></li>
+                <li><a href="#about">About Us</a></li>
             </ul>
+
         </div>
 
-
-        <div class="col-sm-10">
-            <div class="jumbotron text-center ">
-                <h1>What Should I Make?</h1>
-                <p>Bringing the best recipes to your home</p>
-                <form class="form-inline">
-                    <input type="text" class="form-control" id="ingredientInput" size="50" placeholder="Enter your ingredients" required>
-                    <button type="button" class="btn btn-danger">Go</button>
-                </form>
-            </div>
-
+        <div class="container-fluid">
             <div class="row">
-                <div id="stuff"></div>
-            </div>
 
+                <div class="col-sm-12">
+                    <div class="jumbotron text-center ">
+                        <h1>What Should I Make?</h1>
+                        <p>Bringing the best recipes to your home</p>
+                        <form class="form-inline">
+                            <input type="text" class="form-control" id="ingredientInput" size="50" placeholder="What's in your fridge?"
+                                   required>
+                            <button type="button" class="btn btn-danger">Go</button>
+                        </form>
+                    </div>
+
+                    <div class="row">
+                        <div id="stuff"></div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<div id="myModal" class="modal fade" role="dialog">   <!--Note:Modal cannot be placed inside nested divs, so move it outside of the main div-->
+
+<div id="myModal" class="modal fade" role="dialog">
+    <!--Note:Modal cannot be placed inside nested divs, so move it outside of the main div-->
     <div class="modal-dialog">
         <div class="modal-content">
 
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">My Recipe</h4>
             </div>
 
@@ -73,5 +162,6 @@
         </div>
     </div>
 </div>
+
 </body>
 </html>
