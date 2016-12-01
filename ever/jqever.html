@@ -24,10 +24,10 @@
 <nav class="navbar navbar-default">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+            <button type="button" class="navbar-toggle" style="color: white" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar" style="color: white"></span>
+                <span class="icon-bar" style="color: white"></span>
+                <span class="icon-bar" style="color: white"></span>
             </button>
             <a class="navbar-brand toggle-nav" href="#" style="color: white"><i class="fa fa-bars"></i>Menu</a>
         </div>
@@ -64,16 +64,16 @@
                     </div>
                     <div id="collapse1" class="panel-collapse collapse in">
                         <div class="panel-body" id="ingredientButtons" style="display:inline-block; margin: 13px">
-                            <button class="btn btn-info topIng" value="87">Eggs</button>
-                            <button class="btn btn-info topIng" value="13">Flour</button>
-                            <button class="btn btn-info topIng" value="16">Milk</button>
-                            <button class="btn btn-info topIng" value="90">Vegetable Oil</button>
-                            <button class="btn btn-info topIng" value="183">Tomatoes</button>
-                            <button class="btn btn-info topIng" value="31">Parmesan Cheese</button>
-                            <button class="btn btn-info topIng" value="121">Sugar</button>
-                            <button class="btn btn-info topIng" value="110">Chicken Broth</button>
-                            <button class="btn btn-info topIng" value="61">Onions</button>
-                            <button class="btn btn-info topIng" value="48">White Vinegar</button>
+                            <button class="btn btn-info topIng" value="87" >Eggs</button>
+                            <button class="btn btn-info topIng" value="13" >Flour</button>
+                            <button class="btn btn-info topIng" value="16" >Milk</button>
+                            <button class="btn btn-info topIng" value="90" >Vegetable Oil</button>
+                            <button class="btn btn-info topIng" value="183" >Tomatoes</button>
+                            <button class="btn btn-info topIng" value="31" >Parmesan Cheese</button>
+                            <button class="btn btn-info topIng" value="121" >Sugar</button>
+                            <button class="btn btn-info topIng" value="110" >Chicken Broth</button>
+                            <button class="btn btn-info topIng" value="61" >Onions</button>
+                            <button class="btn btn-info topIng" value="48" >White Vinegar</button>
                         </div>
                     </div>
                 </div>
@@ -122,9 +122,8 @@
                     <div class="jumbotron text-center ">
                         <h1>What Should I Make?</h1>
                         <p>Bringing the best recipes to your home</p>
-                        <form class="form-inline">
-                            <input type="text" class="form-control" id="ingredientInput" size="50" placeholder="What's in your fridge?"
-                                   required>
+                        <form class="form-inline" action="#" onsubmit="handle">
+                            <input type="text" class="form-control" id="ingredientInput" size="50" placeholder="What's in your fridge?" onkeypress="handle(event)"required>
                             <button type="button" class="btn btn-danger">Go</button>
                         </form>
                     </div>
