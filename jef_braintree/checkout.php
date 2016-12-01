@@ -4,11 +4,22 @@ ob_start();
 require_once("braintree_init.php");
 $amount = $_POST["amount"];
 $nonce = $_POST["payment_method_nonce"];
+$first_name = $_POST['first_name'];
+$last_name = $_POST['last_name'];
+//$company = $_POST['company'];
+$email = $_POST['email'];
+//$phone = $_POST['user_phone'];
+//$fullName = $_POST['full_name'];
+//$maskedNumber = $_POST['card_number'];
 
-
-$result = Braintree\Transaction::sale([
+$result = Braintree_Transaction::sale([
     'amount' => $amount,
     'paymentMethodNonce' => $nonce,
+    'customer' => [
+        'firstName' => $first_name,
+        'lastName' => $last_name,
+        'email' => $email,
+    ],
     'options' => [
         'submitForSettlement' => true
     ]

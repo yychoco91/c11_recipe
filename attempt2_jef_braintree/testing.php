@@ -12,18 +12,22 @@ $email = $_POST['email'];
 //$fullName = $_POST['full_name'];
 //$maskedNumber = $_POST['card_number'];
 
-$result = Braintree\Transaction::sale([
+$result = Braintree_Transaction::sale([
     'amount' => $amount,
     'paymentMethodNonce' => $nonce,
+    'customer' => [
+        'firstName' => $first_name,
+        'lastName' => $last_name,
+        'email' => $email,
+    ],
     'options' => [
         'submitForSettlement' => true
     ]
 ]);
-$result = Braintree\Customer::create([
-    'firstName' => $_POST['first_name'],
-    'lastName' => $_POST['last_name'],
-    'company' => $_POST['company'],
-    'email' => $_POST['user_email'],
+//$result = Braintree\Customer::create([
+//    'firstName' => $_POST['first_name'],
+//    'lastName' => $_POST['last_name'],
+//    'email' => $_POST['user_email'],
 //    'phone' => $_POST['user_phone'],
 
     // we can create a credit card at the same time
@@ -38,14 +42,14 @@ $result = Braintree\Customer::create([
 //            'lastName' => $_POST['last_name']
 //        ]
 //    ]
-]);
+//]);
 if ($result->success || !is_null($result->transaction)) {
     $transaction = $result->transaction;
     header("Location: transaction.php?id=" . $transaction->id);
 } else {
     $errorString = "";
 
-    foreach($result->errors->deepAll() as $error) {
+    foreach ($result->errors->deepAll() as $error) {
         $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
     }
     $_SESSION["errors"] = $errorString;
