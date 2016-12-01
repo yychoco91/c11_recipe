@@ -18,7 +18,7 @@ function create_customer(){
     $includeAddOn = false;
 
     /* First we create a new user using the BT API */
-    $result = Braintree_Customer::create(array(
+    $result = Braintree_Customer::create([
         'firstName' => $_POST['first_name'],
         'lastName' => $_POST['last_name'],
         'company' => $_POST['company'],
@@ -26,15 +26,18 @@ function create_customer(){
         'phone' => $_POST['user_phone'],
 
         // we can create a credit card at the same time
-        'creditCard' => array(
+        'creditCard' => [
             'cardholderName' => $_POST['full_name'],
             'number' => $_POST['card_number'],
             'expirationMonth' => $_POST['expiry_month'],
             'expirationYear' => $_POST['expiry_year'],
             'cvv' => $_POST['card_cvv'],
-            'billingAddress' => array(
+            'billingAddress' => [
                 'firstName' => $_POST['first_name'],
                 'lastName' => $_POST['last_name']
+                ]
+            ]
+    ]);
                 /*Optional Information you can supply
 'company' => mysqli_real_escape_string($_POST['company']),
                  'streetAddress' => mysqli_real_escape_string($_POST['user_address']),
@@ -43,9 +46,9 @@ function create_customer(){
                  //'postalCode' => mysqli_real_escape_string($_POST['zip_code']),
                  'countryCodeAlpha2' => mysqli_real_escape_string($_POST['user_country'])
 */
-            )
-        )
-    ));
+//            )
+//        )
+//    ]);
     if ($result->success) {
 //        Do your stuff
         $creditCardToken = $result->customer->creditCards[0]->token;

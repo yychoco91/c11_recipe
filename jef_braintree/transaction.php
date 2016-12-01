@@ -28,7 +28,7 @@
             $message = "Your test transaction has a status of " . $transaction->status . ". See the Braintree API response and try again.";
         }
     }
-?>ß
+?>
 <div class="wrapper">
     <div class="response container">
         <div class="content">

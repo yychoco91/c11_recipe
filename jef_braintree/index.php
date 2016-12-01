@@ -20,6 +20,26 @@
 
         <form method="post" id="payment-form" action="checkout.php">
             <section>
+                <label for="f_name">
+                    <span class="input-label">First Name</span>
+                    <div class="input-wrapper first-name-wrapper">
+                        <input type="text" name="first_name" placeholder="First Name" id="first_name"/>
+                    </div>
+                </label>
+                <label for="l_name">
+                    <span class="input-label">Last Name</span>
+                    <div class="input-wrapper last-name-wrapper">
+                        <input type="text" name="last_name" placeholder="Last Name" id="last_name"/>
+                    </div>
+                </label>
+                <label for="email">
+                    <span class="input-label">Email</span>
+                    <div class="input-wrapper email-wrapper">
+                        <input type="text" name="email" placeholder="Email" id="email"/>
+                    </div>
+                </label>
+            </section>
+            <section>
                 <div class="bt-drop-in-wrapper">
                     <div id="bt-dropin"></div>
                 </div>
@@ -27,7 +47,7 @@
                 <label for="amount">
                     <span class="input-label">Amount</span>
                     <div class="input-wrapper amount-wrapper">
-                        <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10">
+                        <input id="amount" name="amount" type="tel" min="10" placeholder="Amount" value="10">
 <!--                        <input type="hidden" name="fake-valid-nonce" value="--><?php //echo(Braintree\Test\Nonces::$transactable);?><!--">-->
                     </div>
                 </label>
