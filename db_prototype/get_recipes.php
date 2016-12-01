@@ -69,7 +69,7 @@ $query_temp = 'SELECT r.`recipe_ID`, r.`name`, r.`author`, r.`url`, r.`picture_u
 //               ORDER BY match_count DESC LIMIT 20
 
 if ($result = $conn->query($query_temp)) {
-    //print('Query okay');
+    print('Query okay');
     while ($row = $result->fetch_assoc()) {
         $recipe = [
             'id'=>$row['recipe_ID'],
@@ -100,9 +100,9 @@ if ($result = $conn->query($query_temp)) {
 }else{
     print('error');
 }
-
-$result->close();
 print(json_encode($output));
+$result->close();
+
 
 ?>
 

@@ -31,18 +31,16 @@ function getIngredientsAjaxCall () {
 
             console.log("data from get_ingredients.php\n", response);
 
-
+           var updatedIngredientsArray = []
             newIngredients = (response.data);
-            newArray = []
             for(var key in newIngredients){
                 if(newIngredients.hasOwnProperty(key)){
-                    // console.log(key)
-                    // newArray.push(key)
-                    // console.log(newArray)
+                    updatedIngredientsArray.push(key)
+                    // console.log(updatedIngredientsArray)
                 }
             }
             $("#ingredientInput").autocomplete({
-                source: newIngredients
+                source: updatedIngredientsArray,
             });
             // console.log(newIngredients)
 
@@ -81,11 +79,11 @@ var recipe_info_from_jsonphp_file = function () {
         success: function (response) {
             console.log("data from json.php\n", response);
 
-            ingredientsArray = response.ingredientData;
-            $("#ingredientInput").autocomplete({
-                source: ingredientsArray
-            });
-            console.log(ingredientsArray)
+            // ingredientsArray = response.ingredientData;
+            // $("#ingredientInput").autocomplete({
+            //     source: ingredientsArray
+            // });
+            // console.log(ingredientsArray)
 
             var authorName;
             var recipeName;
