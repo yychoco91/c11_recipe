@@ -1,90 +1,152 @@
-// Document Ready Function
+// ====================Document Ready====================
 $(document).ready(function () {
     recipe_info_from_jsonphp_file();
     getIngredientsAjaxCall();
-    //getRecipes();
-
-    $('#stuff').on('click', 'img', function () {
-        var image = $(this).attr('src');
-        var recipeTitle = $(this).parent().find(".card-title").text();
-        var recipeUrl = $(this).parent().find();
-        // console.log(recipeTitle);
-        //var modalHeader = $(this).text(recipeTitle);
-        //alert(image);
-        // console.log('Modal img should be:', image); // no
-        $("#myModal .showImage").attr("src", image);
-        $('#myModal .ingContainer').html($(this).next().find('.ingDiv').html());
-
-        $("#myModal .modal-header").html("<h3>" + recipeTitle + "</h3>");
-        // console.log($(this).next().find('.ingDiv').html()); //no
-
-
-        // $('body').on('show.bs.modal', '#myModal',function () {
-        //     console.log('Show modal called');
-        //
-        // });
-    });
+    buttonValToArray();
+    titleImgToModal();
 });
 // ====================ajax call to get_ingredients.php====================
-var ingredientsID=[];
-var getIngredientsAjaxCall = function () {
+var ingredientsID = [];
+function getIngredientsAjaxCall() {
     $.ajax({
+
         url: "../db_prototype/get_ingredients.php",
         dataType: "json",
         method: "post",
         success: function (response) {
             console.log("data from get_ingredients.php\n", response);
 
-            var valueOfIngredient = $(".btn.btn-danger").click(function(){
-                console.log("clicked")
-
-                // var ingredientButtonSelected = (".btn.btn-active").val() //USE WHEN BUTTONS ARE PLACED
-                var ingredientInputSelected = $("#ingredientInput").val()
-                var objectData=response.data[ingredientInputSelected];
-                console.log(objectData);
-
-                // var ingredientsID=[];
-                ingredientsID.push(objectData);
-                console.log(ingredientsID)
-;
+            // -----------Auto Complete-----------
+            var updatedIngredientsArray = [];
+            var newIngredients = (response.data);
+            for (var key in newIngredients) {
+                if (newIngredients.hasOwnProperty(key)) {
+                    updatedIngredientsArray.push(key);
+                }
+            }
+            $("#ingredientInput").autocomplete({
+                source: updatedIngredientsArray
             });
-            // console.log(ingredientsID)
 
-            $("#ingredientInput").val("")
+            //-----Input Field Ingredient Invert to ID Numbers-----
+
+            //-----On Go Button-----
+            $(".btn.btn-danger").click(function () {
+                var ingredientInputSelected = $("#ingredientInput").val();
+                var objectData = response.data[ingredientInputSelected];
+                ingredientCheck(objectData);
+                console.log("Ingredients Added to Fridge From Input", ingredientsID);
+                $("#ingredientInput").val("");
+            });
+            //-----On KeyPress Enter-----
+            $('#ingredientInput').bind('keypress', function (enter) {
+                if (enter.keyCode == 13) {
+                    var ingredientInputSelected = $("#ingredientInput").val();
+                    var objectData = response.data[ingredientInputSelected];
+                    ingredientCheck(objectData);
+                    console.log("Ingredients Added to Fridge From Input", ingredientsID);
+                    $("#ingredientInput").val("");
+                }
+            });
         }
     })
-};
-
+}
 // ====================ajax call to get_recipes.php====================
-// var getRecipes = function () {
-//     $.ajax({
-//
-//         var ingredients = {}
-//
-//         url: "../db_prototype/get_recipes.php",
-//         dataType: "json",
-//         method: "post",
-//         success: function (response) {
-//             console.log("data from get_get_recipes.php\n", response);
-//         }
-//     })
-// };
+function getRecipe() {
+    console.log("Recipe Received");
+    $.ajax({
+        url: "../db_prototype/get_recipes.php",
+        dataType: "json",
+        method: "post",
+        data: {
+            ingredients: ingredientsID
+        },
+        success: function (response) {
 
+            console.log("data from get_get_recipes.php\n", response);
+            clear();
+            var authorName;
+            var recipeName;
+            var imgSrc;
+            var url;
+
+            var ingName;
+            var amount;
+            var amountType;
+            var designatedIngredients;
+
+            for (var i = 0; i < response.data.length; i++) {
+
+                authorName = response.data[i].author;
+                recipeName = response.data[i].name;
+                imgSrc = response.data[i].img;
+                url = response.data[i].url;
+
+                var theDiv = $("<div>", {
+                    class: "col-md-3 col-sm-6"
+                });
+                var outterDiv = $("<div>", {
+                    class: "card"
+                });
+                var img = $("<img>", {
+                    src: imgSrc,
+                    class: "showImage img-responsive",
+                    width: "100%",
+                    height: "286px",
+                    'data-toggle': "modal",
+                    'data-target': "#myModal"
+                });
+                var innerDiv = $("<div>", {
+                    class: "card-block",
+                    height: "180px"         //set the height of card-block cards in following rows will line up correctly
+                });
+                var h3 = $("<h3>", {
+                    class: "card-title",
+                    text: recipeName
+                });
+                var recipeUrl = $("<p>", {
+                    html: '<a href="' + url + '">' + url + '</a>'
+                });
+
+                theDiv.append(outterDiv);
+                outterDiv.append(img, innerDiv);
+                innerDiv.append(h3); //butt
+
+                var ingDiv = $('<div>', {
+                    class: 'ingDiv',
+                    style: 'height: 0; overflow: hidden'
+                });
+                $("#stuff").append(theDiv);
+
+                for (var j = 0; j < response.data[i].ingredient.length; j++) {
+
+                    ingName = response.data[i].ingredient[j].name;
+                    amount = response.data[i].ingredient[j].amount;
+                    amountType = response.data[i].ingredient[j].amountType;
+                    designatedIngredients = Math.round(amount) + " " + amountType + " " + ingName;
+
+                    var p = $("<p>", {
+                        class: "card-text",
+                        html: '<li>' + designatedIngredients
+                    });
+                    ingDiv.append(p)
+                }
+                innerDiv.append(ingDiv.append(recipeUrl));
+            }
+        },
+        error: function () {
+            console.log("BROKEN")
+        }
+    });
+}
 // ====================ajax call to json.php====================
-var ingredientsArray;
 var recipe_info_from_jsonphp_file = function () {
     $.ajax({
         url: "../db_prototype/testjson.php",
         dataType: "json",
         method: "post",
         success: function (response) {
-
             console.log("data from json.php\n", response);
-            ingredientsArray = response.ingredientData;
-            //console.log(ingredientsArray);
-            $("#ingredientInput").autocomplete({
-                source: ingredientsArray
-            });
 
             var authorName;
             var recipeName;
@@ -104,7 +166,7 @@ var recipe_info_from_jsonphp_file = function () {
                 url = response.recipeData[i].url;
 
                 var theDiv = $("<div>", {
-                    class: "col-md-3 col-sm-6",
+                    class: "col-md-3 col-sm-6"
                 });
                 var outterDiv = $("<div>", {
                     class: "card"
@@ -115,7 +177,7 @@ var recipe_info_from_jsonphp_file = function () {
                     width: "100%",
                     height: "286px",
                     'data-toggle': "modal",
-                    'data-target': "#myModal",
+                    'data-target': "#myModal"
                 });
                 var innerDiv = $("<div>", {
                     class: "card-block",
@@ -125,11 +187,9 @@ var recipe_info_from_jsonphp_file = function () {
                     class: "card-title",
                     text: recipeName
                 });
-
                 var recipeUrl = $("<p>", {
-                   html: '<a href="' + url + '">' + url + '</a>'
+                    html: '<a href="' + url + '">' + url + '</a>'
                 });
-
 
                 theDiv.append(outterDiv);
                 outterDiv.append(img, innerDiv);
@@ -139,7 +199,6 @@ var recipe_info_from_jsonphp_file = function () {
                     class: 'ingDiv',
                     style: 'height: 0; overflow: hidden'
                 });
-
                 $("#stuff").append(theDiv);
 
                 for (var j = 0; j < response.recipeData[i].ingredients.length; j++) {
@@ -151,16 +210,16 @@ var recipe_info_from_jsonphp_file = function () {
 
                     var p = $("<p>", {
                         class: "card-text",
-                        html: '<li>' + designatedIngredients,
+                        html: '<li>' + designatedIngredients
                     });
                     ingDiv.append(p)
                 }
-
                 innerDiv.append(ingDiv.append(recipeUrl));
             }
         }
     })
 };
+// ====================NAVIGATE====================
 $(function () {
     // Toggle Nav on Click
     $('.toggle-nav').click(function () {
@@ -168,7 +227,6 @@ $(function () {
         toggleNav();
     });
 });
-
 function toggleNav() {
     if ($('#site-wrapper').hasClass('show-nav')) {
         // Do things on Nav Close
@@ -178,6 +236,62 @@ function toggleNav() {
         $('#site-wrapper').addClass('show-nav');
     }
 }
+// ====================Button Value Pushed to Array====================
+var buttonValToArray = function () {
+    $(".btn.btn-info.topIng").click(function () {
+        var buttonValue = $(this).val();
+        ingredientsID.push(buttonValue);
+        console.log("Ingredients Added to Fridge From Button", ingredientsID);
+        getRecipe();
+    });
+};
+// ====================Title and Image Inside Modal====================
+var titleImgToModal = function () {
+    $('#stuff').on('click', 'img', function () {
+        var image = $(this).attr('src');
+        var recipeTitle = $(this).parent().find(".card-title").text();
+
+        $("#myModal .showImage").attr("src", image);
+        $('#myModal .ingContainer').html($(this).next().find('.ingDiv').html());
+        $("#myModal .modal-header").html("<h3>" + recipeTitle + "</h3>");
+    });
+};
+// =======CHECK IF ELEMENT IN INPUT FIELD MATCHES WITH ingredientID ARRAY=======
+var ingredientCheck = function (ingredient) {
+    if (ingredient === undefined) {
+        alert("INGREDIENT NOT FOUND")
+    }
+    else {
+        ingredientsID.push(ingredient)
+        getRecipe();
+
+    }
+};
+// ====================Clears Row After Calling Function getRecipe()====================
+var clear = function () {
+    $("#stuff").empty()
+};
+// ====================ON KEYPRESS ENTER INPUT FIELD====================
+// $('#searchbox input').bind('keypress', function(e) {
+//     if(e.keyCode==13){
+//         // Enter pressed... do anything here...
+//     }
+// });
+//or
+// var code = e.keyCode || e.which;
+// if(code == 13) { //Enter keycode
+//     //Do something
+// }
+//or
+
+// var handle = function (enter) {
+//     if (enter.keyCode === 13) {
+//         enter.preventDefault(); // Ensure it is only this code that rusn
+//
+//         console.log("Enter was pressed was presses");
+//     }
+// }
+
 
 // ====================THE NONSENSE STUFF====================
 //
@@ -200,15 +314,15 @@ function toggleNav() {
 //     });
 // };
 
-ingredientsID;
 
-$('.ing').click(function () {
-    var val = $(this).attr("value");
-    fridge.push(val);
-    console.log("Ingredients Added to Fridge", fridge);
-    view();
-
-});
+// $('.btn.btn-info.topIng').click(function () {
+//     console.log("clicked22")
+//     // var val = $(this).attr("value");
+//     // fridge.push(val);
+//     // console.log("Ingredients Added to Fridge", fridge);
+//     // view();
+//
+// });
 
 // var getValue = function () {
 //     $('input').each(function () {

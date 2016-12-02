@@ -103,6 +103,4 @@ if ($result = $conn->query($query_temp)) {
 }
 
 print(json_encode($output));
-
 ?>
-

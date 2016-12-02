@@ -1,7 +1,7 @@
 .jumbotron{
     /* background-color: #f4511e;*/
     color: #ffffff;
-    background-image: url("images/food photo2.jpg");
+    background-image: url("../images/food photo2.jpg");
     background-size: cover;
     padding-top: 66px;
     padding-bottom: 66px;
