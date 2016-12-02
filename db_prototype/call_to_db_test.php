@@ -20,7 +20,7 @@
 
         function getIngredients(){
             var usersIngred = {
-                ingredients: [1,2]
+                ingredients: [1]
             };
             $.ajax({
                 url: 'get_recipes.php',

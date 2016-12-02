@@ -93,8 +93,13 @@
     background-color: blanchedalmond;
 }
 
-/*#ingredientButtons .panel-body{*/
-    /*display: inline-block;*/
-    /*margin: 13px;*/
-/*}*/
+#ingredientButtons .panel-body{
+    display: inline-block;
+    margin: 13px;
+}
 
+/*.ui-autocomplete { height: 200px; overflow-y: scroll; overflow-x: hidden;}*/
+.ui-autocomplete {
+    max-height: 200px;
+    overflow: hidden;
+}
