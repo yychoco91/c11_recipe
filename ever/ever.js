@@ -125,7 +125,8 @@ var recipe_info_from_jsonphp_file = function () {
                     width: "100%",
                     height: "286px",
                     'data-toggle': "modal",
-                    'data-target': "#myModal"
+                    'data-target': "#myModal",
+
                 });
                 var innerDiv = $("<div>", {
                     class: "card-block",
