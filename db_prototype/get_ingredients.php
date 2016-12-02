@@ -23,10 +23,10 @@ if ($conn->connect_errno) {
     exit();
 }
 
-if ($result = $conn->query("SELECT `ID`, `name` FROM `ingredient`")) {
+if ($result = $conn->query("SELECT `ingred_ID`, `name` FROM `ingredient`")) {
 
     while ($row = $result->fetch_assoc()) {
-        $output['data'][$row['name']] = $row['ID'];
+        $output['data'][$row['name']] = $row['ingred_ID'];
     }
     $output['success'] = true;
 }
