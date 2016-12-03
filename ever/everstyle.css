@@ -1,3 +1,8 @@
+.obese {
+    width: 200%;
+    overflow: visible;
+}
+
 .jumbotron{
     /* background-color: #f4511e;*/
     color: #ffffff;
@@ -98,8 +103,12 @@
     margin: 13px;
 }
 
-/*.ui-autocomplete { height: 200px; overflow-y: scroll; overflow-x: hidden;}*/
 .ui-autocomplete {
-    max-height: 200px;
-    overflow: hidden;
+    height: 360px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.btn.btn-info.topIng:hover {
+    transform: skew(-10deg);
 }

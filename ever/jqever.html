@@ -16,6 +16,18 @@
 
     <script src="ever.js"></script>
     <!--<script src="script.js"></script>-->
+    <style>
+        /*.ui-autocomplete { height: 200px; overflow-y: scroll; overflow-x: hidden;}*/
+        /*.ui-autocomplete {*/
+        /*max-height: 400px;*/
+        /*overflow-y: scroll;*/
+        /*overflow: hidden;*/
+        /*}*/
+
+        .btn.btn-info.topIng:hover {
+            transform: skew(-10deg);
+        }
+    </style>
 
 </head>
 
@@ -123,14 +135,14 @@
                         <p>Bringing the best recipes to your home</p>
                         <form class="form-inline">
                             <input type="text" class="form-control" id="ingredientInput" size="50" placeholder="What's in your fridge?">
-                            <button type="button" class="btn btn-danger">Go</button>
+                            <button type="button" class="btn btn-danger" onclick="getValue()">Go</button>
                         </form>
+                        <div class="buttonDisplay"></div>
                     </div>
 
                     <div class="row">
                         <div id="stuff"></div>
                     </div>
-
                 </div>
             </div>
         </div>

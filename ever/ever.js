@@ -239,9 +239,17 @@ function toggleNav() {
 // ====================Button Value Pushed to Array====================
 var buttonValToArray = function () {
     $(".btn.btn-info.topIng").click(function () {
+
+        var val = $(this).attr("value")
+        var txt = $(this).text()
+        txtArr.push(txt)
+        ingredientsID.push(val)
+        console.log("Ingredients Added to Fridge", ingredientsID)
+        view()
+
         var buttonValue = $(this).val();
-        ingredientsID.push(buttonValue);
-        console.log("Ingredients Added to Fridge From Button", ingredientsID);
+        // buttonsToView()
+        // ingredientsID.push(buttonValue);
         getRecipe();
     });
 };
@@ -271,6 +279,65 @@ var ingredientCheck = function (ingredient) {
 var clear = function () {
     $("#stuff").empty()
 };
+// ====================Pushes Buttons to Container====================
+var buttonsToView = function(){
+
+};
+
+ingredientsID;
+var txtArr = [];
+
+
+var getValue = function() {
+    $('#ingredientInput').each(function() {
+        var theValue = $(this).val()
+        txtArr.push(theValue)
+        //console.log(fridge);
+        // view()
+    });
+
+    $('#ingredientInput').focus(function() {
+        $(this).val('');
+    });
+}
+
+var removeIng = function() {
+    var text = $(this).text();
+    text = text.substring(0, text.length - 2);
+    console.log("text is:" + text);
+    console.log(ingredientsID)
+    var indexS = txtArr.indexOf(text)
+    console.log(indexS)
+    txtArr.splice(indexS, 1)
+    console.log(txtArr)
+    console.log(indexS)
+    ingredientsID.splice(indexS, 1)
+
+
+
+    $(this).closest("button").remove();
+
+    console.log("Current Items in Fridge", ingredientsID)
+
+}
+
+var addClickHandlerToRemovableIngredient = function(element) {
+
+    element.on('click', removeIng);
+}
+
+var view = function() {
+    // var death = $("<button>").text(txtArr[txtArr.length - 1] + " x").addClass("addedIng");
+
+    var betterNameThanDeath = $("<button>", {
+        text: txtArr[txtArr.length - 1] + " x",
+        class: "btn btn-info addedIng",
+    })
+
+    addClickHandlerToRemovableIngredient(betterNameThanDeath);
+    // console.log(death)
+    $(".buttonDisplay").append(betterNameThanDeath)
+}
 // ====================ON KEYPRESS ENTER INPUT FIELD====================
 // $('#searchbox input').bind('keypress', function(e) {
 //     if(e.keyCode==13){
