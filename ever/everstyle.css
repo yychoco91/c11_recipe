@@ -1,10 +1,10 @@
 .jumbotron{
-    /* background-color: #f4511e;*/
     color: #ffffff;
     background-image: url("../images/food photo2.jpg");
     background-size: cover;
     padding-top: 66px;
     padding-bottom: 66px;
+    margin: 0px;
 }
 
 .row{
@@ -26,7 +26,6 @@
     }
     .row.content {height: auto;}
 }
-
 
 .navbar {
     padding-top: 10px;
@@ -102,4 +101,10 @@
 .ui-autocomplete {
     max-height: 200px;
     overflow: hidden;
+}
+
+.fridge{
+    padding: 12px 16px;
+    background-color:whitesmoke;
+    margin-bottom: 20px;
 }
