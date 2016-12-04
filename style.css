@@ -87,6 +87,7 @@
     height: 300px;
 
 }
+
 .container-fluid{
     /*background-image: url("images/bamboo_texture.png");
     background-size: cover;*/
@@ -103,3 +104,20 @@
     max-height: 200px;
     overflow: hidden;
 }
+
+.card {
+    border: none;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .4);
+    background-color: white;
+}
+
+.card-block {
+    position: relative;
+    padding: 1.5rem;
+    padding-top: 0px;
+    background-color: white;
+}
+
+
+
+
