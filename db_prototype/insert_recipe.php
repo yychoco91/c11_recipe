@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Created by PhpStorm.
@@ -7,7 +6,7 @@
  * Time: 11:57 AM
  */
 require_once("config/connect.php");
-
+//TODO add cookTime and instructions
 //mySQL queries
 
 //INSERT INTO `ingredient`(`ID`, `name`) VALUES ([value-1],[value-2])
@@ -102,5 +101,5 @@ function insertRecipesAndItsIngredients($connect, $recipesList){
 //insertRecipesAndItsIngredients($conn, $recipeListData);
 
 $conn->close();
-?>
+
 

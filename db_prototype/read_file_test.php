@@ -41,6 +41,8 @@
                         author: currentRecipe.sourceName,
                         name: currentRecipe.title,
                         givenId: currentRecipe.id,
+                        instructions: currentRecipe.instructions,
+                        cookingTime: currentRecipe.readyInMinutes,
                         ingredients: []
                     };
                     //Iterates through ingredient in recipes from resp
