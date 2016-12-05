@@ -329,13 +329,13 @@ var removeIng = function() {
     var text = $(this).text();
     text = text.substring(0, text.length - 2);
     console.log("text is:" + text);
-    console.log(ingredientsID);
+    console.log(ingredientsID)
     var indexS = txtArr.indexOf(text);
     console.log(indexS);
     txtArr.splice(indexS, 1);
     console.log(txtArr);
     console.log(indexS);
-    ingredientsID.splice(indexS, 1);
+    ingredientsID.splice(indexS, 1)
 
 
 
