@@ -6,7 +6,7 @@
  * Time: 11:57 AM
  */
 require_once("config/connect.php");
-//TODO add cookTime and instructions
+
 //mySQL queries
 
 //INSERT INTO `ingredient`(`ID`, `name`) VALUES ([value-1],[value-2])
@@ -45,11 +45,11 @@ function insertIngredientsIntoIngTable($connect, $ingredientsList) {
  */
 function insertRecipesAndItsIngredients($connect, $recipesList){
     //prepare for recipe insert
-    $queryRecipe = "INSERT IGNORE INTO `recipes` (`given_ID`, `name`, `author`, `url`, `picture_url`) VALUES (?, ?, ?, ?, ?)";
+    $queryRecipe = "INSERT IGNORE INTO `recipes` (`given_ID`, `name`, `author`, `url`, `picture_url`, `instructions`, `cookTime`) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $queryInsertRecipe = $connect->prepare($queryRecipe);
 
     //set recipe binding parameters
-    $queryInsertRecipe->bind_param('issss', $r_id, $r_name, $r_author, $r_url, $r_img);
+    $queryInsertRecipe->bind_param('issss', $r_id, $r_name, $r_author, $r_url, $r_img, $r_instruct, $r_time);
 
     //prepare for ingredient insert
     $queryIngred = "INSERT IGNORE INTO `ingredientsToRecipe` (`ingred_ID`, `recipe_ID`, `name`, `name_str`, `count_type`, `count`) VALUES (?, ?, ?, ? , ?, ?)";
@@ -66,6 +66,8 @@ function insertRecipesAndItsIngredients($connect, $recipesList){
         $r_author = $recipe['author'];
         $r_url = $recipe['url'];
         $r_img = $recipe['img'];
+        $r_instruct = $recipe['instructions'];
+        $r_time = $recipe['cookTime'];
         //insert recipe and proceed if insert is successful
         if($queryInsertRecipe->execute()){
             //get last recipe id
@@ -101,5 +103,3 @@ function insertRecipesAndItsIngredients($connect, $recipesList){
 //insertRecipesAndItsIngredients($conn, $recipeListData);
 
 $conn->close();
-
-
