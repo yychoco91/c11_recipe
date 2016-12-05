@@ -360,7 +360,7 @@ var view = function() {
 
     addClickHandlerToRemovableIngredient(betterNameThanDeath);
     // console.log(death)
-    $(".buttonDisplay").append(betterNameThanDeath)
+    $(".container-fluid.fridge").append(betterNameThanDeath)
 }
 // ====================ON KEYPRESS ENTER INPUT FIELD====================
 // $('#searchbox input').bind('keypress', function(e) {
