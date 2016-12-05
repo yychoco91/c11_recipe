@@ -41,7 +41,7 @@ foreach ($userIngredients as $ingredient_id) {
                                )';
 }
 
-$query_temp = 'SELECT r.`recipe_ID`, r.`name`, r.`author`, r.`url`, r.`picture_url`, ' . $query_scoring_part . ' AS match_count
+$query_temp = 'SELECT r.`recipe_ID`, r.`name`, r.`author`, r.`url`, r.`picture_url`, r.`instructions`, r.`cookTime`. ' . $query_scoring_part . ' AS match_count
                FROM recipes r
                ORDER BY match_count DESC
                LIMIT 20
@@ -77,6 +77,8 @@ if ($result = $conn->query($query_temp)) {
             'author'=>$row['author'],
             'url'=>$row['url'],
             'img'=>$row['picture_url'],
+            'instructions'=>$row['instructions'],
+            'cookTime'=>$row['cookTime'],
             'ingredient'=>[]
         ];
         $r_ID = $row['recipe_ID'];
@@ -103,4 +105,3 @@ if ($result = $conn->query($query_temp)) {
 }
 
 print(json_encode($output));
-?>
