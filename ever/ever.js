@@ -5,6 +5,7 @@ $(document).ready(function () {
     buttonValToArray();
     titleImgToModal();
 });
+
 // ====================ajax call to get_ingredients.php====================
 var ingredientsID = [];
 function getIngredientsAjaxCall() {
@@ -47,6 +48,7 @@ function getIngredientsAjaxCall() {
                     console.log("Ingredients Added to Fridge From Input", ingredientsID);
                     $("#ingredientInput").val("");
                 }
+
             });
         }
     })
@@ -160,6 +162,11 @@ var recipe_info_from_jsonphp_file = function () {
 
             for (var i = 0; i < response.recipeData.length; i++) {
 
+                var imgSrc = response.recipeData[i].img;
+                console.log(imgSrc);
+
+                var recipeName = response.recipeData[i].name;
+
                 authorName = response.recipeData[i].author;
                 recipeName = response.recipeData[i].name;
                 imgSrc = response.recipeData[i].img;
@@ -181,12 +188,21 @@ var recipe_info_from_jsonphp_file = function () {
                 });
                 var innerDiv = $("<div>", {
                     class: "card-block",
-                    height: "180px"         //set the height of card-block cards in following rows will line up correctly
+                    height: "180px"         //set the height of card-block so cards in following rows will line up correctly
                 });
                 var h3 = $("<h3>", {
                     class: "card-title",
                     text: recipeName
                 });
+
+                // var butt = $("<button>", {
+                //     class: "btn btn-primary",
+                //     text: "Go somewhere"
+                // });
+
+                console.log('IMG ELE:', img);
+
+
                 var recipeUrl = $("<p>", {
                     html: '<a href="' + url + '">' + url + '</a>'
                 });
@@ -195,14 +211,19 @@ var recipe_info_from_jsonphp_file = function () {
                 outterDiv.append(img, innerDiv);
                 innerDiv.append(h3); //butt
 
+
                 var ingDiv = $('<div>', {
                     class: 'ingDiv',
                     style: 'height: 0; overflow: hidden'
                 });
+
+
                 $("#stuff").append(theDiv);
+                theDiv.append(outterDiv);
+                outterDiv.append(img, innerDiv);
+                innerDiv.append(h3);
 
                 for (var j = 0; j < response.recipeData[i].ingredients.length; j++) {
-
                     ingName = response.recipeData[i].ingredients[j].name;
                     amount = response.recipeData[i].ingredients[j].amount;
                     amountType = response.recipeData[i].ingredients[j].amountType;
@@ -219,7 +240,10 @@ var recipe_info_from_jsonphp_file = function () {
         }
     })
 };
+
+
 // ====================NAVIGATE====================
+
 $(function () {
     // Toggle Nav on Click
     $('.toggle-nav').click(function () {
@@ -425,3 +449,4 @@ var view = function() {
 //     addClickHandlerToRemovableIngredient(death);
 //     $(".addedIngredients").append(death);
 // };
+
