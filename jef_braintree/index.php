@@ -26,7 +26,7 @@
                         <input type="text" name="first_name" placeholder="First Name" id="first_name" autocomplete="off"/>
                     </div>
                 </label>
-                <label for="l_name">
+                <label for="l_name" id="middle_border_fix">
                     <span class="input-label">Last Name</span>
                     <div class="input-wrapper last-name-wrapper">
                         <input type="text" name="last_name" placeholder="Last Name" id="last_name"/>
