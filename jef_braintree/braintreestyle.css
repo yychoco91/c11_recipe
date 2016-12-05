@@ -31,5 +31,8 @@ section {
     border-top: 0px;
     border-bottom: 0px;
     padding-top: 13px;
-    padding-botton: 13px;
+    padding-botton: 14px;
+}
+#middle_border_fix label {
+    padding-bottom: 1px;
 }

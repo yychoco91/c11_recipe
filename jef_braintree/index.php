@@ -12,7 +12,7 @@
     <div class="checkout container">
 
         <header>
-<!--            <h1>Hi, <br>Let's test a transaction</h1>-->
+            <h1>Payment</h1><br/>
 <!--            <p>-->
 <!--                Make a test payment with Braintree using PayPal or a card-->
 <!--            </p>-->
@@ -39,11 +39,11 @@
                     </div>
                 </label>
             </section>
+            <h3>Choose a payment method</h3>
             <section>
                 <div class="bt-drop-in-wrapper">
                     <div id="bt-dropin"></div>
                 </div>
-
                 <label for="amount">
                     <span class="input-label">Amount</span>
                     <div class="input-wrapper amount-wrapper">
