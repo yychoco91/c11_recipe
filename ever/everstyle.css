@@ -7,14 +7,18 @@
     color: #ffffff;
     background-image: url("../images/food photo2.jpg");
     background-size: cover;
+    font-family: 'Raleway', sans-serif;
+    font-size:45px;
+    text-shadow: 1px 1px 2px #808080;
     padding-top: 66px;
     padding-bottom: 66px;
-    margin: 0px;
+    margin:0;
 }
 
 .row{
     height:1500px;
 }
+
 .sidenav{
     height: 100%
 }
@@ -47,11 +51,14 @@
     color: #1abc9c !important;
 }
 
+.nav-menu{
+    margin:0px 20px 0px 30px;    /*top right bottom left*/
+}
 #site-wrapper {
     position: relative;
     overflow: hidden;
     width: 100%;
-    height: 5000px; /* Temp: Simulates a tall page. */
+    height: auto; /* Temp: Simulates a tall page. */
 }
 #site-canvas {
     width: 100%;
@@ -87,13 +94,15 @@
     padding: 15px;
 }
 
+#logo{
+    margin-bottom:20px;
+}
 .thumbnail {
     height: 300px;
-
 }
-.container-fluid{
-    /*background-image: url("images/bamboo_texture.png");
-    background-size: cover;*/
+
+
+#main-container{
     background-color: blanchedalmond;
 }
 
@@ -119,4 +128,25 @@
     background-color:whitesmoke;
     margin-bottom: 20px;
 }
+
+.card {
+    border: none;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .4);
+    background-color: white;
+    margin-bottom: 34px;
+}
+
+.card-block {
+    position: relative;
+    padding: 1.5rem;
+    padding-top: 0px;
+    background-color: white;
+}
+
+.card-title{
+    font-family: 'Raleway', sans-serif;
+    font-size:25px;
+}
+
+
 
