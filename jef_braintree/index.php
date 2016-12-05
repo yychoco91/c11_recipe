@@ -19,7 +19,7 @@
         </header>
 
         <form method="post" id="payment-form" action="checkout.php">
-            <section>
+            <section id="top">
                 <label for="first_name">
                     <span class="input-label">First Name</span>
                     <div class="input-wrapper first-name-wrapper">
@@ -53,7 +53,7 @@
                 </label>
             </section>
 
-            <button class="button" type="submit" onclick=""><span>Submit</span></button>
+            <button id="submit_button" class="button" type="submit" onclick=""><span>Submit</span></button>
         </form>
     </div>
 </div>
