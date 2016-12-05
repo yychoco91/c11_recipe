@@ -3,8 +3,6 @@
     color: #ffffff;
     background-image: url("images/food photo2.jpg");
     background-size: cover;
-    padding-top: 66px;
-    padding-bottom: 66px;
 }
 
 .row{
@@ -41,6 +39,14 @@
 }
 .navbar-nav  li a:hover {
     color: #1abc9c !important;
+}
+
+.nav-menu{
+    margin:0px 20px 0px 30px;    /*top right bottom left*/
+}
+
+#main-container{
+    background-color: blanchedalmond;
 }
 
 #site-wrapper {
@@ -83,11 +89,18 @@
     padding: 15px;
 }
 
-.thumbnail {
-    height: 300px;
-
+#logo{
+    margin-bottom:20px;
 }
 
+.thumbnail {
+    height:320px;
+    /*background-image: url("https://spoonacular.com/recipeImages/chicken-noodle-stew-714793.jpg");*/
+    /*background-repeat:no-repeat;*/
+    /*background-size: cover;*/
+    /*background-position:center;*/
+
+}
 .container-fluid{
     /*background-image: url("images/bamboo_texture.png");
     background-size: cover;*/
@@ -109,15 +122,18 @@
     border: none;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, .4);
     background-color: white;
+    margin-bottom: 34px;
 }
 
 .card-block {
     position: relative;
     padding: 1.5rem;
-    padding-top: 0px;
+    padding-top: 0;
     background-color: white;
 }
 
-
+/*.imgSize{*/
+    /*background-size:cover;*/
+/*}*/
 
 
