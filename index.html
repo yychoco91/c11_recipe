@@ -17,7 +17,7 @@
 <body>
 
 <nav class="navbar navbar-default">
-    <div class="container">
+    <div class="nav-menu">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                 <span class="icon-bar"></span>
@@ -42,7 +42,8 @@
 
         <div id="site-menu" >
             <a href="#" class="toggle-nav" style="color: pink; font-size: 20px;"><i class="fa fa-times"></i></a>
-            <h2>My Menu</h2>
+            <br>
+            <img src="images/fridge2plate.png" id="logo" width="100%">
             <br>
             <form class="form-inline">
                 <input type="email" class="form-control" placeholder="Enter your ingredients" size="30">
@@ -102,12 +103,13 @@
 
         </div>
 
-        <div class="container-fluid">
+        <div class="container-fluid" id="main-container">
             <div class="row">
 
                 <div class="col-sm-12">
                     <div class ="jumbotron text-center ">
-                        <h1>What Should I Make?</h1>
+                        <!--<h1>What Should I Make?</h1>-->
+                        <img src="images/fridge2plate_jumbo.png" width="510px">
                         <p>Bringing the best recipes to your home</p>
                         <form class="form-inline">
                             <input type="email" class="form-control" size="50" placeholder="What's in your fridge?" required>
@@ -122,18 +124,16 @@
                                 <div class="card-block">
                                     <h4 class="card-title">My Recipe</h4>
                                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-md-3 col-sm-6">
                             <div class="card">
-                                <img src=" https://spoonacular.com/recipeImages/chicken-noodle-stew-714793.jpg" data-toggle="modal" data-target="#myModal" class="thumbnail" width="100%">
+                                <img src="https://spoonacular.com/recipeImages/chicken-noodle-stew-714793.jpg" data-toggle="modal" data-target="#myModal"  class="thumbnail" width="100%" >
                                 <div class="card-block">
                                     <h4 class="card-title">My Recipe</h4>
                                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
                                 </div>
                             </div>
                         </div>
@@ -144,7 +144,16 @@
                                 <div class="card-block">
                                     <h4 class="card-title">My Recipe</h4>
                                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="card">
+                                <img src="https://spoonacular.com/recipeImages/berry-orange-blaster-179649.jpg" data-toggle="modal" data-target="#myModal" class="thumbnail" width="100%">
+                                <div class="card-block">
+                                    <h4 class="card-title">My Recipe</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                 </div>
                             </div>
                         </div>
@@ -155,7 +164,6 @@
                                 <div class="card-block">
                                     <h4 class="card-title">My Recipe</h4>
                                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
                                 </div>
                             </div>
                         </div>
@@ -174,7 +182,7 @@
                     <h4 class="modal-title" id="myModalLabel">My Recipe</h4>
                 </div>
                 <div class="modal-body">
-                    <img class="showImage img-responsive" src=""><br>
+                    <img class="showImage img-responsive center-block" src=""><br>
                     <p>Servings: 5 </p>
                 </div>
                 <div class="modal-footer">

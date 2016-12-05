@@ -154,7 +154,6 @@ var recipe_info_from_jsonphp_file = function () {
             var recipeName;
             var imgSrc;
             var url;
-
             var ingName;
             var amount;
             var amountType;
@@ -180,7 +179,7 @@ var recipe_info_from_jsonphp_file = function () {
                 });
                 var img = $("<img>", {
                     src: imgSrc,
-                    class: "showImage img-responsive",
+                    class: " thumbnail showImage img-responsive",
                     width: "100%",
                     height: "286px",
                     'data-toggle': "modal",
@@ -188,7 +187,7 @@ var recipe_info_from_jsonphp_file = function () {
                 });
                 var innerDiv = $("<div>", {
                     class: "card-block",
-                    height: "180px"         //set the height of card-block so cards in following rows will line up correctly
+                    height: "90px"         //set the height of card-block so cards in following rows will line up correctly
                 });
                 var h3 = $("<h3>", {
                     class: "card-title",
