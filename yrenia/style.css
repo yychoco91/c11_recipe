@@ -1,24 +1,13 @@
-.obese {
-    width: 200%;
-    overflow: visible;
-}
-
 .jumbotron{
+    /* background-color: #f4511e;*/
     color: #ffffff;
-    background-image: url("images/food photo2.jpg");
+    background-image: url("../images/food photo2.jpg");
     background-size: cover;
-    font-family: 'Raleway', sans-serif;
-    font-size:45px;
-    text-shadow: 1px 1px 2px #808080;
-    padding-top: 66px;
-    padding-bottom: 66px;
-    margin:0;
 }
 
 .row{
     height:1500px;
 }
-
 .sidenav{
     height: 100%
 }
@@ -35,6 +24,7 @@
     }
     .row.content {height: auto;}
 }
+
 
 .navbar {
     padding-top: 10px;
@@ -55,7 +45,7 @@
     margin:0px 20px 0px 30px;    /*top right bottom left*/
 }
 
-#stuff{
+#main-container{
     background-color: blanchedalmond;
 }
 
@@ -63,7 +53,7 @@
     position: relative;
     overflow: hidden;
     width: 100%;
-    height: auto; /* Temp: Simulates a tall page. */
+    height: 5000px; /* Temp: Simulates a tall page. */
 }
 #site-canvas {
     width: 100%;
@@ -102,12 +92,18 @@
 #logo{
     margin-bottom:20px;
 }
+
 .thumbnail {
-    height: 300px;
+    height:320px;
+    /*background-image: url("https://spoonacular.com/recipeImages/chicken-noodle-stew-714793.jpg");*/
+    /*background-repeat:no-repeat;*/
+    /*background-size: cover;*/
+    /*background-position:center;*/
+
 }
-
-
-#main-container{
+.container-fluid{
+    /*background-image: url("images/bamboo_texture.png");
+    background-size: cover;*/
     background-color: blanchedalmond;
 }
 
@@ -116,22 +112,10 @@
     margin: 13px;
 }
 
+/*.ui-autocomplete { height: 200px; overflow-y: scroll; overflow-x: hidden;}*/
 .ui-autocomplete {
-
-    height: 360px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-
-.btn.btn-info.topIng:hover {
-    transform: skew(-10deg);
-}
-
-
-.fridge{
-    padding: 12px 16px;
-    background-color:whitesmoke;
-    margin-bottom: 20px;
+    max-height: 200px;
+    overflow: hidden;
 }
 
 .card {
@@ -144,14 +128,12 @@
 .card-block {
     position: relative;
     padding: 1.5rem;
-    padding-top: 0px;
+    padding-top: 0;
     background-color: white;
 }
 
-.card-title{
-    font-family: 'Raleway', sans-serif;
-    font-size:25px;
-}
-
+/*.imgSize{*/
+    /*background-size:cover;*/
+/*}*/
 
 

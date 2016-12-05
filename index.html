@@ -1,36 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>What Can I Make</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-</head>
-<body>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
+    <!--jQuery UI-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="script.js"></script>
+    <!--<script src="script.js"></script>-->
+    <style>
+        /*.ui-autocomplete { height: 200px; overflow-y: scroll; overflow-x: hidden;}*/
+        /*.ui-autocomplete {*/
+        /*max-height: 400px;*/
+        /*overflow-y: scroll;*/
+        /*overflow: hidden;*/
+        /*}*/
+
+        .btn.btn-info.topIng:hover {
+            transform: skew(-10deg);
+        }
+    </style>
+
+</head>
+
+<body>
 <nav class="navbar navbar-default">
-    <div class="nav-menu">
+    <div class="container-fluid nav-menu">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+            <button type="button" class="navbar-toggle" style="color: white" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar" style="color: white"></span>
+                <span class="icon-bar" style="color: white"></span>
+                <span class="icon-bar" style="color: white"></span>
             </button>
-            <a class="navbar-brand toggle-nav" href="#"><i class="fa fa-bars"></i>Menu</a>
+            <a class="navbar-brand toggle-nav" href="#" style="color: white"><i class="fa fa-bars"></i> Menu</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
+                <li><a href="#" style="color: white">Link</a></li>
+                <li><a href="#" style="color: white">Link</a></li>
+                <li><a href="#" style="color: white">Link</a></li>
             </ul>
         </div>
     </div>
@@ -40,13 +57,11 @@
 
     <div id="site-canvas">
 
-        <div id="site-menu" >
+        <div id="site-menu">
             <a href="#" class="toggle-nav" style="color: pink; font-size: 20px;"><i class="fa fa-times"></i></a>
-            <br>
-            <img src="images/fridge2plate.png" id="logo" width="100%">
-            <br>
+            <img src="images/fridge2plate.png" id="logo" width="100%"><br> <br>
             <form class="form-inline">
-                <input type="email" class="form-control" placeholder="Enter your ingredients" size="30">
+                <input type="text" class="form-control" placeholder="Enter your ingredients" size="30">
             </form>
             <br>
 
@@ -54,14 +69,22 @@
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <i class="fa fa-shopping-basket"></i>&nbsp;&nbsp; <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Ingredient Suggestions</a>
+                            <i class="fa fa-shopping-basket"></i>&nbsp;&nbsp; <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Ingredient
+                            Suggestions</a>
                         </h4>
                     </div>
                     <div id="collapse1" class="panel-collapse collapse in">
-                        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat.
+                        <div class="panel-body" id="ingredientButtons" style="display:inline-block; margin: 13px">
+                            <button class="btn btn-info topIng" value="87" >Eggs</button>
+                            <button class="btn btn-info topIng" value="13" >Flour</button>
+                            <button class="btn btn-info topIng" value="16" >Milk</button>
+                            <button class="btn btn-info topIng" value="90" >Vegetable Oil</button>
+                            <button class="btn btn-info topIng" value="183" >Tomatoes</button>
+                            <button class="btn btn-info topIng" value="31" >Parmesan Cheese</button>
+                            <button class="btn btn-info topIng" value="121" >Sugar</button>
+                            <button class="btn btn-info topIng" value="110" >Chicken Broth</button>
+                            <button class="btn btn-info topIng" value="61" >Onions</button>
+                            <button class="btn btn-info topIng" value="48" >White Vinegar</button>
                         </div>
                     </div>
                 </div>
@@ -69,7 +92,7 @@
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <i class="fa fa-cutlery"></i>&nbsp;&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">My Recipes</a>
+                            <i class="fa fa-cutlery"></i>&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">My Recipes</a>
                         </h4>
                     </div>
                     <div id="collapse2" class="panel-collapse collapse in">
@@ -83,12 +106,12 @@
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <i class="fa fa-filter"></i>&nbsp;&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Dietary Restrictions </a>
+                            <i class="fa fa-filter"></i>&nbsp;&nbsp;&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Dietary Restrictions </a>
                         </h4>
                     </div>
                     <div id="collapse3" class="panel-collapse collapse in">
                         <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. git Ut enim ad
                             minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
                             commodo consequat.
                         </div>
@@ -107,89 +130,54 @@
             <div class="row">
 
                 <div class="col-sm-12">
-                    <div class ="jumbotron text-center ">
-                        <!--<h1>What Should I Make?</h1>-->
-                        <img src="images/fridge2plate_jumbo.png" width="510px">
+                    <div class="jumbotron text-center ">
+                        <h1>What Should I Make?</h1>
                         <p>Bringing the best recipes to your home</p>
                         <form class="form-inline">
-                            <input type="email" class="form-control" size="50" placeholder="What's in your fridge?" required>
+                            <input type="text" class="form-control" id="ingredientInput" size="50" placeholder="What's in your fridge?">
+
                             <button type="button" class="btn btn-danger" onclick="getValue()">Go</button>
                         </form>
+                        <div class="buttonDisplay"></div>
                     </div>
 
+                    <div class="container-fluid fridge">
+                        <button class="btn btn-info ">Eggs</button>
+                    </div>
+
+
                     <div class="row">
-                        <div class="col-md-3 col-sm-6">
-                            <div class="card">
-                                <img src="https://spoonacular.com/recipeImages/Avocado-chickpea-salad-(and-a-giveaway)-578102.jpg" data-toggle="modal" data-target="#myModal" class="thumbnail" width="100%">
-                                <div class="card-block">
-                                    <h4 class="card-title">My Recipe</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 col-sm-6">
-                            <div class="card">
-                                <img src="https://spoonacular.com/recipeImages/chicken-noodle-stew-714793.jpg" data-toggle="modal" data-target="#myModal"  class="thumbnail" width="100%" >
-                                <div class="card-block">
-                                    <h4 class="card-title">My Recipe</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 col-sm-6">
-                            <div class="card">
-                                <img src="https://spoonacular.com/recipeImages/berry-orange-blaster-179649.jpg" data-toggle="modal" data-target="#myModal" class="thumbnail" width="100%">
-                                <div class="card-block">
-                                    <h4 class="card-title">My Recipe</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 col-sm-6">
-                            <div class="card">
-                                <img src="https://spoonacular.com/recipeImages/berry-orange-blaster-179649.jpg" data-toggle="modal" data-target="#myModal" class="thumbnail" width="100%">
-                                <div class="card-block">
-                                    <h4 class="card-title">My Recipe</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 col-sm-6">
-                            <div class="card">
-                                <img src="https://spoonacular.com/recipeImages/Jalapeno-Popper-Spread-408211.jpg"  data-toggle="modal" data-target="#myModal" class="thumbnail" width="100%">
-                                <div class="card-block">
-                                    <h4 class="card-title">My Recipe</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                            </div>
-                        </div>
-
+                        <div id="stuff"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div id="myModal" class="modal fade" role="dialog">   <!--Note:Modal cannot be placed inside nested divs, so move it outside of the main div-->
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">My Recipe</h4>
-                </div>
-                <div class="modal-body">
-                    <img class="showImage img-responsive center-block" src=""><br>
-                    <p>Servings: 5 </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <!--Note:Modal cannot be placed inside nested divs, so move it outside of the main div-->
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">My Recipe</h4>
             </div>
+
+            <div class="modal-body">
+                <img class="showImage img-responsive" src="">
+                <div class="ingContainer"></div>
+                <!--<p>Servings: 5 </p>-->
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
 </div>
+
 </body>
 </html>

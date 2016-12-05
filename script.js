@@ -11,7 +11,7 @@ var ingredientsID = [];
 function getIngredientsAjaxCall() {
     $.ajax({
 
-        url: "../db_prototype/get_ingredients.php",
+        url: "./db_prototype/get_ingredients.php",
         dataType: "json",
         method: "post",
         success: function (response) {
@@ -57,7 +57,8 @@ function getIngredientsAjaxCall() {
 function getRecipe() {
     console.log("Recipe Received");
     $.ajax({
-        url: "../db_prototype/get_recipes.php",
+
+        url: "./db_prototype/get_recipes.php",
         dataType: "json",
         method: "post",
         data: {
@@ -144,7 +145,7 @@ function getRecipe() {
 // ====================ajax call to json.php====================
 var recipe_info_from_jsonphp_file = function () {
     $.ajax({
-        url: "../db_prototype/testjson.php",
+        url: "./db_prototype/testjson.php",
         dataType: "json",
         method: "post",
         success: function (response) {
@@ -180,7 +181,7 @@ var recipe_info_from_jsonphp_file = function () {
                 });
                 var img = $("<img>", {
                     src: imgSrc,
-                    class: "showImage img-responsive",
+                    class: " thumbnail showImage img-responsive",
                     width: "100%",
                     height: "286px",
                     'data-toggle': "modal",
@@ -188,7 +189,7 @@ var recipe_info_from_jsonphp_file = function () {
                 });
                 var innerDiv = $("<div>", {
                     class: "card-block",
-                    height: "180px"         //set the height of card-block so cards in following rows will line up correctly
+                    height: "90px"         //set the height of card-block so cards in following rows will line up correctly
                 });
                 var h3 = $("<h3>", {
                     class: "card-title",
@@ -304,7 +305,7 @@ var clear = function () {
     $("#stuff").empty()
 };
 // ====================Pushes Buttons to Container====================
-var buttonsToView = function(){
+var buttonsToView = function () {
 
 };
 
@@ -312,45 +313,83 @@ ingredientsID;
 var txtArr = [];
 
 
-var getValue = function() {
-    $('#ingredientInput').each(function() {
+var getValue = function () {
+    $('#ingredientInput').each(function () {
         var theValue = $(this).val()
         txtArr.push(theValue)
         //console.log(fridge);
         // view()
     });
 
-    $('#ingredientInput').focus(function() {
+    $('#ingredientInput').focus(function () {
+        $(this).val('');
+    });
+};
+// =======CHECK IF ELEMENT IN INPUT FIELD MATCHES WITH ingredientID ARRAY=======
+var ingredientCheck = function (ingredient) {
+    if (ingredient === undefined) {
+        alert("INGREDIENT NOT FOUND")
+    }
+    else {
+        ingredientsID.push(ingredient)
+        getRecipe();
+
+    }
+};
+// ====================Clears Row After Calling Function getRecipe()====================
+var clear = function () {
+    $("#stuff").empty()
+};
+// ====================Pushes Buttons to Container====================
+var buttonsToView = function () {
+
+};
+
+ingredientsID;
+var txtArr = [];
+
+
+var getValue = function () {
+    $('#ingredientInput').each(function () {
+        var theValue = $(this).val()
+        txtArr.push(theValue)
+        //console.log(fridge);
+        // view()
+    });
+
+    $('#ingredientInput').focus(function () {
         $(this).val('');
     });
 }
 
-var removeIng = function() {
+var removeIng = function () {
     var text = $(this).text();
     text = text.substring(0, text.length - 2);
     console.log("text is:" + text);
     console.log(ingredientsID)
-    var indexS = txtArr.indexOf(text);
-    console.log(indexS);
-    txtArr.splice(indexS, 1);
-    console.log(txtArr);
-    console.log(indexS);
-    ingredientsID.splice(indexS, 1)
 
+    var indexS = txtArr.indexOf(text)
+    console.log(indexS)
+    txtArr.splice(indexS, 1)
+    console.log(txtArr)
+    console.log(indexS)
+    ingredientsID.splice(indexS, 1)
 
 
     $(this).closest("button").remove();
 
     console.log("Current Items in Fridge", ingredientsID)
 
-};
+}
 
-var addClickHandlerToRemovableIngredient = function(element) {
+
+var addClickHandlerToRemovableIngredient = function (element) {
 
     element.on('click', removeIng);
 };
 
-var view = function() {
+
+var view = function () {
     // var death = $("<button>").text(txtArr[txtArr.length - 1] + " x").addClass("addedIng");
 
     var betterNameThanDeath = $("<button>", {
@@ -360,5 +399,7 @@ var view = function() {
 
     addClickHandlerToRemovableIngredient(betterNameThanDeath);
     // console.log(death)
-    $(".container-fluid.fridge").append(betterNameThanDeath)
-};
+
+    $(".buttonDisplay").append(betterNameThanDeath)
+}
+
