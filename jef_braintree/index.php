@@ -12,21 +12,21 @@
     <div class="checkout container">
 
         <header>
-<!--            <h1>Hi, <br>Let's test a transaction</h1>-->
+            <h1>Payment</h1><br/>
 <!--            <p>-->
 <!--                Make a test payment with Braintree using PayPal or a card-->
 <!--            </p>-->
         </header>
 
         <form method="post" id="payment-form" action="checkout.php">
-            <section>
+            <section id="top">
                 <label for="first_name">
                     <span class="input-label">First Name</span>
                     <div class="input-wrapper first-name-wrapper">
                         <input type="text" name="first_name" placeholder="First Name" id="first_name" autocomplete="off"/>
                     </div>
                 </label>
-                <label for="l_name">
+                <label for="l_name" id="middle_border_fix">
                     <span class="input-label">Last Name</span>
                     <div class="input-wrapper last-name-wrapper">
                         <input type="text" name="last_name" placeholder="Last Name" id="last_name"/>
@@ -39,11 +39,11 @@
                     </div>
                 </label>
             </section>
+            <h3>Choose a payment method</h3>
             <section>
                 <div class="bt-drop-in-wrapper">
                     <div id="bt-dropin"></div>
                 </div>
-
                 <label for="amount">
                     <span class="input-label">Amount</span>
                     <div class="input-wrapper amount-wrapper">
@@ -53,7 +53,7 @@
                 </label>
             </section>
 
-            <button class="button" type="submit" onclick=""><span>Submit</span></button>
+            <button id="submit_button" class="button" type="submit" onclick=""><span>Submit</span></button>
         </form>
     </div>
 </div>
