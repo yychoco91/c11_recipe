@@ -1,0 +1,38 @@
+.wrapper {
+    background-color: blanchedalmond;
+}
+
+section {
+    border: 1px solid #1abc9c;
+    background-color: white;
+}
+
+#submit_button span {
+    font-size: 14px;
+    height: 30px;
+    line-height: initial;
+    padding-top: .4em;
+}
+
+#submit_button {
+    background-color: #337ab7;
+    height: 30px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    left: 610px;
+    top: 10px;
+}
+
+#top {
+    margin-bottom: 25px;
+}
+
+#middle_border_fix {
+    border-top: 0px;
+    border-bottom: 0px;
+    padding-top: 13px;
+    padding-botton: 14px;
+}
+#middle_border_fix label {
+    padding-bottom: 1px;
+}
