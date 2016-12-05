@@ -1,3 +1,7 @@
+<?php
+session_start();
+require_once __DIR__ . '/vendor/autoload.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,6 +9,9 @@
     <meta charset="UTF-8">
 </head>
 <body>
+
+<div id="fb-root"></div>
+
 <script>
     // This is called with the results from from FB.getLoginStatus().
     function statusChangeCallback(response) {
@@ -40,7 +47,7 @@
 
     window.fbAsyncInit = function() {
         FB.init({
-            appId      : '{1836003869992015}',
+            appId      : '1836003869992015',
             cookie     : true,  // enable cookies to allow the server to access
                                 // the session
             xfbml      : true,  // parse social plugins on this page
@@ -92,10 +99,28 @@
   the FB.login() function when clicked.
 -->
 
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
-
 <div id="status">
+    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+    </fb:login-button>
+</div>
+
+<!--Place this code wherever you want the plugin to appear on your page.-->
+<!--FB Login Plugin-->
+<div class="fb-login-button"
+     data-max-rows="1"
+     data-size="small"
+     data-show-faces="false"
+     data-auto-logout-link="true">
+</div>
+
+<!--Like and Share Plugin-->
+<div class="fb-like"
+     data-href="http://dev.fridge2plate.com/"
+     data-layout="button_count"
+     data-action="like"
+     data-size="small"
+     data-show-faces="true"
+     data-share="true">
 </div>
 
 </body>
