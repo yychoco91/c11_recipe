@@ -32,6 +32,9 @@ if ($result = $conn->query("SELECT `ingred_ID`, `name` FROM `ingredient`")) {
 }
 
 $result->close();
+//file write out test
+$ingredientFile = fopen('./db_prototype/recipe/ingredientsArray.js', "w");
+
 print(json_encode($output));
 
 ?>

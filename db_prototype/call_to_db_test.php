@@ -35,6 +35,6 @@
     </script>
 </head>
 <body>
-<button id="get" type="button">Get All Ingredients</button>
+<button id="get" type="button">Get recipes</button>
 </body>
 </html>
