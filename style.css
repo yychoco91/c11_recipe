@@ -118,8 +118,9 @@
 
 .ui-autocomplete {
 
-    height: 360px;
-    overflow-y: scroll;
+    height: 300px;
+    overflow-y: inherit;
+    /*overflow-y: scroll;*/
     overflow-x: hidden;
 }
 
@@ -151,6 +152,30 @@
 .card-title{
     font-family: 'Raleway', sans-serif;
     font-size:25px;
+}
+
+.progress {
+    display: block;
+    text-align: center;
+    width: 0;
+    height: 3px;
+    background: deepskyblue;
+    transition: width .3s;
+}
+
+/* Extra Small Devices, .visible-xs-* */
+@media (max-width: 767px) {
+
+}
+
+/* Small Devices, .visible-sm-* */
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/* Medium Devices, .visible-md-* */
+@media (min-width: 992px) and (max-width: 1199px) {
+
 }
 
 
