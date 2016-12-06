@@ -88,7 +88,7 @@ function getRecipe() {
                 url = response.data[i].url;
 
                 var theDiv = $("<div>", {
-                    class: "col-md-3 col-sm-6"
+                    class: "col-md-3 col-sm-6 col-xs-12"
                 });
                 var outterDiv = $("<div>", {
                     class: "card"
@@ -113,15 +113,16 @@ function getRecipe() {
                     html: '<a href="' + url + '">' + url + '</a>'
                 });
 
-                theDiv.append(outterDiv);
-                outterDiv.append(img, innerDiv);
-                innerDiv.append(h3); //butt
-
                 var ingDiv = $('<div>', {
                     class: 'ingDiv',
                     style: 'height: 0; overflow: hidden'
                 });
+
                 $("#stuff").append(theDiv);
+                theDiv.append(outterDiv);
+                outterDiv.append(img, innerDiv);
+                innerDiv.append(h3);
+
 
                 for (var j = 0; j < response.data[i].ingredient.length; j++) {
 
@@ -154,19 +155,19 @@ var recipe_info_from_jsonphp_file = function () {
             console.log("data from json.php\n", response);
 
             var authorName;
-            var recipeName;
-            var imgSrc;
             var url;
 
             for (var i = 0; i < response.recipeData.length; i++) {
 
+                var imgSrc = response.recipeData[i].img;
+                console.log(imgSrc);
+                var recipeName = response.recipeData[i].name;
+
                 authorName = response.recipeData[i].author;
-                recipeName = response.recipeData[i].name;
-                imgSrc = response.recipeData[i].img;
                 url = response.recipeData[i].url;
 
                 var theDiv = $("<div>", {
-                    class: "col-md-3 col-sm-6"
+                    class: "col-md-3 col-sm-6 col-xs-12"
                 });
                 var outterDiv = $("<div>", {
                     class: "card"
@@ -187,6 +188,7 @@ var recipe_info_from_jsonphp_file = function () {
                     class: "card-title",
                     text: recipeName
                 });
+
                 var recipeUrl = $("<p>", {
                     html: '<a href="' + url + '">' + url + '</a>'
                 });
@@ -297,6 +299,7 @@ var getValue = function () {
         $(this).val('');
     });
 };
+
 // =======CHECK IF ELEMENT IN INPUT FIELD MATCHES WITH ingredientID ARRAY=======
 var ingredientCheck = function (ingredient) {
     if (ingredient === undefined) {
@@ -312,6 +315,7 @@ var clear = function () {
     $("#stuff").empty()
 };
 
+
 var removeIng = function () {
     var text = $(this).text();
     text = text.substring(0, text.length - 2);
@@ -324,6 +328,7 @@ var removeIng = function () {
     console.log(txtArr);
     console.log(indexS);
     ingredientsID.splice(indexS, 1);
+    console.log(ingredientsID);
 
     $(this).closest("button").remove();
     console.log("Current Items in Fridge", ingredientsID)
@@ -335,16 +340,15 @@ var addClickHandlerToRemovableIngredient = function (element) {
     element.on('click', removeIng);
 };
 
-var view = function () {
-    // var death = $("<button>").text(txtArr[txtArr.length - 1] + " x").addClass("addedIng");
-    var betterNameThanDeath = $("<button>", {
+var view = function() {
+    var fridgeButton = $("<button>", {
         text: txtArr[txtArr.length - 1] + " x",
-        class: "btn btn-info addedIng",
+        class: "btn btn-info addedIng"
     });
 
-    addClickHandlerToRemovableIngredient(betterNameThanDeath);
+    addClickHandlerToRemovableIngredient(fridgeButton);
     // console.log(death)
 
-    $(".container-fluid .fridge").append(betterNameThanDeath);
+    $(".container-fluid .fridge").append(fridgeButton)
 };
 

@@ -41,7 +41,7 @@ foreach ($userIngredients as $ingredient_id) {
                                )';
 }
 
-$query_temp = 'SELECT r.`recipe_ID`, r.`name`, r.`author`, r.`url`, r.`picture_url`, r.`instructions`, r.`cookTime`. ' . $query_scoring_part . ' AS match_count
+$query_temp = 'SELECT r.`recipe_ID`, r.`name`, r.`author`, r.`url`, r.`picture_url`, r.`instructions`, r.`cookTime`,' . $query_scoring_part . ' AS match_count
                FROM recipes r
                ORDER BY match_count DESC
                LIMIT 20
@@ -54,13 +54,13 @@ $query_temp = 'SELECT r.`recipe_ID`, r.`name`, r.`author`, r.`url`, r.`picture_u
 //                        + (
 //                        SELECT COUNT(*)
 //                        FROM ingredientsToRecipe itr
-//                        WHERE itr.recipe_id=r.ID
+//                        WHERE itr.recipe_id=r.recipe_ID
 //                            AND itr.ingred_id=1
 //                        )
 //                        + (
 //                        SELECT COUNT(*)
 //                        FROM ingredientsToRecipe itr
-//                        WHERE itr.recipe_id=r.ID
+//                        WHERE itr.recipe_id=r.recipe_ID
 //                            AND itr.ingred_id=2
 //                        )
 //
