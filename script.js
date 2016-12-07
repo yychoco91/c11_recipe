@@ -257,7 +257,6 @@ var removeIng = function () {
     var indexS = txtArr.indexOf(text);
     txtArr.splice(indexS, 1);
     ingredientsID.splice(indexS, 1);
-    console.log(ingredientsID);
 
     $(this).closest("button").remove();
     console.log("Current Items in Fridge", ingredientsID)
@@ -278,10 +277,12 @@ var newButtonCreation = function() {
 // =======CHECK IF ELEMENT IN INPUT FIELD MATCHES WITH ingredientID ARRAY=======
 var ingredientCheck = function (ingredient) {
     if (ingredient === undefined) {
-        alert("INGREDIENT NOT FOUND")
+        alert("INGREDIENT NOT FOUND");
+        // nonexistentIngredients()
     }
     else {
         ingredientsID.push(ingredient);
+        getValue();
         getRecipe();
     }
 };
@@ -327,3 +328,4 @@ function toggleNav() {
         $('#site-wrapper').addClass('show-nav');
     }
 }
+//===========================================================================
