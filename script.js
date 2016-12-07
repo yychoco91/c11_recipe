@@ -102,7 +102,7 @@ function getRecipe() {
                     class: "card-block",
                     height: "100px"         //set the height of card-block cards in following rows will line up correctly
                 });
-                var h3 = $("<h3>", {
+                var h4 = $("<h4>", {
                     class: "card-title",
                     text: recipeName
                 });
@@ -118,7 +118,7 @@ function getRecipe() {
                 $("#stuff").append(theDiv);
                 theDiv.append(outterDiv);
                 outterDiv.append(img, innerDiv);
-                innerDiv.append(h3);
+                innerDiv.append(h4);
 
 
                 for (var j = 0; j < response.data[i].ingredient.length; j++) {
@@ -184,7 +184,7 @@ var recipe_info_from_jsonphp_file = function () {
                     class: "card-block",
                     height: "100px"         //set the height of card-block so cards in following rows will line up correctly
                 });
-                var h3 = $("<h3>", {
+                var h4 = $("<h4>", {
                     class: "card-title",
                     text: recipeName
                 });
@@ -201,7 +201,7 @@ var recipe_info_from_jsonphp_file = function () {
                 $("#stuff").append(theDiv);
                 theDiv.append(outterDiv);
                 outterDiv.append(img, innerDiv);
-                innerDiv.append(h3);
+                innerDiv.append(h4);
 
                 for (var j = 0; j < response.recipeData[i].ingredients.length; j++) {
                     ingName = response.recipeData[i].ingredients[j].name;
