@@ -12,14 +12,11 @@
     <div class="checkout container">
 
         <header>
-            <h1>Payment</h1><br/>
-<!--            <p>-->
-<!--                Make a test payment with Braintree using PayPal or a card-->
-<!--            </p>-->
+            <h1 id="payment-header">Payment</h1>
         </header>
 
         <form method="post" id="payment-form" action="checkout.php">
-            <section id="top">
+            <section id="top-section">
                 <label for="first_name">
                     <span class="input-label">First Name</span>
                     <div class="input-wrapper first-name-wrapper">
@@ -40,15 +37,14 @@
                 </label>
             </section>
             <h3>Choose a payment method</h3>
-            <section>
+            <section id="bottom-section">
                 <div class="bt-drop-in-wrapper">
-                    <div id="bt-dropin"></div>
+                    <div id="dropin-container"></div>
                 </div>
                 <label for="amount">
                     <span class="input-label">Amount</span>
                     <div class="input-wrapper amount-wrapper">
                         <input id="amount" name="amount" type="tel" min="10" placeholder="Amount" value="10">
-<!--                        <input type="hidden" name="fake-valid-nonce" value="--><?php //echo(Braintree\Test\Nonces::$transactable);?><!--">-->
                     </div>
                 </label>
             </section>
@@ -57,11 +53,6 @@
         </form>
     </div>
 </div>
-
-<form>
-    <div id="dropin-container"></div>
-</form>
-
 <script src="https://js.braintreegateway.com/js/braintree-2.27.0.min.js"></script>
 <script>
     var checkout = new Demo({
@@ -70,9 +61,15 @@
     var client_token = "<?php echo(Braintree\ClientToken::generate([
 //        "customerId" => "54027778"
     ])); ?>";
-    braintree.setup(client_token, "dropin", {
-        container: "bt-dropin"
+    braintree.setup(client_token, 'dropin', {
+        container: 'dropin-container',
+        paypal: {
+            button: {
+                type: 'checkout'
+            }
+        }
     });
 </script>
+
 </body>
 </html>

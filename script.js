@@ -4,6 +4,7 @@ $(document).ready(function () {
     getIngredientsAjaxCall();
     buttonsPushedToMainDisplay();
     titleImgToModal();
+    $('#wrongIngredient').modal({ show: false})
 });
 
 var updatedIngredientsArray;
@@ -276,9 +277,12 @@ var newButtonCreation = function() {
 };
 // =======CHECK IF ELEMENT IN INPUT FIELD MATCHES WITH ingredientID ARRAY=======
 var ingredientCheck = function (ingredient) {
+
     if (ingredient === undefined) {
-        alert("INGREDIENT NOT FOUND");
-        // nonexistentIngredients()
+        // alert("INGREDIENT NOT FOUND")
+        // put ingredient name into the modal before showing it.
+        $('#wrongIngredient span').text(ingredient);
+        $('#wrongIngredient').modal('show');
     }
     else {
         ingredientsID.push(ingredient);
