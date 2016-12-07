@@ -55,6 +55,11 @@
 .nav-menu{
     margin:0px 20px 0px 30px;    /*top right bottom left*/
 }
+
+#stuff{
+    background-color: blanchedalmond;
+}
+
 #site-wrapper {
     position: relative;
     overflow: hidden;
@@ -156,5 +161,37 @@
     font-size:22px;
 }
 
+.progress {
+    display: block;
+    text-align: center;
+    width: 0;
+    height: 3px;
+    background: deepskyblue;
+    transition: width .3s;
+}
+
+/* Extra Small Devices, .visible-xs-* */
+@media (max-width: 767px) {
+
+}
+
+/* Small Devices, .visible-sm-* */
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/* Medium Devices, .visible-md-* */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/*//==========================================================================*/
+/** resets **/
+
+
+/*.ui-autocomplete { border: 1px solid #999; background: #fff; cursor: default; overflow: scroll }*/
+/*.ui-autocomplete-suggestion { padding: 10px 5px; font-size: 1.2em; white-space: nowrap; overflow: hidden; }*/
+/*.ui-autocomplete-selected { background: #f0f0f0; }*/
+/*.ui-autocomplete-suggestions strong { font-weight: normal; color: #3399ff; }*/
 
 
