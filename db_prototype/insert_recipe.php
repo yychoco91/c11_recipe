@@ -60,6 +60,10 @@ function insertRecipesAndItsIngredients($connect, $recipesList){
 
     //assign for each recipe in list
     foreach ($recipesList as $recipe) {
+        //Skip if recipe already added
+        if($connect->query("SELECT `recipe_ID` FROM `recipe` WHERE `given_ID`=" . $recipe['givenId'])){
+            continue;
+        }
         //recipe data to insert to recipe table
         $r_id = $recipe['givenId'];
         $r_name = $recipe['name'];
