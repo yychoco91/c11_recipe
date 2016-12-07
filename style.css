@@ -118,8 +118,8 @@
 
 .ui-autocomplete {
 
-    height: 300px;
-    overflow-y: inherit;
+    max-height: 300px;
+    overflow-y: auto;
     /*overflow-y: scroll;*/
     overflow-x: hidden;
 }
@@ -182,5 +182,13 @@
 
 }
 
+/*//==========================================================================*/
+/** resets **/
+
+
+/*.ui-autocomplete { border: 1px solid #999; background: #fff; cursor: default; overflow: scroll }*/
+/*.ui-autocomplete-suggestion { padding: 10px 5px; font-size: 1.2em; white-space: nowrap; overflow: hidden; }*/
+/*.ui-autocomplete-selected { background: #f0f0f0; }*/
+/*.ui-autocomplete-suggestions strong { font-weight: normal; color: #3399ff; }*/
 
 

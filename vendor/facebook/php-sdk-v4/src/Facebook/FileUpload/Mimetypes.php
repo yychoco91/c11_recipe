@@ -489,7 +489,7 @@ class Mimetypes
         'msh' => 'model/mesh',
         'msi' => 'application/x-msdownload',
         'msl' => 'application/vnd.mobius.msl',
-        'msty' => 'application/vnd.muvee.style',
+        'msty' => 'application/vnd.muvee.css',
         'mts' => 'model/vnd.mts',
         'mus' => 'application/vnd.musician',
         'musicxml' => 'application/vnd.recordare.musicxml+xml',
