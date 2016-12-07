@@ -14,21 +14,8 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <link rel="stylesheet" href="style.css">
-
     <script src="script.js"></script>
-    <!--<script src="script.js"></script>-->
-    <style>
-        /*.ui-autocomplete { height: 200px; overflow-y: scroll; overflow-x: hidden;}*/
-        /*.ui-autocomplete {*/
-        /*max-height: 400px;*/
-        /*overflow-y: scroll;*/
-        /*overflow: hidden;*/
-        /*}*/
 
-        .btn.btn-info.topIng:hover {
-            transform: skew(-10deg);
-        }
-    </style>
 
 </head>
 
@@ -43,6 +30,8 @@
             </button>
             <a class="navbar-brand toggle-nav" href="#" style="color: white"><i class="fa fa-bars"></i> Menu</a>
         </div>
+
+
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#" style="color: white">Link</a></li>
@@ -74,8 +63,8 @@
                         </h4>
                     </div>
                     <div id="collapse1" class="panel-collapse collapse in">
-                        <div class="panel-body" id="ingredientButtons" style="display:inline-block; margin: 13px">
-                            <button class="btn btn-info topIng" value="87" >Eggs</button>
+                        <div class="panel-body" id="ingredientButtons">
+                            <button class="btn btn-info topIng" value="87">Eggs</button>
                             <button class="btn btn-info topIng" value="13" >Flour</button>
                             <button class="btn btn-info topIng" value="16" >Milk</button>
                             <button class="btn btn-info topIng" value="90" >Vegetable Oil</button>
@@ -131,19 +120,19 @@
 
                 <div class="col-sm-12">
                     <div class="jumbotron text-center ">
-                        <h1>What Should I Make?</h1>
-                        <p>Bringing the best recipes to your home</p>
+                        <!--<h1>What Should I Make?</h1>-->
+                        <img src="images/fridge2plate-jumbotron.png" width="510px">
+                        <p id="tagline">Bringing the best recipes to your home</p>
                         <form class="form-inline">
                             <input type="text" class="form-control" id="ingredientInput" size="50" placeholder="What's in your fridge?">
+
                             <button type="button" class="btn btn-danger" onclick="getValue()">Go</button>
+                            <div class="progress"></div>
                         </form>
                         <div class="buttonDisplay"></div>
                     </div>
 
-                    <div class="container-fluid fridge">
-                        <button class="btn btn-info ">Eggs</button>
-                    </div>
-
+                    <div class="container-fluid fridge"></div>    <!--fridge container-->
 
                     <div class="row">
                         <div id="stuff"></div>
@@ -175,6 +164,25 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
+    </div>
+</div>
+<div id="wrongIngredient" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Ingredient Not Found</h4>
+            </div>
+            <div class="modal-body">
+                <p>Sorry but <span></span> wasn't found in our database. Please try another ingredient.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
     </div>
 </div>
 
