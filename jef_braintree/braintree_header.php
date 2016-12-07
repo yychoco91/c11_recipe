@@ -3,11 +3,13 @@
         <div class="content slim">
             <div class="set">
                 <div class="fill">
-                    <a class="pseudoshop" href="/">PSEUDO<strong>SHOP</strong></a>
+                    <a href="http://localhost:8888/lfz/c11_recipe/"><img src="../images/fridge2plate.png" width="300px"></a>
                 </div>
 
                 <div class="fit">
-                    <a class="braintree" href="https://developers.braintreepayments.com/guides/drop-in" target="_blank">Braintree</a>
+                    <a href="https://www.braintreegateway.com/merchants/9pbmh9skjwrmy4t8/verified" target="_blank">
+                        <img src="https://s3.amazonaws.com/braintree-badges/braintree-badge-wide-light.png" width="280px" height ="44px" border="0"/>
+                    </a>
                 </div>
             </div>
         </div>
