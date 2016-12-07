@@ -7,7 +7,7 @@ function braintree_text_field($label, $name, $result) {
     echo('<div><input type="text" name="' . $name .'" value="' . $fieldValue . '" /></div>');
     $errors = isset($result) ? $result->errors->onHtmlField($name) : array();
     foreach($errors as $error) {
-        echo('<div style="color: red;">' . $error->message . '</div>');
+        echo('<div css="color: red;">' . $error->message . '</div>');
     }
     echo("\n");
 }
