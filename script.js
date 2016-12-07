@@ -101,7 +101,7 @@ function getRecipe() {
                 });
                 var innerDiv = $("<div>", {
                     class: "card-block",
-                    height: "180px"         //set the height of card-block cards in following rows will line up correctly
+                    height: "100px"         //set the height of card-block cards in following rows will line up correctly
                 });
                 var h3 = $("<h3>", {
                     class: "card-title",
@@ -180,7 +180,7 @@ var recipe_info_from_jsonphp_file = function () {
                 });
                 var innerDiv = $("<div>", {
                     class: "card-block",
-                    height: "90px"         //set the height of card-block so cards in following rows will line up correctly
+                    height: "100px"         //set the height of card-block so cards in following rows will line up correctly
                 });
                 var h3 = $("<h3>", {
                     class: "card-title",
@@ -270,7 +270,7 @@ var addClickHandlerToRemovableIngredient = function (element) {
 var newButtonCreation = function() {
     var fridgeButton = $("<button>", {
         text: txtArr[txtArr.length - 1] + " x",
-        class: "btn btn-info addedIng "
+        class: "btn btn-info addedIng fridgeButton"
     });
     addClickHandlerToRemovableIngredient(fridgeButton);
     $(".container-fluid .fridge").append(fridgeButton)

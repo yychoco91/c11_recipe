@@ -22,8 +22,9 @@ if ($conn->connect_errno) {
     exit();
 }
 
-//expecting array of id.
+//expecting array of id numbers.
 $userIngredients = $_POST['ingredients'];
+//TODO Sanitize for numbers only
 //print_r($selected_ingredients);
 
 /**
@@ -46,7 +47,7 @@ $query_temp = 'SELECT r.`recipe_ID`, r.`name`, r.`author`, r.`url`, r.`picture_u
                ORDER BY match_count DESC
                LIMIT 20
               ';
-
+//TODO Once DB is sufficiently sized, Limit results to matches > 0
 //Sample
 //SELECT r.*,
 //                    (
