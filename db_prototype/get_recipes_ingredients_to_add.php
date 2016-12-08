@@ -24,7 +24,8 @@
         $.ajax({
             dataType: 'json',
             method: 'get',
-            url:'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=true&number=30',
+            url:'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=true&number=5',
+            //url:'./recipe/spoon_random.php',
             headers: spoonAccess,
             success: function(resp){
                 console.log('Success', resp);
@@ -34,6 +35,8 @@
                 //Iterate through recipes from resp
                 for(var i = 0; i < returnQuery.length; i++) {
                     var currentRecipe = returnQuery[i];
+                    //if no instruction, skip entire recipe
+                    if(currentRecipe.instructions === undefined){ continue; }
                     //Creates recipe obj
                     var recipe = {
                         img: currentRecipe.image,
