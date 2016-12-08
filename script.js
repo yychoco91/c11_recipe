@@ -1,9 +1,13 @@
 $(document).ready(function () {
-    getRecipe();
-    getIngredientsAjaxCall();
+    recipe_info_from_jsonphp_file();
+    // getRecipe();
+    getIngredients();
     buttonsPushedToMainDisplay();
     titleImgToModal();
 });
+/**
+ * Global Variables
+ */
 var updatedIngredientsArray;
 var newIngredients;
 var ingredientsID = [];
@@ -11,7 +15,9 @@ var ingredientsID = [];
  * getIngredientsAjaxCall - Ajax call, auto complete, auto complete filter
  * @returns - data from get_ingredients.php
  */
-var getIngredientsAjaxCall = function () {
+
+var getIngredients = function () {
+
     $.ajax({
 
         url: "./db_prototype/get_ingredients.php",
@@ -28,7 +34,6 @@ var getIngredientsAjaxCall = function () {
                     updatedIngredientsArray.push(key);
                 }
             }
-
             autoCompleteFilter();
             //-----Input Field Ingredient Invert to ID Numbers-----
 
@@ -59,7 +64,6 @@ var getIngredientsAjaxCall = function () {
  * @returns - recipes from get_recipes.php
  */
 var getRecipe = function () {
-    console.log("Recipe Received");
     $.ajax({
 
         url: "./db_prototype/get_recipes.php",
@@ -70,7 +74,7 @@ var getRecipe = function () {
         },
         success: function (response) {
 
-            console.log("data from get_get_recipes.php\n", response);
+            console.log("data from get_recipes.php\n", response);
             clear();
             var authorName;
             var recipeName;
@@ -96,7 +100,7 @@ var getRecipe = function () {
                     class: "card"
                 });
                 var img = $("<img>", {
-                    src: imgSrc ,
+                    src: imgSrc,
                     class: "showImage img-responsive cover",
                     width: "100%",
                     height: "286px",
@@ -107,7 +111,7 @@ var getRecipe = function () {
                     class: "card-block",
                     height: "100px"         //set the height of card-block cards in following rows will line up correctly
                 });
-                var h4 = $("<h4>", {
+                var h3 = $("<h3>", {
                     class: "card-title",
                     text: recipeName
                 });
@@ -123,8 +127,7 @@ var getRecipe = function () {
                 $("#stuff").append(theDiv);
                 theDiv.append(outterDiv);
                 outterDiv.append(img, innerDiv);
-                innerDiv.append(h4);
-
+                innerDiv.append(h3);
 
                 for (var j = 0; j < response.data[i].ingredient.length; j++) {
 
@@ -146,86 +149,6 @@ var getRecipe = function () {
             console.log("BROKEN")
         }
     });
-}
-// ====================ajax call to json.php====================
-var recipe_info_from_jsonphp_file = function () {
-    $.ajax({
-        url: "./db_prototype/testjson.php",
-        dataType: "json",
-        method: "post",
-        success: function (response) {
-            console.log("data from json.php\n", response);
-
-            var authorName;
-            var url;
-
-            for (var i = 0; i < response.recipeData.length; i++) {
-
-                var imgSrc = response.recipeData[i].img;
-                // console.log(imgSrc);
-                var recipeName = response.recipeData[i].name;
-
-                authorName = response.recipeData[i].author;
-                url = response.recipeData[i].url;
-
-                var theDiv = $("<div>", {
-                    class: "col-md-3 col-sm-6 col-xs-12"
-                });
-                var outterDiv = $("<div>", {
-                    class: "card"
-                });
-                var img = $("<img>", {
-                    src: imgSrc,
-                    class: " thumbnail showImage img-responsive cover",
-                    width: "100%",
-                    height: "286px",
-                    'data-toggle': "modal",
-                    'data-target': "#myModal"
-                });
-                var innerDiv = $("<div>", {
-                    class: "card-block",
-                    height: "100px"         //set the height of card-block so cards in following rows will line up correctly
-                });
-                var h4 = $("<h4>", {
-                    class: "card-title",
-                    text: recipeName
-                });
-
-                var recipeUrl = $("<p>", {
-                    html: '<a href="' + url + '">' + url + '</a>'
-                });
-
-                var ingDiv = $('<div>', {
-                    class: 'ingDiv',
-                    style: 'height: 0; overflow: hidden'
-                });
-
-                $("#stuff").append(theDiv);
-                theDiv.append(outterDiv);
-                outterDiv.append(img, innerDiv);
-                innerDiv.append(h4);
-
-                var ingName;
-                var amount;
-                var amountType;
-                var designatedIngredients;
-
-                for (var j = 0; j < response.recipeData[i].ingredients.length; j++) {
-                    ingName = response.recipeData[i].ingredients[j].name;
-                    amount = response.recipeData[i].ingredients[j].amount;
-                    amountType = response.recipeData[i].ingredients[j].amountType;
-                    designatedIngredients = Math.round(amount) + " " + amountType + " " + ingName;
-
-                    var p = $("<p>", {
-                        class: "card-text",
-                        html: '<li>' + designatedIngredients
-                    });
-                    ingDiv.append(p)
-                }
-                innerDiv.append(ingDiv.append(recipeUrl));
-            }
-        }
-    })
 };
 /**
  * clear - clears row of recipes
@@ -273,7 +196,6 @@ var removeIng = function () {
     $(this).closest("button").remove();
     console.log("Current Items in Fridge", ingredientsID)
 };
-
 var addClickHandlerToRemovableIngredient = function (element) {
     element.on('click', removeIng);
 };
@@ -316,7 +238,6 @@ var noExist = function () {
     var modalContent = $("<div>", {
         class: "modal-content"
     });
-
     var modalHeader = $("<div>", {
         class: "modal-header"
     });
@@ -403,3 +324,75 @@ function toggleNav() {
         $('#site-wrapper').addClass('show-nav');
     }
 }
+
+// ==================DUMMY DATA===============================
+// ====================ajax call to json.php====================
+var recipe_info_from_jsonphp_file = function () {
+    $.ajax({
+        url: "./db_prototype/testjson.php",
+        dataType: "json",
+        method: "post",
+        success: function (response) {
+            console.log("data from json.php\n", response);
+            var authorName;
+            var url;
+            for (var i = 0; i < response.recipeData.length; i++) {
+                var imgSrc = response.recipeData[i].img;
+                // console.log(imgSrc);
+                var recipeName = response.recipeData[i].name;
+                authorName = response.recipeData[i].author;
+                url = response.recipeData[i].url;
+                var theDiv = $("<div>", {
+                    class: "col-md-3 col-sm-6 col-xs-12"
+                });
+                var outterDiv = $("<div>", {
+                    class: "card"
+                });
+                var img = $("<img>", {
+                    src: imgSrc,
+                    class: " thumbnail showImage img-responsive cover",
+                    width: "100%",
+                    height: "286px",
+                    'data-toggle': "modal",
+                    'data-target': "#myModal"
+                });
+                var innerDiv = $("<div>", {
+                    class: "card-block",
+                    height: "100px"         //set the height of card-block so cards in following rows will line up correctly
+                });
+                var h4 = $("<h4>", {
+                    class: "card-title",
+                    text: recipeName
+                });
+                var recipeUrl = $("<p>", {
+                    html: '<a href="' + url + '">' + url + '</a>'
+                });
+                var ingDiv = $('<div>', {
+                    class: 'ingDiv',
+                    style: 'height: 0; overflow: hidden'
+                });
+                $("#stuff").append(theDiv);
+                theDiv.append(outterDiv);
+                outterDiv.append(img, innerDiv);
+                innerDiv.append(h4);
+                var ingName;
+                var amount;
+                var amountType;
+                var designatedIngredients;
+                for (var j = 0; j < response.recipeData[i].ingredients.length; j++) {
+                    ingName = response.recipeData[i].ingredients[j].name;
+                    amount = response.recipeData[i].ingredients[j].amount;
+                    amountType = response.recipeData[i].ingredients[j].amountType;
+                    designatedIngredients = Math.round(amount) + " " + amountType + " " + ingName;
+                    var p = $("<p>", {
+                        class: "card-text",
+                        html: '<li>' + designatedIngredients
+                    });
+                    ingDiv.append(p)
+                }
+                innerDiv.append(ingDiv.append(recipeUrl));
+            }
+        }
+    })
+};
+
