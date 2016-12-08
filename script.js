@@ -92,8 +92,8 @@ function getRecipe() {
                     class: "card"
                 });
                 var img = $("<img>", {
-                    src: imgSrc,
-                    class: "showImage img-responsive",
+                    src: imgSrc ,
+                    class: "showImage img-responsive cover",
                     width: "100%",
                     height: "286px",
                     'data-toggle': "modal",
@@ -172,7 +172,7 @@ var recipe_info_from_jsonphp_file = function () {
                 });
                 var img = $("<img>", {
                     src: imgSrc,
-                    class: " thumbnail showImage img-responsive",
+                    class: " thumbnail showImage img-responsive cover",
                     width: "100%",
                     height: "286px",
                     'data-toggle': "modal",
