@@ -25,6 +25,7 @@
             dataType: 'json',
             method: 'get',
             url:'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=true&number=5',
+            //url:'./recipe/spoon_random.php',
             headers: spoonAccess,
             success: function(resp){
                 console.log('Success', resp);

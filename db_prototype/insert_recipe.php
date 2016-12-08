@@ -49,10 +49,10 @@ function insertRecipesAndItsIngredients($connect, $recipesList){
     $queryInsertRecipe = $connect->prepare($queryRecipe);
 
     //set recipe binding parameters
-    $queryInsertRecipe->bind_param('issss', $r_id, $r_name, $r_author, $r_url, $r_img, $r_instruct, $r_time);
+    $queryInsertRecipe->bind_param('isssssi', $r_id, $r_name, $r_author, $r_url, $r_img, $r_instruct, $r_time);
 
     //prepare for ingredient insert
-    $queryIngred = "INSERT IGNORE INTO `ingredientsToRecipe` (`ingred_ID`, `recipe_ID`, `name`, `name_str`, `count_type`, `count`) VALUES (?, ?, ?, ? , ?, ?)";
+    $queryIngred = "INSERT IGNORE INTO `ingredientsToRecipe` (`ingred_ID`, `recipe_ID`, `name`, `name_str`, `count_type`, `count`) VALUES (?, ?, ?, ?, ?, ?)";
     $queryInsertIngred = $connect->prepare($queryIngred);
 
     //set ingredients binding parameters
@@ -71,7 +71,7 @@ function insertRecipesAndItsIngredients($connect, $recipesList){
         $r_url = $recipe['url'];
         $r_img = $recipe['img'];
         $r_instruct = $recipe['instructions'];
-        $r_time = $recipe['cookTime'];
+        $r_time = $recipe['cookingTime'];
         //insert recipe and proceed if insert is successful
         if($queryInsertRecipe->execute()){
             //get last recipe id
@@ -102,8 +102,8 @@ function insertRecipesAndItsIngredients($connect, $recipesList){
     $queryInsertIngred->close();
 }
 
-//insertIngredientsIntoIngTable($conn, $ingredientsListData);
+insertIngredientsIntoIngTable($conn, $ingredientsListData);
 
-//insertRecipesAndItsIngredients($conn, $recipeListData);
+insertRecipesAndItsIngredients($conn, $recipeListData);
 
 $conn->close();
