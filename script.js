@@ -266,7 +266,7 @@ var removeIng = function () {
 var addClickHandlerToRemovableIngredient = function (element) {
     element.on('click', removeIng);
 };
-                //-----Creates Button-----
+//-----Creates Button-----
 var newButtonCreation = function() {
     var fridgeButton = $("<button>", {
         text: txtArr[txtArr.length - 1] + " x",
