@@ -1,16 +1,17 @@
-// ====================Document Ready====================
 $(document).ready(function () {
-    recipe_info_from_jsonphp_file();
+    getRecipe();
     getIngredientsAjaxCall();
     buttonsPushedToMainDisplay();
     titleImgToModal();
 });
-
 var updatedIngredientsArray;
 var newIngredients;
-// ====================ajax call to get_ingredients.php====================
 var ingredientsID = [];
-function getIngredientsAjaxCall() {
+/**
+ * getIngredientsAjaxCall - Ajax call, auto complete, auto complete filter
+ * @returns - data from get_ingredients.php
+ */
+var getIngredientsAjaxCall = function () {
     $.ajax({
 
         url: "./db_prototype/get_ingredients.php",
@@ -52,9 +53,12 @@ function getIngredientsAjaxCall() {
             });
         }
     })
-}
-// ====================ajax call to get_recipes.php====================
-function getRecipe() {
+};
+/**
+ * getRecipe - Ajax call, dom creation when called
+ * @returns - recipes from get_recipes.php
+ */
+var getRecipe = function () {
     console.log("Recipe Received");
     $.ajax({
 
@@ -223,11 +227,15 @@ var recipe_info_from_jsonphp_file = function () {
         }
     })
 };
-// ====================Clears Row After Calling Function getRecipe()====================
+/**
+ * clear - clears row of recipes
+ */
 var clear = function () {
     $("#stuff").empty()
 };
-// ====================Buttons On Ingredients Suggestion Pushed to Main Display====================
+/**
+ * buttonsPushedToMainDisplay - Buttons On Ingredients Suggestion Pushed to Main Display
+ */
 var buttonsPushedToMainDisplay = function () {
     $(".btn.btn-info.topIng").click(function () {
 
@@ -240,7 +248,9 @@ var buttonsPushedToMainDisplay = function () {
         getRecipe();
     });
 };
-// ====================Pushes Buttons to Container Using the "GO" Button====================
+/**
+ * getValue - Pushes Buttons to Container Using the "GO" Button
+ */
 var txtArr = [];
 var getValue = function () {
     $('#ingredientInput').each(function () {
@@ -249,7 +259,9 @@ var getValue = function () {
         newButtonCreation()
     });
 };
-// ====================Removes Buttons off the Main Display and ingredientsID Array====================
+/**
+ * removeIng - Removes Buttons off the Main Display and ingredientsID Array
+ */
 var removeIng = function () {
     var text = $(this).text();
     text = text.substring(0, text.length - 2);
@@ -257,7 +269,6 @@ var removeIng = function () {
     var indexS = txtArr.indexOf(text);
     txtArr.splice(indexS, 1);
     ingredientsID.splice(indexS, 1);
-    console.log(ingredientsID);
 
     $(this).closest("button").remove();
     console.log("Current Items in Fridge", ingredientsID)
@@ -267,7 +278,7 @@ var addClickHandlerToRemovableIngredient = function (element) {
     element.on('click', removeIng);
 };
 //-----Creates Button-----
-var newButtonCreation = function() {
+var newButtonCreation = function () {
     var fridgeButton = $("<button>", {
         text: txtArr[txtArr.length - 1] + " x",
         class: "btn btn-info addedIng fridgeButton"
@@ -275,18 +286,79 @@ var newButtonCreation = function() {
     addClickHandlerToRemovableIngredient(fridgeButton);
     $(".container-fluid .fridge").append(fridgeButton)
 };
-// =======CHECK IF ELEMENT IN INPUT FIELD MATCHES WITH ingredientID ARRAY=======
+/**
+ * ingredientCheck - CHECK IF ELEMENT IN INPUT FIELD MATCHES WITH ingredientID ARRAY
+ */
 var ingredientCheck = function (ingredient) {
+
     if (ingredient === undefined) {
-        alert("INGREDIENT NOT FOUND")
+        noExist();
     }
     else {
         ingredientsID.push(ingredient);
+        getValue();
         getRecipe();
     }
 };
-// =====================Filter For Auto Complete==============================
-var autoCompleteFilter = function() {
+/**
+ * noExist - Dynamically Displays a Modal Telling user Their Ingredient Has No Existence
+ */
+var noExist = function () {
+
+    var modal = $("<div>", {
+        class: "modal fade",
+        id: "noIng",
+        role: "dialog"
+    });
+    var modalDialog = $("<div>", {
+        class: "modal-dialog"
+    });
+    var modalContent = $("<div>", {
+        class: "modal-content"
+    });
+
+    var modalHeader = $("<div>", {
+        class: "modal-header"
+    });
+    var buttonH = $("<button>", {
+        class: "close",
+        'data-dismiss': "modal",
+        html: "&times"
+    });
+    var h3 = $("<h3>", {
+        class: "modal-title",
+        html: "Ingredient Not Found"
+    });
+    var modalBody = $("<div>", {
+        class: "modal-body"
+    });
+    var p = $("<p>", {
+        html: "Your nonsense does not exist you morron"
+    });
+    var modalFooter = $("<div>", {
+        class: "modal-footer"
+    });
+    var buttonF = $("<button>", {
+        class: "btn btn-default",
+        'data-dismiss': "modal",
+        html: "Close"
+    });
+
+    $("body").append(modal);
+
+    modal.append(modalDialog);
+    modalDialog.append(modalContent);
+    modalContent.append(modalHeader, modalBody, modalFooter);
+
+    modalHeader.append(buttonH, h3);
+    modalBody.append(p);
+    modalFooter.append(buttonF);
+    $('#noIng').modal('toggle');
+};
+/**
+ * autoCompleteFilter - Filter For Auto Complete
+ */
+var autoCompleteFilter = function () {
     $("#ingredientInput").autocomplete({
         source: updatedIngredientsArray
     });
@@ -299,7 +371,9 @@ var autoCompleteFilter = function() {
         });
     };
 };
-// ====================Title and Image Inside Modal====================
+/**
+ * titleImgToModal - Title and Image Inside Modal
+ */
 var titleImgToModal = function () {
     $('#stuff').on('click', 'img', function () {
         var image = $(this).attr('src');
@@ -310,7 +384,9 @@ var titleImgToModal = function () {
         $("#myModal .modal-header").html("<h3>" + recipeTitle + "</h3>");
     });
 };
-// ====================NAVIGATE====================
+/**
+ * toggleNav - Pushes Nav Bar to the Side
+ */
 $(function () {
     // Toggle Nav on Click
     $('.toggle-nav').click(function () {
