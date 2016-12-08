@@ -71,6 +71,7 @@
     height: 100%;
     position: relative;
 
+
     -webkit-transform: translateX(0);
     transform: translateX(0);
 
@@ -83,13 +84,18 @@
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 
+
+
 }
 .show-nav #site-canvas {
+    padding-right:300px;
+
     -webkit-transform: translateX(300px);
     transform: translateX(300px);
 
     -webkit-transform: translate3d(300px, 0, 0);
     transform: translate3d(300px, 0, 0);
+
 }
 #site-menu {
     width: 300px;
@@ -158,40 +164,10 @@
 
 .card-title{
     font-family: 'Raleway', sans-serif;
-    font-size:25px;
+    font-size:22px;
 }
 
-.progress {
-    display: block;
-    text-align: center;
-    width: 0;
-    height: 3px;
-    background: deepskyblue;
-    transition: width .3s;
+.cover {
+object-fit: cover;
 }
-
-/* Extra Small Devices, .visible-xs-* */
-@media (max-width: 767px) {
-
-}
-
-/* Small Devices, .visible-sm-* */
-@media (min-width: 768px) and (max-width: 991px) {
-
-}
-
-/* Medium Devices, .visible-md-* */
-@media (min-width: 992px) and (max-width: 1199px) {
-
-}
-
-/*//==========================================================================*/
-/** resets **/
-
-
-/*.ui-autocomplete { border: 1px solid #999; background: #fff; cursor: default; overflow: scroll }*/
-/*.ui-autocomplete-suggestion { padding: 10px 5px; font-size: 1.2em; white-space: nowrap; overflow: hidden; }*/
-/*.ui-autocomplete-selected { background: #f0f0f0; }*/
-/*.ui-autocomplete-suggestions strong { font-weight: normal; color: #3399ff; }*/
-
 
