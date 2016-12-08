@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    recipe_info_from_jsonphp_file()
-    // getRecipe(); Uncomment until recipe_info_from_jsonphp_file() deleted
+    recipe_info_from_jsonphp_file();
+    // getRecipe();
     getIngredients();
     buttonsPushedToMainDisplay();
     titleImgToModal();
