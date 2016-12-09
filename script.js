@@ -15,7 +15,9 @@ var ingredientsID = [];
  * getIngredientsAjaxCall - Ajax call, auto complete, auto complete filter
  * @returns - data from get_ingredients.php
  */
+
 var getIngredients = function () {
+
     $.ajax({
 
         url: "./db_prototype/get_ingredients.php",
@@ -99,7 +101,7 @@ var getRecipe = function () {
                 });
                 var img = $("<img>", {
                     src: imgSrc,
-                    class: "showImage img-responsive",
+                    class: "showImage img-responsive cover",
                     width: "100%",
                     height: "286px",
                     'data-toggle': "modal",
@@ -210,6 +212,7 @@ var newButtonCreation = function () {
  * ingredientCheck - CHECK IF ELEMENT IN INPUT FIELD MATCHES WITH ingredientID ARRAY
  */
 var ingredientCheck = function (ingredient) {
+
     if (ingredient === undefined) {
         noExist();
     }
@@ -392,3 +395,4 @@ var recipe_info_from_jsonphp_file = function () {
         }
     })
 };
+
