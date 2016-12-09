@@ -16,11 +16,11 @@ function addRow(){
                         $('<input class="form-control" type="text">')
                     ),
                 $('<label class="control-label col-xs-2" for="quantity">Quantity:</label>'),
-                $('<div>', {class:"col-xs-4", id:amount})
+                $('<div>', {class:"col-xs-3 ", id:amount})
                     .append(
                         $('<input class="form-control col-xs-4" type="number" min="0" max="1000">')
                     ),
-                $('<label class="control-label col-xs-1 col-xs-offset-1" for="type">Type:</label>'),
+                $('<label class="control-label col-xs-1" for="type">Type:</label>'),
                 $('<div>', {class:"col-xs-4", id:type})
                     .append(
                         $('<select class="form-control">')
@@ -35,19 +35,26 @@ function addRow(){
                                 $('<option value="ounce">').text("ounce"),
                                 $('<option value="pound">').text("pound")
                             )
-                    )
+                    ),
+                $('<button>', {
+                        class: "btn btn-danger col-xs-offset-1 removeIngredient",
+                        type: "button",
+                        text: "Delete"
+                    }
+                )
             )
     );
     count++
 }
 
-function sendFormData(){
+function validateForm(){
+    var validForm = false;
     var recipe = {
-        givenId: '',
+        givenId: '',//use author name and random number?
         name: $('#recipeName').val(),
-        author: '',
-        url: '',
-        img: '',
+        author: '',//todo grab from login
+        url: '',//todo need form
+        img: '',//todo need file upload
         instructions: $('#instructions').val(),
         cookingTime: $('#cookTime').val(),
         ingredients: []
@@ -66,6 +73,11 @@ function sendFormData(){
         ingredient.originStr = ingredient.amount + ' ' + ingredient.amountType + ' ' + ingredient.name;
         recipe.ingredients.push(ingredient);
     }
+
+    if(validForm){ sendFormData(recipe); }
+}
+
+function sendFormData(recipe){
     $.ajax({
         url: "./handleRecipeForm.php",
         method: 'post',
@@ -76,10 +88,16 @@ function sendFormData(){
         }
     });
 }
+
+function removeRow(){
+    $(this).parent().remove();
+}
+
 function applyClickHandlers(){
     addRow();
     $('#addIngredient').click(addRow);
-    $('#submitBtn').click(sendFormData);
+    $('#ingredientArea').on("click",".removeIngredient",removeRow);
+    $('#submitBtn').click(validateForm);
 }
 
 $(document).ready(applyClickHandlers);
