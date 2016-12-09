@@ -17,7 +17,7 @@
 }
 
 .row{
-    height:1500px;
+    height:1050px;
 }
 
 .sidenav{
@@ -171,4 +171,9 @@
 object-fit: cover;
 }
 
-
+.footer-style{
+    background-color: #1abc9c;
+    color: #fff;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
