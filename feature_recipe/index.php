@@ -10,7 +10,7 @@
         <div class="form-group">
             <label class="control-label col-xs-2" for="recipeName">Title:</label>
             <div class="col-xs-10">
-                <input class="form-control" type="text" name="recipeName" id="recipeName" required>
+                <input class="form-control" type="text" name="recipeName" id="recipeName">
             </div>
         </div>
         <hr>
