@@ -56,7 +56,7 @@ function sendFormData(){
         var name = '#name'+i+ ' input';
         var type = '#type'+i+ ' select';
         var amount = '#amount'+i+ ' input';
-        console.log(amount);
+        //console.log(amount);
         var ingredient = {
             name: $(name).val(),
             amountType: $(type).val(),
@@ -67,7 +67,7 @@ function sendFormData(){
         recipe.ingredients.push(ingredient);
     }
     $.ajax({
-        url: "handleRecipeForm.php",
+        url: "./handleRecipeForm.php",
         method: 'post',
         data: recipe,
         dataType: 'json',

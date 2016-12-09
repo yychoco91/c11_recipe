@@ -6,3 +6,4 @@
  * Time: 5:33 PM
  */
 
+print_r($_POST);
