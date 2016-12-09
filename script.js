@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     recipe_info_from_jsonphp_file();
     // getRecipe();
     getIngredients();
@@ -64,8 +65,8 @@ var getIngredients = function () {
  * @returns - recipes from get_recipes.php
  */
 var getRecipe = function () {
+    loadStart();
     $.ajax({
-
 
         url: "./db_prototype/get_recipes.php",
         dataType: "json",
@@ -75,6 +76,7 @@ var getRecipe = function () {
         },
         success: function (response) {
             getBackItems();   /*put function here so that it is called after ajax call for getRecipe - is completed*/
+            loadStop();
             console.log("data from get_recipes.php\n", response);
             clear();
             var authorName;
@@ -406,4 +408,18 @@ function getBackItems(){
         console.log("jjj2")
     }
 }
+
+// $body = $("body");
+
+
+var loadStart = function() {
+    console.log("loadStart");
+    $("#loading").show();
+    // $body.show("loading");
+};
+var loadStop = function() {
+    console.log("loadStop");
+    $("#loading").hide();
+    // $body.hide("loading");
+};
 
