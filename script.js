@@ -399,9 +399,9 @@ var recipe_info_from_jsonphp_file = function () {
 };
 
 function getBackItems(){
-    console.log("jjj")
+    console.log("jjj");
     if(ingredientsID.length === 0){
-        clear()
+        clear();
         recipe_info_from_jsonphp_file();
         console.log("jjj2")
     }
