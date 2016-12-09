@@ -177,3 +177,7 @@ object-fit: cover;
     padding-top: 60px;
     padding-bottom: 60px;
 }
+
+.addRecipe{
+    text-align:center
+}
