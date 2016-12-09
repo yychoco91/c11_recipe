@@ -15,7 +15,9 @@ var ingredientsID = [];
  * getIngredientsAjaxCall - Ajax call, auto complete, auto complete filter
  * @returns - data from get_ingredients.php
  */
+
 var getIngredients = function () {
+
     $.ajax({
 
         url: "./db_prototype/get_ingredients.php",
@@ -64,6 +66,7 @@ var getIngredients = function () {
 var getRecipe = function () {
     $.ajax({
 
+
         url: "./db_prototype/get_recipes.php",
         dataType: "json",
         method: "post",
@@ -71,7 +74,7 @@ var getRecipe = function () {
             ingredients: ingredientsID
         },
         success: function (response) {
-
+            getBackItems();   /*put function here so that it is called after ajax call for getRecipe - is completed*/
             console.log("data from get_recipes.php\n", response);
             clear();
             var authorName;
@@ -99,7 +102,7 @@ var getRecipe = function () {
                 });
                 var img = $("<img>", {
                     src: imgSrc,
-                    class: "showImage img-responsive",
+                    class: "showImage img-responsive cover",
                     width: "100%",
                     height: "286px",
                     'data-toggle': "modal",
@@ -155,11 +158,10 @@ var clear = function () {
     $("#stuff").empty()
 };
 /**
- * buttonsPushedToMainDisplay - Buttons On Ingredients Suggestion Pushed to Main Display
+ * buttonsPushedToMainDisplay - Buttons On NAV to Main Display
  */
 var buttonsPushedToMainDisplay = function () {
     $(".btn.btn-info.topIng").click(function () {
-
         var val = $(this).attr("value");
         var txt = $(this).text();
         txtArr.push(txt);
@@ -192,7 +194,9 @@ var removeIng = function () {
     ingredientsID.splice(indexS, 1);
 
     $(this).closest("button").remove();
-    console.log("Current Items in Fridge", ingredientsID)
+    console.log("Current Items in Fridge", ingredientsID);
+    getRecipe();
+
 };
 var addClickHandlerToRemovableIngredient = function (element) {
     element.on('click', removeIng);
@@ -210,6 +214,7 @@ var newButtonCreation = function () {
  * ingredientCheck - CHECK IF ELEMENT IN INPUT FIELD MATCHES WITH ingredientID ARRAY
  */
 var ingredientCheck = function (ingredient) {
+
     if (ingredient === undefined) {
         noExist();
     }
@@ -392,3 +397,13 @@ var recipe_info_from_jsonphp_file = function () {
         }
     })
 };
+
+function getBackItems(){
+    console.log("jjj");
+    if(ingredientsID.length === 0){
+        clear();
+        recipe_info_from_jsonphp_file();
+        console.log("jjj2")
+    }
+}
+
