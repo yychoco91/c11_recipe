@@ -13,7 +13,7 @@ if($conn->connect_errno){
 }
 $output['success'] = false;
 
-if(result = $conn->query("SELECT `name`, `ingred_ID`, COUNT(`ingred_ID`) AS appearance
+if($result = $conn->query("SELECT `name`, `ingred_ID`, COUNT(`ingred_ID`) AS appearance
 FROM `ingredientsToRecipe` 
 GROUP BY `name`, `ingred_ID` 
 ORDER BY appearance 
