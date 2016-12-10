@@ -67,7 +67,6 @@ var getIngredients = function () {
 var getRecipe = function () {
     loadStart();
     $.ajax({
-
         url: "./db_prototype/get_recipes.php",
         dataType: "json",
         method: "post",
@@ -258,7 +257,7 @@ var noExist = function () {
         class: "modal-body"
     });
     var p = $("<p>", {
-        html: "Your nonsense does not exist you morron"
+        html: "Your nonsense does not exist you moron"
     });
     var modalFooter = $("<div>", {
         class: "modal-footer"
@@ -408,8 +407,6 @@ function getBackItems(){
         console.log("jjj2")
     }
 }
-
-// $body = $("body");
 
 
 var loadStart = function() {
