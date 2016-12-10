@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     recipe_info_from_jsonphp_file();
     // getRecipe();
     getIngredients();
@@ -16,9 +15,7 @@ var ingredientsID = [];
  * getIngredientsAjaxCall - Ajax call, auto complete, auto complete filter
  * @returns - data from get_ingredients.php
  */
-
 var getIngredients = function () {
-
     $.ajax({
 
         url: "./db_prototype/get_ingredients.php",
@@ -65,8 +62,8 @@ var getIngredients = function () {
  * @returns - recipes from get_recipes.php
  */
 var getRecipe = function () {
-    loadStart();
     $.ajax({
+
 
         url: "./db_prototype/get_recipes.php",
         dataType: "json",
@@ -75,8 +72,7 @@ var getRecipe = function () {
             ingredients: ingredientsID
         },
         success: function (response) {
-            getBackItems();   /*put function here so that it is called after ajax call for getRecipe - is completed*/
-            loadStop();
+            getBackItems();   /*put function here so that it is called after ajax call for getRecipe is completed*/
             console.log("data from get_recipes.php\n", response);
             clear();
             var authorName;
@@ -216,7 +212,6 @@ var newButtonCreation = function () {
  * ingredientCheck - CHECK IF ELEMENT IN INPUT FIELD MATCHES WITH ingredientID ARRAY
  */
 var ingredientCheck = function (ingredient) {
-
     if (ingredient === undefined) {
         noExist();
     }
@@ -400,26 +395,12 @@ var recipe_info_from_jsonphp_file = function () {
     })
 };
 
+
 function getBackItems(){
-    console.log("jjj");
+    console.log("jjj")
     if(ingredientsID.length === 0){
-        clear();
+        clear()
         recipe_info_from_jsonphp_file();
         console.log("jjj2")
     }
 }
-
-// $body = $("body");
-
-
-var loadStart = function() {
-    console.log("loadStart");
-    $("#loading").show();
-    // $body.show("loading");
-};
-var loadStop = function() {
-    console.log("loadStop");
-    $("#loading").hide();
-    // $body.hide("loading");
-};
-
