@@ -161,37 +161,14 @@
     font-size:25px;
 }
 
-.progress {
-    display: block;
-    text-align: center;
-    width: 0;
-    height: 3px;
-    background: deepskyblue;
-    transition: width .3s;
+.footer-style{
+    background-color: #1abc9c;
+    color: #fff;
+    padding-top: 60px;
+    padding-bottom: 60px;
 }
 
-/* Extra Small Devices, .visible-xs-* */
-@media (max-width: 767px) {
-
+.addRecipe{
+    text-align:center
 }
-
-/* Small Devices, .visible-sm-* */
-@media (min-width: 768px) and (max-width: 991px) {
-
-}
-
-/* Medium Devices, .visible-md-* */
-@media (min-width: 992px) and (max-width: 1199px) {
-
-}
-
-/*//==========================================================================*/
-/** resets **/
-
-
-/*.ui-autocomplete { border: 1px solid #999; background: #fff; cursor: default; overflow: scroll }*/
-/*.ui-autocomplete-suggestion { padding: 10px 5px; font-size: 1.2em; white-space: nowrap; overflow: hidden; }*/
-/*.ui-autocomplete-selected { background: #f0f0f0; }*/
-/*.ui-autocomplete-suggestions strong { font-weight: normal; color: #3399ff; }*/
-
 

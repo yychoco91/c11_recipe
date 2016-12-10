@@ -3,7 +3,7 @@
 <?php require_once("head.php"); ?>
 
 <body>
-<h2>Add Your Recipe</h2>
+<h2 class="addRecipe">Add Your Recipe</h2>
 <div class="container">
     <form action="" method="post" class="form-horizontal col-xs-offset-1 col-xs-10 ingredient-form">
         <legend>Recipe:</legend>
