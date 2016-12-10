@@ -48,7 +48,28 @@ function addRow(){
 }
 
 function validateForm(){
-    var validForm = false;
+    console.log('Validating');
+    var validform = true;
+
+    $('input').each(function(){
+        //console.log('Input: ', this);
+        if($(this).val().length === 0){
+            $(this).addClass("missing-input");
+            validform = false;
+        }
+    });
+
+    if($('textarea').val().length === 0){
+        $('textarea').addClass("missing-input");
+        validform = false;
+    }
+
+   if(validform){
+       sendFormData();
+   }
+}
+
+function sendFormData(){
     var recipe = {
         givenId: '',//use author name and random number?
         name: $('#recipeName').val(),
@@ -73,11 +94,6 @@ function validateForm(){
         ingredient.originStr = ingredient.amount + ' ' + ingredient.amountType + ' ' + ingredient.name;
         recipe.ingredients.push(ingredient);
     }
-
-    if(validForm){ sendFormData(recipe); }
-}
-
-function sendFormData(recipe){
     $.ajax({
         url: "./handleRecipeForm.php",
         method: 'post',
@@ -93,11 +109,30 @@ function removeRow(){
     $(this).parent().remove();
 }
 
+function clearForm(){
+    console.log('clear!');
+    $('input').val('');
+    $('textarea').val('');
+    $('select option[value=" "]').prop('selected', true);
+}
+
+function removeMissingInput(){
+    $('input').on('focus', function(){
+        $(this).removeClass("missing-input");
+    });
+    $('textarea').on('focus', function(){
+        $(this).removeClass("missing-input");
+    });
+}
+
 function applyClickHandlers(){
+    console.log('applying');
     addRow();
+    removeMissingInput();
     $('#addIngredient').click(addRow);
     $('#ingredientArea').on("click",".removeIngredient",removeRow);
     $('#submitBtn').click(validateForm);
+    $('#clearBtn').click(clearForm);
 }
 
 $(document).ready(applyClickHandlers);
