@@ -20,7 +20,7 @@
                 <label for="first_name">
                     <span class="input-label">First Name</span>
                     <div class="input-wrapper first-name-wrapper">
-                        <input type="text" name="first_name" placeholder="First Name" id="first_name" autocomplete="off"/>
+                        <input type="text" name="first_name" id="first_name" autocomplete="off"/>
                     </div>
                 </label>
                 <label for="l_name" id="middle_border_fix">
