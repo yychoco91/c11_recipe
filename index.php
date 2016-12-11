@@ -1,7 +1,15 @@
+<?php
+session_start();
+require_once __DIR__ . '/vendor/autoload.php';
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
+    <!--Google Login Meta Tags-->
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="802478348342-ovn07tr2ulnqnqk06j94cga951pufnib.apps.googleusercontent.com">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -13,8 +21,13 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+    <!--Login Scripts (FB & Google)-->
+    <script src="facebook_login/facebook.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="google_login/google.js"></script>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+
 
 
 </head>
@@ -34,9 +47,14 @@
 
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" style="color: white">Link</a></li>
-                <li><a href="#" style="color: white">Link</a></li>
-                <li><a href="#" style="color: white">Link</a></li>
+                <li class="fb-login-button"
+                         data-max-rows="1"
+                         data-size="large"
+                         data-show-faces="false"
+                         data-auto-logout-link="true">
+                </li>
+                <li><a class="g-signin2" data-onsuccess="onSignIn"></a></li>
+                <li><a href="#" onclick="signOut();">Sign out</a></li>
             </ul>
         </div>
     </div>
