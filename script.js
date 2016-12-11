@@ -11,6 +11,7 @@ $(document).ready(function () {
 var updatedIngredientsArray;
 var newIngredients;
 var ingredientsID = [];
+var selectedIngredients = {};
 /**
  * getIngredientsAjaxCall - Ajax call, auto complete, auto complete filter
  * @returns - data from get_ingredients.php
@@ -62,6 +63,7 @@ var getIngredients = function () {
  * @returns - recipes from get_recipes.php
  */
 var getRecipe = function () {
+    loadStart();
     $.ajax({
 
         url: "./db_prototype/get_recipes.php",
@@ -71,7 +73,9 @@ var getRecipe = function () {
             ingredients: ingredientsID
         },
         success: function (response) {
-            getBackItems();   /*put function here so that it is called after ajax call for getRecipe is completed*/
+            getBackItems();
+            /*put function here so that it is called after ajax call for getRecipe is completed*/
+            loadStop();
             console.log("data from get_recipes.php\n", response);
             clear();
             var authorName;
@@ -159,15 +163,27 @@ var clear = function () {
  */
 var buttonsPushedToMainDisplay = function () {
     $(".btn.btn-info.topIng").click(function () {
+        // forGreg();
+
+        $(this).addClass('selected'); //turns gray
+
         var val = $(this).attr("value");
         var txt = $(this).text();
+
         txtArr.push(txt);
         ingredientsID.push(val);
         console.log("Ingredients Added to Fridge", ingredientsID);
-        newButtonCreation();
+        var newButton = newButtonCreation();
+        var returnObject = {
+            list_button: $(this),
+            included_button: newButton
+        }
+        selectedIngredients[txt] = returnObject;
         getRecipe();
+        // console.log(val)
     });
 };
+
 /**
  * getValue - Pushes Buttons to Container Using the "GO" Button
  */
@@ -183,15 +199,33 @@ var getValue = function () {
  * removeIng - Removes Buttons off the Main Display and ingredientsID Array
  */
 var removeIng = function () {
+    console.log(this)
+    // forGreg();
+    // var buttonVal = $(this).attr("value");
+    // console.log(buttonVal)
+
+
+
     var text = $(this).text();
-    text = text.substring(0, text.length - 2);
+    //text = text.substring(0, text.length - 2);
 
     var indexS = txtArr.indexOf(text);
     txtArr.splice(indexS, 1);
     ingredientsID.splice(indexS, 1);
 
     $(this).closest("button").remove();
+    console.log($(this).text());
     console.log("Current Items in Fridge", ingredientsID);
+    // $('.topIng').css("background", "#5bc0de"); // turns back to #31b0d5
+    // var myDiv = $('button[value="' + buttonVal + '"]');
+    // console.log(myDiv)
+    var btnText = '#';
+    btnText += $(this).text();
+    //$('#ingredientButtons').find(btnText).css('background-color','blue');
+
+    selectedIngredients[text].list_button.removeClass('selected');
+    delete selectedIngredients[text];
+
     getRecipe();
 
 };
@@ -199,13 +233,15 @@ var addClickHandlerToRemovableIngredient = function (element) {
     element.on('click', removeIng);
 };
 //-----Creates Button-----
-var newButtonCreation = function () {
+var newButtonCreation = function (/*val*/) {
     var fridgeButton = $("<button>", {
-        text: txtArr[txtArr.length - 1] + " x",
-        class: "btn btn-info addedIng fridgeButton"
+        html: txtArr[txtArr.length - 1],
+        class: "btn btn-info fridgeButton",
+        /*"value": val*/
     });
     addClickHandlerToRemovableIngredient(fridgeButton);
-    $(".container-fluid .fridge").append(fridgeButton)
+    $(".container-fluid .fridge").append(fridgeButton);
+    return fridgeButton;
 };
 /**
  * ingredientCheck - CHECK IF ELEMENT IN INPUT FIELD MATCHES WITH ingredientID ARRAY
@@ -252,7 +288,7 @@ var noExist = function () {
         class: "modal-body"
     });
     var p = $("<p>", {
-        html: "Your nonsense does not exist you moron"
+        html: "Your ingredient is not found"
     });
     var modalFooter = $("<div>", {
         class: "modal-footer"
@@ -381,10 +417,15 @@ var recipe_info_from_jsonphp_file = function () {
                     ingName = response.recipeData[i].ingredients[j].name;
                     amount = response.recipeData[i].ingredients[j].amount;
                     amountType = response.recipeData[i].ingredients[j].amountType;
+
+
+                    // designatedIngredients = response.recipeData[i].ingredients[j].string;
+                    // console.log(designatedIngredients);
                     designatedIngredients = Math.round(amount) + " " + amountType + " " + ingName;
                     var p = $("<p>", {
                         class: "card-text",
                         html: '<li>' + designatedIngredients
+                        // html: designatedIngredients
                     });
                     ingDiv.append(p)
                 }
@@ -393,26 +434,42 @@ var recipe_info_from_jsonphp_file = function () {
         }
     })
 };
-
-
-function getBackItems(){
-    console.log("jjj")
-    if(ingredientsID.length === 0){
-        clear()
+//====================================
+var getBackItems = function () {
+    if (ingredientsID.length === 0) {
+        clear();
         recipe_info_from_jsonphp_file();
-        console.log("jjj2")
     }
-}
-
-var loadStart = function() {
+};
+//====================================
+var loadStart = function () {
     console.log("loadStart");
     $("#loading").show();
-    // $body.show("loading");
 };
-var loadStop = function() {
+var loadStop = function () {
     console.log("loadStop");
     $("#loading").hide();
-    // $body.hide("loading");
 };
+//-------------------------------------------------
+var forGreg = function(){
 
+};
+//----------------------------------------------------
+// var forGreg2 = function(){
+//     $(".btn.btn-info.topIng").css("color", "gray")
+// };
+
+// var removeIng33 = function () {
+//     var text = $(this).text();
+//     text = text.substring(0, text.length - 2);
+//
+//     var indexS = txtArr.indexOf(text);
+//     txtArr.splice(indexS, 1);
+//     ingredientsID.splice(indexS, 1);
+//
+//     $(this).closest("button").remove();
+//     console.log("Current Items in Fridge", ingredientsID);
+//     getRecipe();
+//
+// };
 

@@ -127,17 +127,15 @@
     overflow-x: hidden;
 }
 
-.btn.btn-info.topIng:hover {
-    transform: skew(-10deg);
-}
-
 
 .fridge{
     padding: 12px 16px;
     background-color:whitesmoke;
     margin-bottom: 20px;
 }
-
+.topIng.selected{
+    background-color: gray;
+}
 .btn-info .addedIng{
  margin-right: 10px;
 }
@@ -171,4 +169,13 @@
 .addRecipe{
     text-align:center
 }
+
+.btn.btn-info.topIng:hover {
+    /*transform: skew(-10deg);*/
+}
+
+
+
+
+
 
