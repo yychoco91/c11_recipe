@@ -4,7 +4,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 ########## Google Settings.Client ID, Client Secret from https://console.developers.google.com #############
 $client_id = '802478348342-ovn07tr2ulnqnqk06j94cga951pufnib.apps.googleusercontent.com';
 $client_secret = 'OAgnBd1jDS02a8nPCrLaJm8A';
-$redirect_uri = 'http://localhost:8888/lfz/c11_recipe/jef_braintree/index.php';
+$redirect_uri = 'http://localhost:8888/lfz/c11_recipe/jef_braintree/index.html';
 
 ########## MySql details  #############
 $db_username = "root"; //Database Username

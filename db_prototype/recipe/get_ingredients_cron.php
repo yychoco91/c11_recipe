@@ -7,7 +7,8 @@
  *
  * get all ingredients and its ID from db
  */
-require_once('config/connect.php');
+
+require_once('../config/connect.php');
 
 $output = [
     'success' => false,
@@ -32,9 +33,11 @@ if ($result = $conn->query("SELECT `ingred_ID`, `name` FROM `ingredient`")) {
 }
 
 $result->close();
-//file write out test
-//$ingredientFile = fopen('recipe/ingredientsArray.js', "w") or die("Unable to open file");
-//fwrite($ingredientFile, $output);
-//fclose($ingredientFile);
 
-print(json_encode($output));
+//file write out test
+if($output['success']) {
+    $output_json = json_encode($output);
+    $ingredientFile = fopen('./ingredients.js', "w") or die("Unable to open file");
+    fwrite($ingredientFile, $output_json);
+    fclose($ingredientFile);
+}

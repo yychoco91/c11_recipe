@@ -1,6 +1,6 @@
 <?php
 /*  GOOGLE LOGIN BASIC - Tutorial
- *  file            - index.php
+ *  file            - index.html
  *  Developer       - Krishna Teja G S
  *  Website         - http://packetcode.com/apps/google-login/
  *  Date            - 28th Aug 2015
