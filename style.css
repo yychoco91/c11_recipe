@@ -12,12 +12,44 @@
 .jumbotron>#tagline{
     font-size:22px;
     font-family: 'Raleway Light', sans-serif;
-    /*!*color: saddlebrown;*!*/
     text-shadow: 2px 2px 6px #000000;
 }
 
-.row{
-    height:1500px;
+
+.row {
+    /*height: 1500px;*/
+}
+
+
+.card-text{
+    font-size: 15px;
+    padding-left: 15px;
+    padding-bottom: 5px;
+
+}
+
+.ingContainer{
+    padding-left: 15px;
+}
+
+.ingContainer>h3{
+   color:#14967c
+}
+
+#myModal{
+    font-family: 'Raleway', sans-serif;
+}
+.modal-header{
+    color:#14967c
+}
+
+.modal-content{
+  width: 800px;
+}
+
+.row-container{
+    height:1000px;
+>>>>>>> bd3c3d30058fd62abb3dd74f55a9ac199883ca1c
 }
 
 .sidenav{
@@ -94,14 +126,14 @@
 #site-menu {
     width: 300px;
     height: 100%;
-    position: absolute;
-    top: 0;
+    position: fixed;
     left: -300px;
     padding: 15px;
 }
 
+
 #logo{
-    margin-bottom:20px;
+    margin-bottom:12px;
 }
 
 .thumbnail {
@@ -156,16 +188,48 @@
 
 .card-title{
     font-family: 'Raleway', sans-serif;
-    font-size:25px;
+
+    /*font-size:25px;*/
+
+    /*font-size: 22px;*/
+    font-size:2.9vmin;
+}
+
+.showImage{
+    width: 400px;
+    height: 400px;
+    margin-top: 10px;
+    object-fit:cover;
+    margin-right: 15px;
+    margin-left: 33px;
+    padding: 15px;
+
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+}
+
+.cover {
+    object-fit: cover;
 }
 
 .footer-style{
     background-color: #1abc9c;
     color: #fff;
+    font-size:16px;
     padding-top: 60px;
     padding-bottom: 60px;
 }
 
+#loading{
+    display:none;
+    transform: translateX(-120px) translateY(-25px);
+    position: absolute;
+    height:150px;
+}
+
+.fb-login-button{
+    margin-top: 20px;
+}
 .addRecipe{
     text-align:center
 }
