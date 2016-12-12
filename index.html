@@ -21,8 +21,8 @@
     <script src="google_login/google.js"></script>
 
     <link rel="stylesheet" href="style.css">
+    <script src="./db_prototype/recipe/ingredient.js"></script>
     <script src="script.js"></script>
-
 
     <style>
         .affix {
@@ -74,16 +74,16 @@
                     </div>
                     <div id="collapse1" class="panel-collapse collapse in">
                         <div class="panel-body" id="ingredientButtons">
-                            <button class="btn btn-info topIng" value="87">Eggs</button>
-                            <button class="btn btn-info topIng" value="13" >Flour</button>
-                            <button class="btn btn-info topIng" value="16" >Milk</button>
-                            <button class="btn btn-info topIng" value="90" >Vegetable Oil</button>
-                            <button class="btn btn-info topIng" value="183" >Tomatoes</button>
-                            <button class="btn btn-info topIng" value="31" >Parmesan Cheese</button>
-                            <button class="btn btn-info topIng" value="121" >Sugar</button>
-                            <button class="btn btn-info topIng" value="110" >Chicken Broth</button>
-                            <button class="btn btn-info topIng" value="61" >Onions</button>
-                            <button class="btn btn-info topIng" value="48" >White Vinegar</button>
+                            <button class="btn btn-info topIng" id="eggs" value="87">Eggs</button>
+                            <button class="btn btn-info topIng" id="flour" value="13" >Flour</button>
+                            <button class="btn btn-info topIng" id="milk" value="16" >Milk</button>
+                            <button class="btn btn-info topIng" id="vegetable" value="90" >Vegetable Oil</button>
+                            <button class="btn btn-info topIng" id="tomatoes" value="183" >Tomatoes</button>
+                            <button class="btn btn-info topIng" id="parmesan cheese" value="31" >Parmesan Cheese</button>
+                            <button class="btn btn-info topIng" id="sugar" value="121" >Sugar</button>
+                            <button class="btn btn-info topIng" id="chicken broth" value="110" >Chicken Broth</button>
+                            <button class="btn btn-info topIng" id="onions" value="61" >Onions</button>
+                            <button class="btn btn-info topIng" id="white vinegar" value="48" >White Vinegar</button>
                         </div>
                     </div>
                 </div>
@@ -129,7 +129,7 @@
                         <p id="tagline">Bringing the best recipes to your home</p>
                         <form class="form-inline">
                             <input type="text" class="form-control" id="ingredientInput" size="50" placeholder="What's in your fridge?">
-                            <button type="button" class="btn btn-danger">Go</button>
+                            <button type="button" class="btn btn-danger" onclick="getValue()">Go</button>
                         </form>
                         <img src="images/loading-food-animation.gif" id="loading">
                     </div>
@@ -163,9 +163,5 @@
         </div>
     </div>
 </div>
-
-<footer class="container-fluid footer-style text-center">
-    <p> Website designed by Fridge2Plate. Recipe data provided by Spoonacular.  </p>
-</footer>
 </body>
 </html>
