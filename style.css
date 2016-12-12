@@ -20,7 +20,6 @@
     font-size: 15px;
     padding-left: 15px;
     padding-bottom: 5px;
-
 }
 
 .ingContainer{
@@ -70,16 +69,30 @@
     border-radius: 0;
     margin-bottom: 0;
     font-size: 14px;
-    letter-spacing: 5px;
+    letter-spacing: 3px;
     opacity:0.7;
     background-color: #1abc9c;
 }
-.navbar-nav  li a:hover {
-    color: #1abc9c !important;
+
+.navbar-default .navbar-nav>li>a {
+    color: white;
 }
+/*.navbar-nav  li a:hover {*/
+    /*color: #1abc9c !important;*/
+/*}*/
 
 .nav-menu{
     margin:0px 20px 0px 30px;    /*top right bottom left*/
+}
+
+.navbar-nav>li>a{
+    padding-top: 7px;
+    padding-bottom: 12px;
+    line-height:36px
+}
+
+.nav>li>a {
+    padding: 10px 10px;
 }
 
 #stuff{
@@ -224,8 +237,10 @@
 }
 
 .fb-login-button{
-    margin-top: 20px;
+    margin-top: 14px;
+    margin-right: 12px;
 }
+
 .addRecipe{
     text-align:center
 }
