@@ -38,6 +38,6 @@ $result->close();
 if($output['success']) {
     $output_json = json_encode($output);
     $ingredientFile = fopen('./ingredients.js', "w") or die("Unable to open file");
-    fwrite($ingredientFile, $output_json);
+    fwrite($ingredientFile, "var ingredientsObjForAutocomplete = $output_json;");
     fclose($ingredientFile);
 }
