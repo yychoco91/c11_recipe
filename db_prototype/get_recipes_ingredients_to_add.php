@@ -84,7 +84,7 @@
         //console.log('ingredients: ', ingredients, ' recipes ', recipes);
         $.ajax({
             method: 'post',
-            url: 'insert_recipe.php',
+            url: 'insert_recipe_ingredients.php',
             dataType: 'json',
             data: dataToSend,
             success: function(resp){

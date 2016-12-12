@@ -1,5 +1,8 @@
 var count = 0;
 
+/**
+ * function addRow - adds individual ingredient form group when user requires additional rows
+ */
 function addRow(){
     var name = "name"+count;
     var amount = "amount"+count;
@@ -46,7 +49,9 @@ function addRow(){
     );
     count++
 }
-
+/**
+ * function validateForm - checks that all required inputs are not empty
+ */
 function validateForm(){
     console.log('Validating');
     var validform = true;
@@ -68,8 +73,12 @@ function validateForm(){
        sendFormData();
    }
 }
-
+/**
+ * function sendFormData - gathers all input data and creates object to be sent to be saved
+ */
 function sendFormData(){
+    var ingredientListForAddingToDB = [];
+
     var recipe = {
         givenId: '',//use author name and random number?
         name: $('#recipeName').val(),
@@ -78,7 +87,8 @@ function sendFormData(){
         img: '',//todo need file upload
         instructions: $('#instructions').val(),
         cookingTime: $('#cookTime').val(),
-        ingredients: []
+        ingredients: [],
+        featureRecipe: true
     };
     for(var i = 0; i < count; i++){
         var name = '#name'+i+ ' input';
@@ -93,22 +103,33 @@ function sendFormData(){
         };
         ingredient.originStr = ingredient.amount + ' ' + ingredient.amountType + ' ' + ingredient.name;
         recipe.ingredients.push(ingredient);
+
+        ingredientListForAddingToDB.push(ingredient.name);
     }
+    //Expecting list of ingredients and recipes
+    //user recipes are feature thus featureRecipe property is created and sent as well
+    var dataToSend = {ingredientData: ingredientListForAddingToDB, recipeData: [recipe]};
+
     $.ajax({
         url: "./handleRecipeForm.php",
         method: 'post',
-        data: recipe,
+        data: dataToSend,
         dataType: 'json',
         success: function(resp){
             console.log(resp);
         }
     });
 }
-
+/**
+ * function removeRow - removes ingredient form group according to delete button pressed
+ */
 function removeRow(){
     $(this).parent().remove();
 }
 
+/**
+ * function clearForm - resets all inputs and select within the form
+ */
 function clearForm(){
     console.log('clear!');
     $('input').val('');
@@ -116,15 +137,23 @@ function clearForm(){
     $('select option[value=" "]').prop('selected', true);
 }
 
+/**
+ * function removeMissingInput - removes the class "missing-input" when user focuses that input
+ */
 function removeMissingInput(){
+    //return input to normal styling by removing the class
     $('input').on('focus', function(){
         $(this).removeClass("missing-input");
     });
+    //resets textarea by removing class
     $('textarea').on('focus', function(){
         $(this).removeClass("missing-input");
     });
 }
 
+/**
+ * function applyClickHandlers - initializes all click handlers and calls addRow() to add one row on start
+ */
 function applyClickHandlers(){
     console.log('applying');
     addRow();
