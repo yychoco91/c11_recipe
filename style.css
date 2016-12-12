@@ -223,6 +223,9 @@
     height:150px;
 }
 
+.fb-login-button{
+    margin-top: 20px;
+}
 .addRecipe{
     text-align:center
 }
