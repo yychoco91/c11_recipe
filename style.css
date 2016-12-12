@@ -12,12 +12,44 @@
 .jumbotron>#tagline{
     font-size:22px;
     font-family: 'Raleway Light', sans-serif;
-    /*!*color: saddlebrown;*!*/
     text-shadow: 2px 2px 6px #000000;
 }
 
-.row{
-    height:1050px;
+
+.row {
+    /*height: 1500px;*/
+}
+
+
+.card-text{
+    font-size: 15px;
+    padding-left: 15px;
+    padding-bottom: 5px;
+
+}
+
+.ingContainer{
+    padding-left: 15px;
+}
+
+.ingContainer>h3{
+   color:#14967c
+}
+
+#myModal{
+    font-family: 'Raleway', sans-serif;
+}
+.modal-header{
+    color:#14967c
+}
+
+.modal-content{
+  width: 800px;
+}
+
+.row-container{
+    height:1000px;
+>>>>>>> bd3c3d30058fd62abb3dd74f55a9ac199883ca1c
 }
 
 .sidenav{
@@ -71,7 +103,6 @@
     height: 100%;
     position: relative;
 
-
     -webkit-transform: translateX(0);
     transform: translateX(0);
 
@@ -84,30 +115,25 @@
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 
-
-
 }
 .show-nav #site-canvas {
-    padding-right:300px;
-
     -webkit-transform: translateX(300px);
     transform: translateX(300px);
 
     -webkit-transform: translate3d(300px, 0, 0);
     transform: translate3d(300px, 0, 0);
-
 }
 #site-menu {
     width: 300px;
     height: 100%;
-    position: absolute;
-    top: 0;
+    position: fixed;
     left: -300px;
     padding: 15px;
 }
 
+
 #logo{
-    margin-bottom:20px;
+    margin-bottom:12px;
 }
 
 .thumbnail {
@@ -133,17 +159,15 @@
     overflow-x: hidden;
 }
 
-.btn.btn-info.topIng:hover {
-    transform: skew(-10deg);
-}
-
 
 .fridge{
     padding: 12px 16px;
     background-color:whitesmoke;
     margin-bottom: 20px;
 }
-
+.topIng.selected{
+    background-color: gray;
+}
 .btn-info .addedIng{
  margin-right: 10px;
 }
@@ -164,20 +188,58 @@
 
 .card-title{
     font-family: 'Raleway', sans-serif;
-    font-size:22px;
+
+    /*font-size:25px;*/
+
+    /*font-size: 22px;*/
+    font-size:2.9vmin;
+}
+
+.showImage{
+    width: 400px;
+    height: 400px;
+    margin-top: 10px;
+    object-fit:cover;
+    margin-right: 15px;
+    margin-left: 33px;
+    padding: 15px;
+
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
 }
 
 .cover {
-object-fit: cover;
+    object-fit: cover;
 }
 
 .footer-style{
     background-color: #1abc9c;
     color: #fff;
+    font-size:16px;
     padding-top: 60px;
     padding-bottom: 60px;
 }
 
+#loading{
+    display:none;
+    transform: translateX(-120px) translateY(-25px);
+    position: absolute;
+    height:150px;
+}
+
+.fb-login-button{
+    margin-top: 20px;
+}
 .addRecipe{
     text-align:center
 }
+
+.btn.btn-info.topIng:hover {
+    /*transform: skew(-10deg);*/
+}
+
+
+
+
+
+
