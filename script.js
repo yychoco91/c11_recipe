@@ -17,12 +17,12 @@ var selectedIngredients = {};
  * @returns - data from get_ingredients.php
  */
 var getIngredients = function () {
-    $.ajax({
-        url: "./db_prototype/get_ingredients.php",
-        dataType: "json",
-        method: "post",
-        success: function (response) {
-            console.log("data from get_ingredients.php\n", response);
+    // $.ajax({
+    //     url: "./db_prototype/recipe/ingredients.js",
+    //     dataType: "json",
+    //     method: "post",
+    //     success: function (response) {
+    //         console.log("data from get_ingredients.php\n", response);
 
             // -----------Auto Complete-----------
             updatedIngredientsArray = [];
@@ -39,7 +39,7 @@ var getIngredients = function () {
             //-----On Go Button-----
             $(".btn.btn-danger").click(function () {
                 var ingredientInputSelected = $("#ingredientInput").val();
-                var objectData = response.data[ingredientInputSelected];
+                var objectData = ingredientsObjForAutocomplete.data[ingredientInputSelected];
                 ingredientCheck(objectData);
                 console.log("Ingredients Added to Fridge From Input", ingredientsID);
                 $("#ingredientInput").val("");
@@ -55,8 +55,8 @@ var getIngredients = function () {
                 }
             });
         }
-    })
-};
+    // })
+// }
 /**
  * getRecipe - Ajax call, dom creation when called
  * @returns - recipes from get_recipes.php
