@@ -82,7 +82,7 @@ function sendFormData(){
     var recipe = {
         givenId: '',//use author name and random number?
         name: $('#recipeName').val(),
-        author: '',//todo grab from login
+        author: 'Arthur Dent',//todo grab from login
         url: '',//todo need form
         img: '',//todo need file upload
         instructions: $('#instructions').val(),
@@ -111,7 +111,7 @@ function sendFormData(){
     var dataToSend = {ingredientData: ingredientListForAddingToDB, recipeData: [recipe]};
 
     $.ajax({
-        url: "./handleRecipeForm.php",
+        url: "../handleRecipeForm.php",
         method: 'post',
         data: dataToSend,
         dataType: 'json',
