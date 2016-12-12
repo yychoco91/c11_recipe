@@ -17,7 +17,6 @@ require_once __DIR__ . '/vendor/autoload.php';
     <!--jQuery UI-->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <<<<<<< HEAD:index.php
 
     <!--Login Scripts (FB & Google)-->
     <script src="facebook_login/facebook.js"></script>
@@ -26,12 +25,6 @@ require_once __DIR__ . '/vendor/autoload.php';
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 
-
-
-    =======
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    >>>>>>> d152f952a7338c54e4f30a00875277dbfb18fea4:index.html
 </head>
 <body>
 <nav class="navbar navbar-default">

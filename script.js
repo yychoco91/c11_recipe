@@ -87,6 +87,7 @@ var getRecipe = function () {
             var ingName;
             var amount;
             var amountType;
+            var instructions;
             var designatedIngredients;
 
             for (var i = 0; i < response.data.length; i++) {
@@ -119,7 +120,7 @@ var getRecipe = function () {
                     text: recipeName
                 });
                 var recipeUrl = $("<p>", {
-                    html: "<h3>Recipe Link</h3>"+'<a href="' + url + '">' + url + '</a>'
+                    html: "<h3>Recipe Link</h3>"+'<a href="' + url + '" target="_blank">' + url + '</a>'
                 });
 
                 var ingDiv = $('<div>', {
@@ -139,15 +140,21 @@ var getRecipe = function () {
                     amountType = response.data[i].ingredient[j].amountType;
                     // designatedIngredients = Math.round(amount) + " " + amountType + " " + ingName;
                     designatedIngredients = response.data[i].ingredient[j].string;
+                    instructions=response.data[i].instructions;
 
                     var listItem = $("<li>", {
                         class: "card-text",
                         html: designatedIngredients
                     });
 
+                    var steps = $("<p>", {
+                        class: "steps-style",
+                        html: "<h3>Instructions</h3>"+instructions
+                    });
+
                     ingDiv.append(listItem)
                 }
-                innerDiv.append(ingDiv.append(recipeUrl));
+                innerDiv.append(ingDiv.append(steps,recipeUrl));
             }
         },
         error: function () {
@@ -180,7 +187,7 @@ var buttonsPushedToMainDisplay = function () {
         var returnObject = {
             list_button: $(this),
             included_button: newButton
-        }
+        };
         selectedIngredients[txt] = returnObject;
         getRecipe();
         // console.log(val)
@@ -203,11 +210,6 @@ var getValue = function () {
  */
 var removeIng = function () {
     console.log(this)
-    // forGreg();
-    // var buttonVal = $(this).attr("value");
-    // console.log(buttonVal)
-
-
 
     var text = $(this).text();
     //text = text.substring(0, text.length - 2);
@@ -426,16 +428,12 @@ var recipe_info_from_jsonphp_file = function () {
                     ingName = response.recipeData[i].ingredients[j].name;
                     amount = response.recipeData[i].ingredients[j].amount;
                     amountType = response.recipeData[i].ingredients[j].amountType;
-
-
                     // designatedIngredients = response.recipeData[i].ingredients[j].string;
                     // console.log(designatedIngredients);
                     designatedIngredients = Math.round(amount) + " " + amountType + " " + ingName;
                     var listItem = $("<li>", {
                         class: "card-text",
-
-                        html: '<li>' + designatedIngredients
-                        // html: designatedIngredients
+                        html:  designatedIngredients
                     });
                     ingDiv.append(listItem)
                 }
@@ -460,26 +458,3 @@ var loadStop = function () {
     console.log("loadStop");
     $("#loading").hide();
 };
-//-------------------------------------------------
-var forGreg = function(){
-
-};
-//----------------------------------------------------
-// var forGreg2 = function(){
-//     $(".btn.btn-info.topIng").css("color", "gray")
-// };
-
-// var removeIng33 = function () {
-//     var text = $(this).text();
-//     text = text.substring(0, text.length - 2);
-//
-//     var indexS = txtArr.indexOf(text);
-//     txtArr.splice(indexS, 1);
-//     ingredientsID.splice(indexS, 1);
-//
-//     $(this).closest("button").remove();
-//     console.log("Current Items in Fridge", ingredientsID);
-//     getRecipe();
-//
-// };
-
