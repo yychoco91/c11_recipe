@@ -13,7 +13,6 @@
                 <input class="form-control" type="text" name="recipeName" id="recipeName">
             </div>
         </div>
-        <hr>
         <legend>Ingredients List:</legend>
 
         <div id="ingredientArea">
@@ -37,6 +36,8 @@
             </div>
         </div>
         <button type="button" id="submitBtn" class="pull-right btn btn-success">Submit</button>
+        <button type="button" id="clearBtn" class="pull-right btn btn-danger">Clear form</button>
+
     </form>
 
 </div>
