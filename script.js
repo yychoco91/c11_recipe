@@ -27,7 +27,8 @@ var getIngredients = function () {
 
             // -----------Auto Complete-----------
             updatedIngredientsArray = [];
-            newIngredients = (response.data);
+            //newIngredients = (response.data);
+            newIngredients = ingredientsObjForAutocomplete.data;
             for (var key in newIngredients) {
                 if (newIngredients.hasOwnProperty(key)) {
                     updatedIngredientsArray.push(key);
