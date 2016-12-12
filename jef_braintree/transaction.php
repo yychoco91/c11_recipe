@@ -7,7 +7,7 @@
     if (isset($_GET["id"])) {
         $transaction = Braintree\Transaction::find($_GET["id"]);
         print("<pre>");
-        print_r($transaction);
+//        print_r($transaction);
         print("</pre>");
         $transactionSuccessStatuses = [
             Braintree\Transaction::AUTHORIZED,
@@ -41,8 +41,8 @@
                 <p><?php echo($message)?></p>
             </section>
             <section>
-                <a class="button primary back" href="index.php">
-                    <span>Test Another Transaction</span>
+                <a class="button primary back" href="../jef_feat_recipe/index.php">
+                    <span>Add Recipe</span>
                 </a>
             </section>
         </div>

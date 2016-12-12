@@ -1,3 +1,7 @@
+<?php
+session_start();
+require_once __DIR__ . '/vendor/autoload.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +17,7 @@
     <!--jQuery UI-->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<<<<<<< HEAD:index.php
+    <<<<<<< HEAD:index.php
 
     <!--Login Scripts (FB & Google)-->
     <script src="facebook_login/facebook.js"></script>
@@ -24,10 +28,10 @@
 
 
 
-=======
+    =======
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
->>>>>>> d152f952a7338c54e4f30a00875277dbfb18fea4:index.html
+    >>>>>>> d152f952a7338c54e4f30a00875277dbfb18fea4:index.html
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -43,10 +47,10 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li class="fb-login-button"
-                         data-max-rows="1"
-                         data-size="large"
-                         data-show-faces="false"
-                         data-auto-logout-link="true">
+                    data-max-rows="1"
+                    data-size="large"
+                    data-show-faces="false"
+                    data-auto-logout-link="true">
                 </li>
                 <li><a class="g-signin2" data-onsuccess="onSignIn"></a></li>
                 <li><a href="#" onclick="signOut();">Sign out</a></li>
