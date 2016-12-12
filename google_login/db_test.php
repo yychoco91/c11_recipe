@@ -4,7 +4,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 ########## Google Settings.Client ID, Client Secret from https://console.developers.google.com #############
 $client_id = '802478348342-ovn07tr2ulnqnqk06j94cga951pufnib.apps.googleusercontent.com';
 $client_secret = 'OAgnBd1jDS02a8nPCrLaJm8A';
-$redirect_uri = 'http://localhost:8888/lfz/c11_recipe/jef_braintree/index.html';
+$redirect_uri = 'http://localhost:8888/lfz/c11_recipe/jef_braintree/index.php';
 
 ########## MySql details  #############
 $db_username = "root"; //Database Username
@@ -53,7 +53,6 @@ if (isset($authUrl)) {
 } else {
 
     $user = $service->userinfo->get(); //get user info
-
     // connect to database
     $mysqli = new mysqli($host_name, $db_username, $db_password, $db_name);
     if ($mysqli->connect_error) {
@@ -70,12 +69,20 @@ if (isset($authUrl)) {
     if ($user_count) //if user already exist change greeting text to "Welcome Back"
     {
         echo 'Welcome back ' . $user->name . '! [<a href="' . $redirect_uri . '?logout=1">Log Out</a>]';
+        $_SESSION['loginUser'] = $user->id;
+        $_SESSION['fullName'] = $user->name;
+        $_SESSION['email'] = $user->email;
+        header("location: ../jef_braintree/index.php");
     } else //else greeting text "Thanks for registering"
     {
         echo 'Hi ' . $user->name . ', Thanks for Registering! [<a href="' . $redirect_uri . '?logout=1">Log Out</a>]';
         $statement = $mysqli->prepare("INSERT INTO google_users (google_id, google_name, google_email, google_link, google_picture_link) VALUES (?,?,?,?,?)");
         $statement->bind_param('issss', $user->id, $user->name, $user->email, $user->link, $user->picture);
         $statement->execute();
+        $_SESSION['loginUser'] = $user->id;
+        $_SESSION['fullName'] = $user->name;
+        $_SESSION['email'] = $user->email;
+        header("location: ../jef_braintree/index.php");
         echo $mysqli->error;
     }
 

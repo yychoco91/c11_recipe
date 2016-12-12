@@ -1,4 +1,18 @@
-<?php require_once("braintree_init.php"); ?>
+<?php
+session_start();
+if (exist($_GET['code'])) {
+    $client->authenticate($_GET['code']);
+    $_SESSION['access_token'] = $client->setAccessToken($client);
+    $name = $_SESSION['fullName'];
+    print_r($name);
+    $email = $_SESSION['email'];
+} else {
+
+}
+require_once("braintree_init.php");
+//require_once APPPATH . “google-api-php-client-master/src/Google/Client.php”;
+//require_once(APPPATH . "vendor/google/auth/src/OAuth2.php”);
+?>
 
 <html>
 
@@ -20,7 +34,7 @@
                 <label for="first_name">
                     <span class="input-label">First Name</span>
                     <div class="input-wrapper first-name-wrapper">
-                        <input type="text" name="first_name" id="first_name" autocomplete="off"/>
+                        <input type="text" name="first_name" value="<?php echo $name; ?>" id="first_name" autocomplete="off"/>
                     </div>
                 </label>
                 <label for="l_name" id="middle_border_fix">
@@ -32,7 +46,7 @@
                 <label for="email">
                     <span class="input-label">Email</span>
                     <div class="input-wrapper email-wrapper">
-                        <input type="text" name="email" placeholder="Email" id="email"/>
+                        <input type="text" name="email" value="<?php echo $email; ?>"placeholder="Email" id="email"/>
                     </div>
                 </label>
             </section>
