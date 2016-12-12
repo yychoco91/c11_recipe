@@ -18,7 +18,6 @@ var selectedIngredients = {};
  */
 var getIngredients = function () {
     $.ajax({
-
         url: "./db_prototype/get_ingredients.php",
         dataType: "json",
         method: "post",
@@ -54,7 +53,6 @@ var getIngredients = function () {
                     console.log("Ingredients Added to Fridge From Input", ingredientsID);
                     $("#ingredientInput").val("");
                 }
-
             });
         }
     })
@@ -166,9 +164,7 @@ var clear = function () {
  */
 var buttonsPushedToMainDisplay = function () {
     $(".btn.btn-info.topIng").click(function () {
-        // forGreg();
-
-        $(this).addClass('selected'); //turns gray
+       $(this).addClass('selected'); //turns gray
 
         var val = $(this).attr("value");
         var txt = $(this).text();
@@ -180,13 +176,11 @@ var buttonsPushedToMainDisplay = function () {
         var returnObject = {
             list_button: $(this),
             included_button: newButton
-        }
+        };
         selectedIngredients[txt] = returnObject;
         getRecipe();
-        // console.log(val)
     });
 };
-
 /**
  * getValue - Pushes Buttons to Container Using the "GO" Button
  */
@@ -194,6 +188,7 @@ var txtArr = [];
 var getValue = function () {
     $('#ingredientInput').each(function () {
         var theValue = $(this).val();
+        // ingredientCheck()
         txtArr.push(theValue);
         newButtonCreation()
     });
@@ -202,15 +197,7 @@ var getValue = function () {
  * removeIng - Removes Buttons off the Main Display and ingredientsID Array
  */
 var removeIng = function () {
-    console.log(this)
-    // forGreg();
-    // var buttonVal = $(this).attr("value");
-    // console.log(buttonVal)
-
-
-
     var text = $(this).text();
-    //text = text.substring(0, text.length - 2);
 
     var indexS = txtArr.indexOf(text);
     txtArr.splice(indexS, 1);
@@ -219,33 +206,22 @@ var removeIng = function () {
     $(this).closest("button").remove();
     console.log($(this).text());
     console.log("Current Items in Fridge", ingredientsID);
-    // $('.topIng').css("background", "#5bc0de"); // turns back to #31b0d5
-    // var myDiv = $('button[value="' + buttonVal + '"]');
-    // console.log(myDiv)
     var btnText = '#';
-    btnText += $(this).text();
-    //$('#ingredientButtons').find(btnText).css('background-color','blue');
-
-    selectedIngredients[text].list_button.removeClass('selected');
-    delete selectedIngredients[text];
-
     getRecipe();
 
+    /*removes class that was added when buttons from NAV are duplicated to Main Display;
+     Then deletes text property in selectedIngredient */
+    selectedIngredients[text].list_button.removeClass('selected');
+    delete selectedIngredients[text];
 };
 var addClickHandlerToRemovableIngredient = function (element) {
     element.on('click', removeIng);
 };
 //-----Creates Button-----
-var newButtonCreation = function (/*val*/) {
+var newButtonCreation = function () {
     var fridgeButton = $("<button>", {
-
         html: txtArr[txtArr.length - 1],
         class: "btn btn-info fridgeButton"
-        /*"value": val*/
-
-        // text: txtArr[txtArr.length - 1] + "  x",
-        // class: "btn btn-info addedIng fridgeButton"
-
     });
     addClickHandlerToRemovableIngredient(fridgeButton);
     $(".container-fluid .fridge").append(fridgeButton);
@@ -263,6 +239,27 @@ var ingredientCheck = function (ingredient) {
         getValue();
         getRecipe();
     }
+};
+/**
+ * getBackItems - Checks length of ingredientsID array and if equates to 0;
+ * If true then clears row to display main recipes in Main Display
+ */
+var getBackItems = function () {
+    if (ingredientsID.length === 0) {
+        clear();
+        recipe_info_from_jsonphp_file();
+    }
+};
+/**
+ * Loading - Starts and then ends loading image for Ajax Calls
+ */
+var loadStart = function () {
+    console.log("loadStart");
+    $("#loading").show();
+};
+var loadStop = function () {
+    console.log("loadStop");
+    $("#loading").hide();
 };
 /**
  * noExist - Dynamically Displays a Modal Telling user Their Ingredient does not exist
@@ -296,7 +293,7 @@ var noExist = function () {
         class: "modal-body"
     });
     var p = $("<p>", {
-        html: "Your ingredient is not found"
+        html: "Your" + " " +  +"ingredient is not found"
     });
     var modalFooter = $("<div>", {
         class: "modal-footer"
@@ -366,8 +363,6 @@ function toggleNav() {
         $('#site-wrapper').addClass('show-nav');
     }
 }
-
-
 // ==================DUMMY DATA===============================
 // ====================ajax call to json.php====================
 var recipe_info_from_jsonphp_file = function () {
@@ -376,7 +371,7 @@ var recipe_info_from_jsonphp_file = function () {
         dataType: "json",
         method: "post",
         success: function (response) {
-            console.log("data from json.php\n", response);
+            //console.log("data from json.php\n", response);
             var authorName;
             var url;
             for (var i = 0; i < response.recipeData.length; i++) {
@@ -426,16 +421,12 @@ var recipe_info_from_jsonphp_file = function () {
                     ingName = response.recipeData[i].ingredients[j].name;
                     amount = response.recipeData[i].ingredients[j].amount;
                     amountType = response.recipeData[i].ingredients[j].amountType;
-
-
-                    // designatedIngredients = response.recipeData[i].ingredients[j].string;
-                    // console.log(designatedIngredients);
                     designatedIngredients = Math.round(amount) + " " + amountType + " " + ingName;
+
                     var listItem = $("<li>", {
                         class: "card-text",
 
                         html: '<li>' + designatedIngredients
-                        // html: designatedIngredients
                     });
                     ingDiv.append(listItem)
                 }
@@ -444,42 +435,7 @@ var recipe_info_from_jsonphp_file = function () {
         }
     })
 };
-//====================================
-var getBackItems = function () {
-    if (ingredientsID.length === 0) {
-        clear();
-        recipe_info_from_jsonphp_file();
-    }
-};
-//====================================
-var loadStart = function () {
-    console.log("loadStart");
-    $("#loading").show();
-};
-var loadStop = function () {
-    console.log("loadStop");
-    $("#loading").hide();
-};
 //-------------------------------------------------
-var forGreg = function(){
 
-};
-//----------------------------------------------------
-// var forGreg2 = function(){
-//     $(".btn.btn-info.topIng").css("color", "gray")
-// };
-
-// var removeIng33 = function () {
-//     var text = $(this).text();
-//     text = text.substring(0, text.length - 2);
-//
-//     var indexS = txtArr.indexOf(text);
-//     txtArr.splice(indexS, 1);
-//     ingredientsID.splice(indexS, 1);
-//
-//     $(this).closest("button").remove();
-//     console.log("Current Items in Fridge", ingredientsID);
-//     getRecipe();
-//
-// };
+txtArr
 
