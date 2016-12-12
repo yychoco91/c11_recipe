@@ -1,5 +1,8 @@
 var count = 0;
 
+/**
+ * function addRow - adds individual ingredient form group when user requires additional rows
+ */
 function addRow(){
     var name = "name"+count;
     var amount = "amount"+count;
@@ -46,18 +49,46 @@ function addRow(){
     );
     count++
 }
-
+/**
+ * function validateForm - checks that all required inputs are not empty
+ */
 function validateForm(){
-    var validForm = false;
+    console.log('Validating');
+    var validform = true;
+
+    $('input').each(function(){
+        //console.log('Input: ', this);
+        if($(this).val().length === 0){
+            $(this).addClass("missing-input");
+            validform = false;
+        }
+    });
+
+    if($('textarea').val().length === 0){
+        $('textarea').addClass("missing-input");
+        validform = false;
+    }
+
+   if(validform){
+       sendFormData();
+   }
+}
+/**
+ * function sendFormData - gathers all input data and creates object to be sent to be saved
+ */
+function sendFormData(){
+    var ingredientListForAddingToDB = [];
+
     var recipe = {
         givenId: '',//use author name and random number?
         name: $('#recipeName').val(),
-        author: '',//todo grab from login
+        author: 'Arthur Dent',//todo grab from login
         url: '',//todo need form
         img: '',//todo need file upload
         instructions: $('#instructions').val(),
         cookingTime: $('#cookTime').val(),
-        ingredients: []
+        ingredients: [],
+        featureRecipe: true
     };
     for(var i = 0; i < count; i++){
         var name = '#name'+i+ ' input';
@@ -72,32 +103,65 @@ function validateForm(){
         };
         ingredient.originStr = ingredient.amount + ' ' + ingredient.amountType + ' ' + ingredient.name;
         recipe.ingredients.push(ingredient);
+
+        ingredientListForAddingToDB.push(ingredient.name);
     }
+    //Expecting list of ingredients and recipes
+    //user recipes are feature thus featureRecipe property is created and sent as well
+    var dataToSend = {ingredientData: ingredientListForAddingToDB, recipeData: [recipe]};
 
-    if(validForm){ sendFormData(recipe); }
-}
-
-function sendFormData(recipe){
     $.ajax({
-        url: "./handleRecipeForm.php",
+        url: "../handleRecipeForm.php",
         method: 'post',
-        data: recipe,
+        data: dataToSend,
         dataType: 'json',
         success: function(resp){
             console.log(resp);
         }
     });
 }
-
+/**
+ * function removeRow - removes ingredient form group according to delete button pressed
+ */
 function removeRow(){
     $(this).parent().remove();
 }
 
+/**
+ * function clearForm - resets all inputs and select within the form
+ */
+function clearForm(){
+    console.log('clear!');
+    $('input').val('');
+    $('textarea').val('');
+    $('select option[value=" "]').prop('selected', true);
+}
+
+/**
+ * function removeMissingInput - removes the class "missing-input" when user focuses that input
+ */
+function removeMissingInput(){
+    //return input to normal styling by removing the class
+    $('input').on('focus', function(){
+        $(this).removeClass("missing-input");
+    });
+    //resets textarea by removing class
+    $('textarea').on('focus', function(){
+        $(this).removeClass("missing-input");
+    });
+}
+
+/**
+ * function applyClickHandlers - initializes all click handlers and calls addRow() to add one row on start
+ */
 function applyClickHandlers(){
+    console.log('applying');
     addRow();
+    removeMissingInput();
     $('#addIngredient').click(addRow);
     $('#ingredientArea').on("click",".removeIngredient",removeRow);
     $('#submitBtn').click(validateForm);
+    $('#clearBtn').click(clearForm);
 }
 
 $(document).ready(applyClickHandlers);
