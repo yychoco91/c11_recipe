@@ -103,7 +103,7 @@ var getRecipe = function () {
                 });
                 var img = $("<img>", {
                     src: imgSrc,
-                    class: "showImage img-responsive cover",
+                    class: " img-responsive cover",
                     width: "100%",
                     height: "286px",
                     'data-toggle': "modal",
@@ -118,7 +118,7 @@ var getRecipe = function () {
                     text: recipeName
                 });
                 var recipeUrl = $("<p>", {
-                    html: '<a href="' + url + '">' + url + '</a>'
+                    html: "<h3>Recipe Link</h3>"+'<a href="' + url + '">' + url + '</a>'
                 });
 
                 var ingDiv = $('<div>', {
@@ -136,13 +136,15 @@ var getRecipe = function () {
                     ingName = response.data[i].ingredient[j].name;
                     amount = response.data[i].ingredient[j].amount;
                     amountType = response.data[i].ingredient[j].amountType;
-                    designatedIngredients = Math.round(amount) + " " + amountType + " " + ingName;
+                    // designatedIngredients = Math.round(amount) + " " + amountType + " " + ingName;
+                    designatedIngredients = response.data[i].ingredient[j].string;
 
-                    var p = $("<p>", {
+                    var listItem = $("<li>", {
                         class: "card-text",
-                        html: '<li>' + designatedIngredients
+                        html: designatedIngredients
                     });
-                    ingDiv.append(p)
+
+                    ingDiv.append(listItem)
                 }
                 innerDiv.append(ingDiv.append(recipeUrl));
             }
@@ -205,7 +207,7 @@ var addClickHandlerToRemovableIngredient = function (element) {
 //-----Creates Button-----
 var newButtonCreation = function () {
     var fridgeButton = $("<button>", {
-        text: txtArr[txtArr.length - 1] + " x",
+        text: txtArr[txtArr.length - 1] + "  x",
         class: "btn btn-info addedIng fridgeButton"
     });
     addClickHandlerToRemovableIngredient(fridgeButton);
@@ -226,7 +228,7 @@ var ingredientCheck = function (ingredient) {
     }
 };
 /**
- * noExist - Dynamically Displays a Modal Telling user Their Ingredient Has No Existence
+ * noExist - Dynamically Displays a Modal Telling user Their Ingredient does not exist
  */
 var noExist = function () {
 
@@ -304,7 +306,7 @@ var titleImgToModal = function () {
         var recipeTitle = $(this).parent().find(".card-title").text();
 
         $("#myModal .showImage").attr("src", image);
-        $('#myModal .ingContainer').html($(this).next().find('.ingDiv').html());
+        $('#myModal .ingContainer').html( '<h3>'+ "Ingredients"+ '</h3>'+ $(this).next().find('.ingDiv').html());
         $("#myModal .modal-header").html("<h3>" + recipeTitle + "</h3>");
     });
 };
@@ -327,6 +329,7 @@ function toggleNav() {
         $('#site-wrapper').addClass('show-nav');
     }
 }
+
 
 // ==================DUMMY DATA===============================
 // ====================ajax call to json.php====================
@@ -353,7 +356,7 @@ var recipe_info_from_jsonphp_file = function () {
                 });
                 var img = $("<img>", {
                     src: imgSrc,
-                    class: " thumbnail showImage img-responsive cover",
+                    class: " thumbnail img-responsive cover",
                     width: "100%",
                     height: "286px",
                     'data-toggle': "modal",
@@ -368,7 +371,7 @@ var recipe_info_from_jsonphp_file = function () {
                     text: recipeName
                 });
                 var recipeUrl = $("<p>", {
-                    html: '<a href="' + url + '">' + url + '</a>'
+                    html: "<h3>Recipe Link</h3>"+'<a href="' + url + '">' + url + '</a>'
                 });
                 var ingDiv = $('<div>', {
                     class: 'ingDiv',
@@ -387,11 +390,11 @@ var recipe_info_from_jsonphp_file = function () {
                     amount = response.recipeData[i].ingredients[j].amount;
                     amountType = response.recipeData[i].ingredients[j].amountType;
                     designatedIngredients = Math.round(amount) + " " + amountType + " " + ingName;
-                    var p = $("<p>", {
+                    var listItem = $("<li>", {
                         class: "card-text",
-                        html: '<li>' + designatedIngredients
+                        html:  designatedIngredients
                     });
-                    ingDiv.append(p)
+                    ingDiv.append(listItem)
                 }
                 innerDiv.append(ingDiv.append(recipeUrl));
             }
