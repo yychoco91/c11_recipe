@@ -92,7 +92,6 @@ function sendFormData(){
     var ingredientListForAddingToDB = [];
 
     var recipe = {
-        givenId: '',//use author name and random number?
         name: $('#recipeName').val(),
         author: 'Arthur Dent',//todo grab from login
         url: '',//todo need form
