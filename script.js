@@ -16,6 +16,7 @@ var selectedIngredients = {};
  * featuredRecipe - Default Menu Recipes
  */
 var featuredRecipe = function () {
+    console.log("featured");
 
     var imgSrc;
     var recipeName;
@@ -128,7 +129,7 @@ var getRecipe = function () {
             ingredients: ingredientsID
         },
         success: function (response) {
-            getBackItems();
+            //getBackItems();
             /*put function here so that it is called after ajax call for getRecipe is completed*/
             loadStop();
             console.log("data from get_recipes.php\n", response);
@@ -346,7 +347,12 @@ var removeIng = function () {
     console.log($(this).text());
     console.log("Current Items in Fridge", ingredientsID);
     var btnText = '#';
-    getRecipe();
+
+    if(ingredientsID.length > 0){
+        getRecipe()
+    }
+    getBackItems()
+    // getRecipe();
 
     /*removes class that was added when buttons from NAV are duplicated to Main Display;
      Then deletes text property in selectedIngredient */
@@ -385,6 +391,7 @@ var ingredientCheck = function (ingredient) {
  */
 var getBackItems = function () {
     if (ingredientsID.length === 0) {
+        console.log("jjjj")
         clear();
         featuredRecipe();
     }
