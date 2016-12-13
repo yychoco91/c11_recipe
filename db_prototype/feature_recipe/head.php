@@ -16,6 +16,13 @@
         .missing-input{
             border-color: #d9534f;
         }
+        #alertBox{
+            position: absolute;
+            bottom: 10%;
+        }
+        .container{
+            position: relative;
+        }
     </style>
 </head>
 
