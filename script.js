@@ -131,7 +131,7 @@ var getRecipe = function () {
                 });
                 var img = $("<img>", {
                     src: imgSrc,
-                    class: " img-responsive cover",
+                    class: "cover",
                     width: "100%",
                     height: "286px",
                     'data-toggle': "modal",
@@ -429,7 +429,7 @@ var recipe_info_from_jsonphp_file = function () {
                 });
                 var img = $("<img>", {
                     src: imgSrc,
-                    class: " thumbnail img-responsive cover",
+                    class: "  cover",
                     width: "100%",
                     height: "286px",
                     'data-toggle': "modal",
@@ -480,13 +480,7 @@ var recipe_info_from_jsonphp_file = function () {
     })
 
 };
-//====================================
-var getBackItems = function () {
-    if (ingredientsID.length === 0) {
-        clear();
-        recipe_info_from_jsonphp_file();
-    }
-};
+
 //====================================
 var loadStart = function () {
     console.log("loadStart");
