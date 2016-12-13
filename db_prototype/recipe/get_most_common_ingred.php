@@ -13,14 +13,14 @@ if($conn->connect_errno){
 }
 $output['success'] = false;
 
-if(result = $conn->query("SELECT `name`, `ingred_ID`, COUNT(`ingred_ID`) AS appearance
+if($result = $conn->query("SELECT `name`, `ingred_ID`, COUNT(`ingred_ID`) AS appearance
 FROM `ingredientsToRecipe` 
 GROUP BY `name`, `ingred_ID` 
 ORDER BY appearance 
 DESC LIMIT 15")){
 
     while($row = $result->fetch_assoc()){
-        $output['data'][$row['name']] = $row[`ingred_ID`];
+        $output['data'][$row['name']] = $row['ingred_ID'];
     }
 
     $output['success'] = true;
@@ -31,6 +31,6 @@ $result->close();
 if($output['success']) {
     $output_json = json_encode($output);
     $ingredientFile = fopen('./popularIngredients.js', "w") or die("Unable to open file");
-    fwrite($ingredientFile, $output_json);
+    fwrite($ingredientFile, "var mostCommonIngredients = $output_json;");
     fclose($ingredientFile);
 }

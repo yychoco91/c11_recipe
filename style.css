@@ -92,6 +92,10 @@
     padding: 10px 10px;
 }
 
+#ingredientButtons .topIng {    /*for dynamic top Ing*/
+    margin-right: 5px;
+}
+
 #stuff{
     background-color: blanchedalmond;
 }
