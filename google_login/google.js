@@ -11,9 +11,25 @@ function onSignIn(googleUser) {
     // The ID token you need to pass to your backend:
     var id_token = googleUser.getAuthResponse().id_token;
     console.log("ID Token: " + id_token);
-    $.ajax(
 
-    )
+    var sendData = {
+        fName: profile.getGivenName(),
+        lName: profile.getFamilyName(),
+        email: profile.getEmail(),
+        idToken: id_token,
+        id: profile.getId()
+    };
+
+    $.ajax({
+        url: './google_login/save_user.php',
+        data: sendData,
+        method: 'POST',
+        cache: false,
+        dataType: 'json',
+        success: function(resp){
+            console.log(resp);
+        }
+    });
 }
 
 function signOut() {

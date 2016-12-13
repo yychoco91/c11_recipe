@@ -34,6 +34,6 @@ if ($result->success || !is_null($result->transaction)) {
         $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
     }
     $_SESSION["errors"] = $errorString;
-    header("Location: index.html");
+    header("Location: index.php");
 }
 ?>

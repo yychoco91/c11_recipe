@@ -22,6 +22,18 @@ $client->addScope("profile");
 
 $service = new Google_Service_Oauth2($client);
 
+echo '<pre>GET';
+print_r($_GET);
+echo '</pre>';
+
+echo '<pre>POST';
+print_r($_POST);
+echo '</pre>';
+
+echo '<pre>SESSION';
+print_r($_SESSION);
+echo '</pre>';
+
 //If $_GET['code'] is empty, redirect user to google authentication page for code.
 //Code is required to acquire Access Token from google
 //Once we have access token, assign token to session variable
@@ -29,7 +41,7 @@ $service = new Google_Service_Oauth2($client);
 if (isset($_GET['code'])) {
     $client->authenticate($_GET['code']);
     $_SESSION['access_token'] = $client->getAccessToken();
-    header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
+    //header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
     exit;
 }
 
@@ -44,6 +56,14 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 echo '<div style="margin:20px">';
 if (isset($authUrl)) {
     //show login url
+    //$user = $service->userinfo->get();
+    echo '<pre>';
+    print_r($user);
+    echo '</pre>';
+
+
+    $_SESSION['user'] = 'Jeffff';
+    echo '</pre>';
     echo '<div align="center">';
     echo '<h3>Login with Google -- Demo</h3>';
     echo '<div>Please click login button to connect to Google.</div>';
@@ -72,7 +92,7 @@ if (isset($authUrl)) {
         $_SESSION['loginUser'] = $user->id;
         $_SESSION['fullName'] = $user->name;
         $_SESSION['email'] = $user->email;
-        header("location: ../jef_braintree/index.php");
+        //header("location: ../jef_braintree/index.php");
     } else //else greeting text "Thanks for registering"
     {
         echo 'Hi ' . $user->name . ', Thanks for Registering! [<a href="' . $redirect_uri . '?logout=1">Log Out</a>]';
@@ -82,13 +102,8 @@ if (isset($authUrl)) {
         $_SESSION['loginUser'] = $user->id;
         $_SESSION['fullName'] = $user->name;
         $_SESSION['email'] = $user->email;
-        header("location: ../jef_braintree/index.php");
+        //header("location: ../jef_braintree/index.php");
         echo $mysqli->error;
     }
-
-    //print user details
-    echo '<pre>';
-    print_r($user);
-    echo '</pre>';
 }
 echo '</div>';

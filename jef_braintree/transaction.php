@@ -9,7 +9,7 @@
     if (isset($_GET["id"])) {
         $transaction = Braintree\Transaction::find($_GET["id"]);
         print("<pre>");
-//        print_r($transaction);
+        print_r($transaction);
         print("</pre>");
         $transactionSuccessStatuses = [
             Braintree\Transaction::AUTHORIZED,
