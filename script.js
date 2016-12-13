@@ -96,6 +96,7 @@ var getRecipe = function () {
                 recipeName = response.data[i].name;
                 imgSrc = response.data[i].img;
                 url = response.data[i].url;
+                instructions=response.data[i].instructions;
 
                 var theDiv = $("<div>", {
                     class: "col-md-3 col-sm-6 col-xs-12"
@@ -128,10 +129,16 @@ var getRecipe = function () {
                     style: 'height: 0; overflow: hidden'
                 });
 
+                var steps = $("<div>", {
+                    class: "steps-style",
+                    html: "<h3>Instructions</h3>"+instructions
+                });
+
                 $("#stuff").append(theDiv);
                 theDiv.append(outterDiv);
                 outterDiv.append(img, innerDiv);
                 innerDiv.append(h3);
+                var $ingList = $("<ul>");
 
                 for (var j = 0; j < response.data[i].ingredient.length; j++) {
 
@@ -140,20 +147,15 @@ var getRecipe = function () {
                     amountType = response.data[i].ingredient[j].amountType;
                     // designatedIngredients = Math.round(amount) + " " + amountType + " " + ingName;
                     designatedIngredients = response.data[i].ingredient[j].string;
-                    instructions=response.data[i].instructions;
 
                     var listItem = $("<li>", {
                         class: "card-text",
                         html: designatedIngredients
                     });
 
-                    var steps = $("<p>", {
-                        class: "steps-style",
-                        html: "<h3>Instructions</h3>"+instructions
-                    });
-
-                    ingDiv.append(listItem)
+                    $ingList.append(listItem);
                 }
+                ingDiv.append($ingList);
                 innerDiv.append(ingDiv.append(steps,recipeUrl));
             }
         },
@@ -173,7 +175,6 @@ var clear = function () {
  */
 var buttonsPushedToMainDisplay = function () {
     $(".btn.btn-info.topIng").click(function () {
-        // forGreg();
 
         $(this).addClass('selected'); //turns gray
 
