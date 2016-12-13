@@ -10,7 +10,7 @@
     $helper = $fb->getRedirectLoginHelper();
 
     $permissions = ['email']; // Optional permissions
-    $loginUrl = $helper->getLoginUrl('https://localhost:8888/lfz/c11_recipe/index.php', $permissions);
+    $loginUrl = $helper->getLoginUrl('https://localhost:8888/lfz/c11_recipe/google_login/g_login.php', $permissions);
 
     echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
 ?>

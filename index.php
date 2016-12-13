@@ -20,7 +20,7 @@ session_start();
     <!--Login Scripts (FB & Google)-->
     <script src="facebook_login/facebook.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="google_login/google.js"></script>
+    <script src="google_login/g_login.js"></script>
 
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
@@ -30,6 +30,7 @@ session_start();
             top: 212px;
         }
     </style>
+
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -52,6 +53,7 @@ session_start();
                 </li>
                 <li><a class="g-signin2" data-onsuccess="onSignIn"></a></li>
                 <li><a href="#" onclick="signOut();">Sign out</a></li>
+                <li><a href="google_login/g_login.php">Feature Recipe</a></li>
             </ul>
         </div>
     </div>

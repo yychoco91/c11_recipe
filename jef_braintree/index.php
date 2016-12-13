@@ -14,7 +14,7 @@ session_start();
 //echo '</pre>';
 //
 //echo '<br><br><br><br>';
-$redirect_uri = 'http://localhost:8888/lfz/c11_recipe';
+$redirect_uri = 'http://localhost:8888/lfz/c11_recipe/google_login/g_login.php';
 
 if (isset($_SESSION['user'])) {
     $f_name = $_SESSION['user']['f_name'];
