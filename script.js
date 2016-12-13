@@ -141,7 +141,7 @@ var getRecipe = function () {
                 });
                 var h3 = $("<h3>", {
                     class: "card-title",
-                    text: recipeName
+                    html: recipeName + "<div class='addthis_inline_share_toolbox_co79'></div>"
                 });
                 var recipeUrl = $("<p>", {
                     html: "<h3>Recipe Link</h3>" + '<a href="' + url + '">' + url + '</a>'
@@ -388,6 +388,11 @@ function toggleNav() {
         $('#site-wrapper').addClass('show-nav');
     }
 }
+//-----------------------------------------------------------
+var fakeStuff = function(){
+    ingredientsID.push(49)
+    getRecipe()
+};
 // ==================DUMMY DATA===============================
 // ====================ajax call to json.php====================
 var recipe_info_from_jsonphp_file = function () {
@@ -460,5 +465,3 @@ var recipe_info_from_jsonphp_file = function () {
         }
     })
 };
-//-------------------------------------------------
-
