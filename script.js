@@ -351,8 +351,7 @@ var removeIng = function () {
     if(ingredientsID.length > 0){
         getRecipe()
     }
-    getBackItems()
-    // getRecipe();
+    getBackItems();
 
     /*removes class that was added when buttons from NAV are duplicated to Main Display;
      Then deletes text property in selectedIngredient */
