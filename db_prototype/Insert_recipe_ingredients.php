@@ -12,7 +12,7 @@
 $ingredientsListData = $_POST['ingredientData'];
 $recipeListData = $_POST['recipeData'];
 
-require_once("config/connect.php");
+require_once("./config/connect.php");
 
 if($conn->connect_error){
     die("Failed to Connect: " . $conn->connect_error);
@@ -25,5 +25,3 @@ require_once("insert_recipe.php");
 insertIngredientsIntoIngTable($conn, $ingredientsListData);
 
 insertRecipesAndItsIngredients($conn, $recipeListData);
-
-$conn->close();

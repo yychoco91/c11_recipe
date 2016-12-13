@@ -15,6 +15,6 @@ $preparedFeatured = $connect->prepare(
     VALUES (?) ON DUPLICATE KEY UPDATE `recipe_ID`=VALUES (`recipe_ID`)"
 );
 
-$preparedFeatured->bind_param('i', $sqlRecipeID);
+$preparedFeatured->bind_param('i', $sqlRecipeId);
 
-$preparedFeatured_>execute();
+$preparedFeatured->execute();

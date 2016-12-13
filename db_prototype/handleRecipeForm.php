@@ -6,4 +6,24 @@
  * Time: 5:33 PM
  */
 
-print_r($_POST);
+require_once("./Insert_recipe_ingredients.php");
+
+$output = [
+    "success"=>true,
+    "data"=>"Recipe added"
+];
+
+$conn->query("DELETE FROM `featuredRecipes`
+              WHERE `featured_ID` NOT IN 
+              (
+                  SELECT `featured_ID`
+                  FROM (
+                      SELECT `featured_ID`
+                      FROM `featuredRecipes`
+                      ORDER BY `featured_ID` DESC
+                      LIMIT 20
+                      ) foo
+              )");
+
+$conn->close();
+print(json_encode($output));
