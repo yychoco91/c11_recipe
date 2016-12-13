@@ -37,7 +37,7 @@ if ($result = $conn->query($query_temp)) {
         $r_ID = $row['recipe_ID'];
 
         //print_r($recipe);
-
+        //Gets all ingredients with their quantities matching recipe ID
         if($ingredients = $conn->query("SELECT `name`,`name_str`,`count_type`,`count` FROM `ingredientsToRecipe` WHERE `recipe_id`='$r_ID'")){
             while($ing = $ingredients->fetch_assoc()){
                 $recipe['ingredient'][] = [
@@ -60,6 +60,6 @@ if ($result = $conn->query($query_temp)) {
 if($output['success']) {
     $output_json = json_encode($output);
     $featuredRecipeFile = fopen('./featuredRecipeList.js', "w") or die("Unable to open file");
-    fwrite($featuredRecipeFile, "var featureRecipesList = $output_json");
+    fwrite($featuredRecipeFile, "var featureRecipesList = $output_json;");
     fclose($featuredRecipeFile);
 }
