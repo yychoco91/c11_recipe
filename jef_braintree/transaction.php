@@ -1,13 +1,15 @@
+<?php session_start(); ?>
 <html>
 <?php require_once("braintree_head.php"); ?>
 <body>
 <?php
     require_once("braintree_init.php");
     require_once("braintree_header.php");
+//    $name = $_SESSION['fullName'];
     if (isset($_GET["id"])) {
         $transaction = Braintree\Transaction::find($_GET["id"]);
         print("<pre>");
-//        print_r($transaction);
+        print_r($transaction);
         print("</pre>");
         $transactionSuccessStatuses = [
             Braintree\Transaction::AUTHORIZED,
@@ -41,7 +43,7 @@
                 <p><?php echo($message)?></p>
             </section>
             <section>
-                <a class="button primary back" href="../jef_feat_recipe/index.php">
+                <a class="button primary back" href="../feature_recipe/index.php">
                     <span>Add Recipe</span>
                 </a>
             </section>

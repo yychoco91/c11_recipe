@@ -27,7 +27,12 @@ function insertRecipesAndItsIngredients($connect, $recipesList){
 
     //assign for each recipe in list
     foreach ($recipesList as $recipe) {
+        if(isset($recipe['givenId'])){
+            $lastGivenId = $connect->query("SELECT `given_ID` FROM `recipes` 
+                                            GROUP BY `given_ID` DESC ORDER BY `recipes`.`given_ID` ASC LIMIT 1");
+            $recipe['givenId'] = --$lastGivenId;
         //Skip if recipe already added
+        }
         if($connect->query("SELECT `recipe_ID` FROM `recipe` WHERE `given_ID`=" . $recipe['givenId'])){
             continue;
         }

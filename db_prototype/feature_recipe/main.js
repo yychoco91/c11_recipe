@@ -69,9 +69,21 @@ function validateForm(){
         validform = false;
     }
 
-   if(validform){
-       sendFormData();
-   }
+    if(!validform){
+        $(".container").append(
+            $("<div id='alertBox' class='alert alert-danger alert-dismissable fade in col-xs-3 col-xs-offset-5'>").append(
+                $("<a href='#' class='close' data-dismiss='alert' aria-label='close'>").text("x"),
+                $("<strong>").text("Incomplete Form!")
+            )
+        );
+        // setTimeout(function(){
+        //     $("#alertBox").fadeOut(500);
+        // }, 1500);
+    }
+
+    if(validform){
+        sendFormData();
+    }
 }
 /**
  * function sendFormData - gathers all input data and creates object to be sent to be saved
@@ -80,7 +92,6 @@ function sendFormData(){
     var ingredientListForAddingToDB = [];
 
     var recipe = {
-        givenId: '',//use author name and random number?
         name: $('#recipeName').val(),
         author: 'Arthur Dent',//todo grab from login
         url: '',//todo need form
