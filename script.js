@@ -112,6 +112,7 @@ var getRecipe = function () {
             var ingName;
             var amount;
             var amountType;
+            var instructions;
             var designatedIngredients;
 
             for (var i = 0; i < response.data.length; i++) {
@@ -120,6 +121,7 @@ var getRecipe = function () {
                 recipeName = response.data[i].name;
                 imgSrc = response.data[i].img;
                 url = response.data[i].url;
+                instructions=response.data[i].instructions;
 
                 var theDiv = $("<div>", {
                     class: "col-md-3 col-sm-6 col-xs-12"
@@ -144,7 +146,8 @@ var getRecipe = function () {
                     html: recipeName + "<div class='addthis_inline_share_toolbox_co79'></div>"
                 });
                 var recipeUrl = $("<p>", {
-                    html: "<h3>Recipe Link</h3>" + '<a href="' + url + '">' + url + '</a>'
+                    html: "<h3>Recipe Link</h3>"+'<a href="' + url + '" target="_blank">' + url + '</a>'
+
                 });
 
                 var ingDiv = $('<div>', {
@@ -152,27 +155,34 @@ var getRecipe = function () {
                     style: 'height: 0; overflow: hidden'
                 });
 
+                var steps = $("<div>", {
+                    class: "steps-style",
+                    html: "<h3>Instructions</h3>"+instructions
+                });
+
                 $("#stuff").append(theDiv);
                 theDiv.append(outterDiv);
                 outterDiv.append(img, innerDiv);
                 innerDiv.append(h3);
+                var $ingList = $("<ul>");
 
                 for (var j = 0; j < response.data[i].ingredient.length; j++) {
 
                     ingName = response.data[i].ingredient[j].name;
                     amount = response.data[i].ingredient[j].amount;
                     amountType = response.data[i].ingredient[j].amountType;
-                    designatedIngredients = Math.round(amount) + " " + amountType + " " + ingName;
-                    // designatedIngredients = response.data[i].ingredient[j].string;
+                    // designatedIngredients = Math.round(amount) + " " + amountType + " " + ingName;
+                    designatedIngredients = response.data[i].ingredient[j].string;
 
                     var listItem = $("<li>", {
                         class: "card-text",
                         html: designatedIngredients
                     });
 
-                    ingDiv.append(listItem)
+                    $ingList.append(listItem);
                 }
-                innerDiv.append(ingDiv.append(recipeUrl));
+                ingDiv.append($ingList);
+                innerDiv.append(ingDiv.append(steps,recipeUrl));
             }
         },
         error: function () {
@@ -224,6 +234,7 @@ var getValue = function () {
  * removeIng - Removes Buttons off the Main Display and ingredientsID Array
  */
 var removeIng = function () {
+
     var text = $(this).text();
 
     var indexS = txtArr.indexOf(text);
@@ -451,12 +462,15 @@ var recipe_info_from_jsonphp_file = function () {
                     ingName = response.recipeData[i].ingredients[j].name;
                     amount = response.recipeData[i].ingredients[j].amount;
                     amountType = response.recipeData[i].ingredients[j].amountType;
+
+                    // designatedIngredients = response.recipeData[i].ingredients[j].string;
+                    // console.log(designatedIngredients);
                     designatedIngredients = Math.round(amount) + " " + amountType + " " + ingName;
 
                     var listItem = $("<li>", {
                         class: "card-text",
+                        html:  designatedIngredients
 
-                        html: '<li>' + designatedIngredients
                     });
                     ingDiv.append(listItem)
                 }
@@ -464,4 +478,23 @@ var recipe_info_from_jsonphp_file = function () {
             }
         }
     })
+
 };
+//====================================
+var getBackItems = function () {
+    if (ingredientsID.length === 0) {
+        clear();
+        recipe_info_from_jsonphp_file();
+    }
+};
+//====================================
+var loadStart = function () {
+    console.log("loadStart");
+    $("#loading").show();
+};
+var loadStop = function () {
+    console.log("loadStop");
+    $("#loading").hide();
+};
+
+

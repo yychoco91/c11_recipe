@@ -30,6 +30,7 @@ session_start();
             top: 212px;
         }
     </style>
+
 </head>
 <body>
 <nav class="navbar navbar-default">
