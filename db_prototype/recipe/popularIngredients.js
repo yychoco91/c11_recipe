@@ -1,0 +1,1 @@
+var mostCommonIngredients = {"success":true,"data":{"salt":"31","butter":"19","sugar":"54","eggs":"91","water":"32","flour":"27","olive oil":"41","garlic":"138","milk":"28","onion":"163","baking powder":"25","vanilla extract":"55","salt and pepper":"108","egg":"118","unsalted butter":"95"}};
