@@ -8,9 +8,9 @@
 //    $name = $_SESSION['fullName'];
     if (isset($_GET["id"])) {
         $transaction = Braintree\Transaction::find($_GET["id"]);
-        print("<pre>");
-        print_r($transaction);
-        print("</pre>");
+//        print("<pre>");
+//        print_r($transaction);
+//        print("</pre>");
         $transactionSuccessStatuses = [
             Braintree\Transaction::AUTHORIZED,
             Braintree\Transaction::AUTHORIZING,
@@ -43,7 +43,7 @@
                 <p><?php echo($message)?></p>
             </section>
             <section>
-                <a class="button primary back" href="../feature_recipe/index.php">
+                <a class="button primary back" href="../db_prototype/feature_recipe/index.php">
                     <span>Add Recipe</span>
                 </a>
             </section>
