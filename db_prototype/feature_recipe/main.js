@@ -53,20 +53,20 @@ function addRow(){
  * function validateForm - checks that all required inputs are not empty
  */
 function validateForm(){
-    console.log('Validating');
-    var validform = true;
+    //console.log('Validating');
+    var validForm = true;
 
     $('input').each(function(){
         //console.log('Input: ', this);
-        if($(this).val().length === 0){
+        if($(this).val().length === 0 || $(this).val() === 0){
             $(this).addClass("missing-input");
-            validform = false;
+            validForm = false;
         }
     });
 
     if($('textarea').val().length === 0){
         $('textarea').addClass("missing-input");
-        validform = false;
+        validForm = false;
     }
 
     if(!validform){
@@ -79,9 +79,7 @@ function validateForm(){
         // setTimeout(function(){
         //     $("#alertBox").fadeOut(500);
         // }, 1500);
-    }
-
-    if(validform){
+    }else{
         sendFormData();
     }
 }
@@ -127,7 +125,10 @@ function sendFormData(){
         data: dataToSend,
         dataType: 'json',
         success: function(resp){
-            console.log(resp);
+            if(resp.success){
+                //Todo change to correct domain
+                window.location = "http://localhost/lfz/c11_recipe/";
+            }
         }
     });
 }
@@ -166,7 +167,7 @@ function removeMissingInput(){
  * function applyClickHandlers - initializes all click handlers and calls addRow() to add one row on start
  */
 function applyClickHandlers(){
-    console.log('applying');
+    //console.log('applying');
     addRow();
     removeMissingInput();
     $('#addIngredient').click(addRow);
