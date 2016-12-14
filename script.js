@@ -70,7 +70,6 @@ var featuredRecipe = function () {
 
             var listItem = $("<li>", {
                 class: "card-text",
-
                 html: designatedIngredients
             });
             ingDiv.append(listItem)
@@ -129,8 +128,6 @@ var getRecipe = function () {
             ingredients: ingredientsID
         },
         success: function (response) {
-            //getBackItems();
-            /*put function here so that it is called after ajax call for getRecipe is completed*/
             loadStop();
             console.log("data from get_recipes.php\n", response);
             clear();
@@ -177,7 +174,6 @@ var getRecipe = function () {
                 });
                 var recipeUrl = $("<p>", {
                     html: "<h3>Recipe Link</h3>"+'<a href="' + url + '" target="_blank">' + url + '</a>'
-
                 });
 
                 var ingDiv = $('<div>', {
