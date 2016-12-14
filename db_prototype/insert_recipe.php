@@ -28,10 +28,11 @@ function insertRecipesAndItsIngredients($connect, $recipesList){
     foreach ($recipesList as $recipe) {
         //user-added recipes need id
         if(!isset($recipe['givenId'])){
-            echo "Giving given_id";
+            //echo "Giving given_id";
             $lastGivenIdResult = $connect->query("SELECT `given_ID` FROM `recipes` 
                                             GROUP BY `given_ID` DESC ORDER BY `recipes`.`given_ID` ASC LIMIT 1");
-            $recipe['givenId'] = $lastGivenIdResult->fetch_assoc();
+            $givenIdResultRow = $lastGivenIdResult->fetch_assoc();
+            $recipe['givenId'] = $givenIdResultRow["given_ID"];
             $recipe['givenId']--;
 
         //Skip if recipe already added
@@ -41,11 +42,11 @@ function insertRecipesAndItsIngredients($connect, $recipesList){
         }
         //recipe data to insert to recipe table
         $r_id = $recipe['givenId'];
-        $r_name = htmlentities(trim($recipe['name']));
-        $r_author = htmlentities(trim($recipe['author']));
-        $r_url = htmlentities(trim($recipe['url']));
-        $r_img = htmlentities(trim($recipe['img']));
-        $r_instruct = htmlentities(trim($recipe['instructions']));
+        $r_name = trim($recipe['name']);
+        $r_author = trim($recipe['author']);
+        $r_url = trim($recipe['url']);
+        $r_img = ($recipe['img']==="")?"./images/placeholder_360.jpg":trim($recipe['img']);
+        $r_instruct = trim($recipe['instructions']);
         $r_time = $recipe['cookingTime'];
         //insert recipe and proceed if insert is successful
         if($queryInsertRecipe->execute()){
@@ -55,7 +56,7 @@ function insertRecipesAndItsIngredients($connect, $recipesList){
             //check if recipe has property featureRecipe
             if(isset($recipe["featureRecipe"])){
                 //add recipe via id to featuredRecipe table
-                echo "Adding to Featured";
+                //echo "Adding to Featured";
                 require_once("add_featured_recipe.php");
             }
 
@@ -71,8 +72,8 @@ function insertRecipesAndItsIngredients($connect, $recipesList){
                 //individual ingredients from recipe to insert into ingredientsToRecipe table
                 $ing_iId = $sqlIngID;
                 $ing_rId = $sqlRecipeId;
-                $ing_name = htmlentities(trim($ingredient['name']));
-                $ing_nameStr = htmlentities(trim($ingredient['originStr']));
+                $ing_name = trim($ingredient['name']);
+                $ing_nameStr = trim($ingredient['originStr']);
                 $ing_type = $ingredient['amountType'];
                 $ing_count = $ingredient['amount'];
                 //insert into table
