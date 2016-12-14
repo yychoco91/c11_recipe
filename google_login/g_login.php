@@ -18,17 +18,18 @@ if (isset($_SESSION['user'])) {
 <body>
     <div class="container">
         <div class="omb_login">
-            <h3 class="omb_authTitle">Login or <a href="../index.php">Home</a></h3>
+            <h3 class="omb_authTitle">Please Login</h3>
+            <h5 class="omb_authTitle">or</h5>
+            <h3 class="omb_authTitle"><a href="../index.php"> Return Home</a></h3>
             <div class="row omb_row-sm-offset-3 omb_socialButtons">
-                <div class="col-xs-4 col-sm-2">
-                    <button class="btn btn-lg btn-block omb_btn-facebook fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="true"></button>
-                </div>
-                <div class="col-xs-4 col-sm-2">
-                    <a href="#" class="g-signin2 btn btn-lg btn-block omb_btn-google" data-onsuccess="onSignIn">
-                        <i class="fa fa-google-plus visible-xs"></i>
-                        <span class="hidden-xs">Google+</span>
-                    </a>
-                </div>
+                <div id="my-signin2" data-onsuccess="onSignIn"></div>
+<!--                <div class="col-xs-4 col-sm-2">-->
+<!--                    <button class="btn btn-lg btn-block omb_btn-facebook fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="true"></button>-->
+<!--                </div>-->
+<!--                <div class="my-signin2" data-onsuccess="onSignIn">-->
+<!--                        <i class="fa fa-google-plus visible-xs"></i>-->
+<!--                        <span class="hidden-xs">Google</span>-->
+<!--                </div>-->
             </div>
         </div>
     </div>
