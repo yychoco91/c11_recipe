@@ -4,6 +4,11 @@
     For the media queries use @screen-sm-min instead of 768px.
     For .omb_spanOr use @body-bg instead of white.
 */
+.my-signin2 {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
 
 @media (min-width: 768px) {
     .omb_row-sm-offset-3 div:first-child[class*="col-"] {
@@ -13,7 +18,7 @@
 
 .omb_login .omb_authTitle {
     text-align: center;
-    line-height: 300%;
+    /*line-height: 300%;*/
 }
 
 .omb_login .omb_socialButtons a {
@@ -24,8 +29,7 @@ opacity:0.9;
     color: white;
     opacity:1;
 }
-.omb_login .omb_socialButtons .omb_btn-facebook {background: #3b5998;}
-.omb_login .omb_socialButtons .omb_btn-twitter {background: #00aced;}
+/*.omb_login .omb_socialButtons .omb_btn-facebook {background: #3b5998;}*/
 .omb_login .omb_socialButtons .omb_btn-google {background: #c32f10;}
 
 
@@ -68,4 +72,8 @@ opacity:0.9;
         text-align: right;
         margin-top:10px;
     }
+}
+
+html {
+    background-color: #1abc9c;
 }
