@@ -70,7 +70,6 @@ var featuredRecipe = function () {
 
             var listItem = $("<li>", {
                 class: "card-text",
-
                 html: designatedIngredients
             });
             ingDiv.append(listItem)
@@ -158,7 +157,7 @@ var getRecipe = function () {
                 });
                 var img = $("<img>", {
                     src: imgSrc,
-                    class: " img-responsive cover",
+                    class: "cover",
                     width: "100%",
                     height: "286px",
                     'data-toggle': "modal",
@@ -174,7 +173,6 @@ var getRecipe = function () {
                 });
                 var recipeUrl = $("<p>", {
                     html: "<h3>Recipe Link</h3>"+'<a href="' + url + '" target="_blank">' + url + '</a>'
-
                 });
 
                 var ingDiv = $('<div>', {
@@ -493,3 +491,4 @@ function toggleNav() {
         $('#site-wrapper').addClass('show-nav');
     }
 }
+

@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,17 +19,12 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <!--Login Scripts (FB & Google)-->
-    <script src="facebook_login/facebook.js"></script>
+<!--    <script src="facebook_login/facebook.js"></script>-->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="google_login/google.js"></script>
+    <script src="google_login/g_login.js"></script>
 
     <link rel="stylesheet" href="style.css">
-    <script src="./db_prototype/recipe/ingredients.js"></script>
-    <script src="./db_prototype/recipe/popularIngredients.js"></script>
-    <script src="./db_prototype/recipe/featuredRecipeList.js"></script>
-
     <script src="script.js"></script>
-
     <style>
         .affix {
             top: 212px;
@@ -46,14 +45,15 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li class="fb-login-button"
-                         data-max-rows="1"
-                         data-size="large"
-                         data-show-faces="false"
-                         data-auto-logout-link="true">
-                </li>
-                <li><a class="g-signin2" data-onsuccess="onSignIn"></a></li>
-                <li><a href="#" onclick="signOut();">Sign Out</a></li>
+<!--                <li class="fb-login-button"-->
+<!--                         data-max-rows="1"-->
+<!--                         data-size="large"-->
+<!--                         data-show-faces="false"-->
+<!--                         data-auto-logout-link="true">-->
+<!--                </li>-->
+                <li><a href="google_login/g_login.php">Feature Recipe</a></li>
+                <li class="signIn"><a id="my-signin2" data-onsuccess="onSignIn"></a></li>
+<!--                <li class="signOut"><a href="#" onclick="signOut();">Sign out</a></li>-->
             </ul>
         </div>
     </div>
@@ -76,7 +76,16 @@
                     </div>
                     <div id="collapse1" class="panel-collapse collapse in">
                         <div class="panel-body" id="ingredientButtons">
-
+                            <button class="btn btn-info topIng" value="87">Eggs</button>
+                            <button class="btn btn-info topIng" value="13" >Flour</button>
+                            <button class="btn btn-info topIng" value="16" >Milk</button>
+                            <button class="btn btn-info topIng" value="90" >Vegetable Oil</button>
+                            <button class="btn btn-info topIng" value="183" >Tomatoes</button>
+                            <button class="btn btn-info topIng" value="31" >Parmesan Cheese</button>
+                            <button class="btn btn-info topIng" value="121" >Sugar</button>
+                            <button class="btn btn-info topIng" value="110" >Chicken Broth</button>
+                            <button class="btn btn-info topIng" value="61" >Onions</button>
+                            <button class="btn btn-info topIng" value="48" >White Vinegar</button>
                         </div>
                     </div>
                 </div>
@@ -157,11 +166,8 @@
     </div>
 </div>
 
-
 <footer class="container-fluid footer-style text-center">
     <p> Website designed by Fridge2Plate. Recipe data provided by Spoonacular.  </p>
 </footer>
-
-
 </body>
 </html>
