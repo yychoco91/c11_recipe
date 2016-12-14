@@ -14,7 +14,7 @@ $output = [
     "success"=>false,
     "data"=>""
 ];
-
+//Limits the amount of
 if($conn->query("DELETE FROM `featuredRecipes`
               WHERE `featured_ID` NOT IN 
               (
@@ -27,8 +27,11 @@ if($conn->query("DELETE FROM `featuredRecipes`
                       ) foo
               )")){
     $output["success"]=true;
-    $output["data"]="Recipe added.";
 }
+
+require_once("./recipe/get_featured_recipe.php");
+
+$output["data"]="Recipe added.";
 
 $conn->close();
 print(json_encode($output));
