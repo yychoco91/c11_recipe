@@ -6,14 +6,16 @@
  * Time: 5:33 PM
  */
 
+require_once("./config/connect.php");
+
 require_once("./Insert_recipe_ingredients.php");
 
 $output = [
-    "success"=>true,
-    "data"=>"Recipe added"
+    "success"=>false,
+    "data"=>""
 ];
-
-$conn->query("DELETE FROM `featuredRecipes`
+//Limits the amount of
+if($conn->query("DELETE FROM `featuredRecipes`
               WHERE `featured_ID` NOT IN 
               (
                   SELECT `featured_ID`
@@ -23,7 +25,13 @@ $conn->query("DELETE FROM `featuredRecipes`
                       ORDER BY `featured_ID` DESC
                       LIMIT 20
                       ) foo
-              )");
+              )")){
+    $output["success"]=true;
+}
+
+require_once("./recipe/get_featured_recipe.php");
+
+$output["data"]="Recipe added.";
 
 $conn->close();
 print(json_encode($output));

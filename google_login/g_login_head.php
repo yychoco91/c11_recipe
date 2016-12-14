@@ -13,7 +13,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <!--Login Scripts (FB & Google)-->
-<script src="../facebook_login/facebook.js"></script>
+<!--<script src="../facebook_login/facebook.js"></script>-->
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="g_login.js"></script>
 

@@ -16,7 +16,7 @@ var selectedIngredients = {};
  * featuredRecipe - Default Menu Recipes
  */
 var featuredRecipe = function () {
-    console.log("featured");
+    console.log("featuredRecipe()");
 
     var imgSrc;
     var recipeName;
@@ -78,13 +78,12 @@ var featuredRecipe = function () {
     }
 };
 /**
- * getIngredientsAjaxCall - Ajax call, auto complete, auto complete filter
+ * getIngredients - Ajax call, auto complete, auto complete filter
  * @returns - data from get_ingredients.php
  */
 var getIngredients = function () {
     // -----------Auto Complete-----------
     updatedIngredientsArray = [];
-    //newIngredients = (response.data);
     newIngredients = ingredientsObjForAutocomplete.data;
     for (var key in newIngredients) {
         if (newIngredients.hasOwnProperty(key)) {
@@ -274,6 +273,7 @@ var noExist = function () {
  * navIngredientButtons - Creates Buttons from mostCommonIngredients.js and displays them on Nav menu
  */
 var navIngredientButtons = function () {
+    console.log("navIngredientButtons()")
     var mostCommonIngredients2 = mostCommonIngredients.data;
     var mostCommonIngredientsKeyNameArray = [];
     var mostCommonIngredientsKeyValueArray = [];
@@ -330,11 +330,11 @@ var buttonsPushedToMainDisplay = function () {
 /**
  * getValue - Pushes Buttons to Container Using the "GO" Button
  */
+var theValue;
 var txtArr = [];
 var getValue = function () {
     $('#ingredientInput').each(function () {
-        var theValue = $(this).val();
-        // ingredientCheck()
+        theValue = $(this).val();
         txtArr.push(theValue);
         newButtonCreation()
     });
@@ -351,9 +351,8 @@ var removeIng = function () {
     ingredientsID.splice(indexS, 1);
 
     $(this).closest("button").remove();
-    console.log($(this).text());
+    console.log("Selected: ", $(this).text());
     console.log("Current Items in Fridge", ingredientsID);
-    var btnText = '#';
 
     if(ingredientsID.length > 0){
         getRecipe()
@@ -397,7 +396,7 @@ var ingredientCheck = function (ingredient) {
  */
 var getBackItems = function () {
     if (ingredientsID.length === 0) {
-        console.log("jjjj")
+        console.log("getBackItems()");
         clear();
         featuredRecipe();
     }
@@ -421,8 +420,35 @@ var clear = function () {
  * autoCompleteFilter - Filter For Auto Complete
  */
 var autoCompleteFilter = function () {
+    //var ingred = ingredientsObjForAutocomplete.data;
     $("#ingredientInput").autocomplete({
-        source: updatedIngredientsArray
+        //source: ingred,
+        source: updatedIngredientsArray,
+        select: function(e, ui){
+            console.log("SELECTED");
+
+            var ingredient = ui.item.value;
+            var value = ingredientsObjForAutocomplete.data[ingredient];
+            console.log(ingredient);
+            console.log(value);
+
+            txtArr.push(ingredient);
+            ingredientsID.push(value);
+
+            newButtonCreation();
+            getRecipe();
+            $("#ingredientInput").text("")
+
+
+            // getValue()
+            //this.dataItem(e.item.index());
+            // $("[id$=hfCustomerId]").val(ui.item.val);
+            //
+            // var dataItem = this.dataItem(e.item.index());
+            //
+            // //output selected dataItem
+            // $("#result").html(kendo.stringify(dataItem));
+        }
     });
 
     // Overrides the default autocomplete filter function to search only from the beginning of the string
