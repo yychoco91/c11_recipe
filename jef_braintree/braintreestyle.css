@@ -1,5 +1,14 @@
 .wrapper {
     background-color: blanchedalmond;
+    /*position: relative;*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+    /*padding: 0;*/
+}
+.checkout.container {
+    height: 100%;
+    width: 100%;
+    position: relative;
 }
 
 #top-section, #bottom-section {
@@ -20,14 +29,41 @@
 #middle_border_fix {
     border-top: 0;
     border-bottom: 0;
-    padding-top: 13px;
-    padding-bottom: 13px;
+    padding-top: 3%;
+    padding-bottom: 3%;
 }
 
 body {
     height: 100vh;
+    width: 100vw;
 }
 
-body div.wrapper {
-    height: 100%;
+div.wrapper {
+    height: 85%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
 }
+header.main {
+    max-height: 15%;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+}
+.payment-form {
+    position: absolute;
+    height: 85%;
+}
+
+input#expiration {
+    border-bottom: 0;
+}
+#bottom-section {
+    padding: 0;
+}
+#bottom-section label.has-value {
+    border-top: 0;
+    border-bottom: 0;
+    margin-top: 0;
+}
+

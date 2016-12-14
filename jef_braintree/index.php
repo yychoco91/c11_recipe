@@ -46,7 +46,7 @@ require_once("braintree_init.php");
                 <label for="first_name">
                     <span class="input-label">First Name</span>
                     <div class="input-wrapper first-name-wrapper">
-                        <input type="text" name="first_name" value="<?= $f_name; ?>" id="first_name" autocomplete="off"/>
+                        <input type="text" name="first_name" value="<?= $f_name; ?>" placeholder="First Name" id="first_name" autocomplete="off"/>
                     </div>
                 </label>
                 <label for="l_name" id="middle_border_fix">
@@ -85,7 +85,6 @@ require_once("braintree_init.php");
         formID: 'payment-form'
     });
     var client_token = "<?php echo(Braintree\ClientToken::generate([
-//        "customerId" => "54027778"
     ])); ?>";
     braintree.setup(client_token, 'dropin', {
         container: 'dropin-container',
