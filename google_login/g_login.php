@@ -17,9 +17,10 @@ if (isset($_SESSION['user'])) {
 </head>
 <body>
     <div class="container">
+        <img src="../images/fridge2plate.png" id="logo" width="100%"><br>
         <div class="omb_login">
             <h3 class="omb_authTitle">Please Login</h3>
-            <h5 class="omb_authTitle">or</h5>
+            <h3 class="omb_authTitle">or</h3>
             <h3 class="omb_authTitle"><a href="../index.php"> Return Home</a></h3>
             <div class="row omb_row-sm-offset-3 omb_socialButtons">
                 <div id="my-signin2" data-onsuccess="onSignIn"></div>
