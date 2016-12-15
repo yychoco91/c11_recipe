@@ -1,23 +1,33 @@
 
 body{
-    background-color:#1abc9c;
+    /*background-color:#1abc9c;*/
+    background: linear-gradient(270deg,blanchedalmond,#1abc9c,#8cddcd);
+    background-size: 600% 600%;
+    animation: Gradient 60s ease infinite;
 }
-
+@keyframes Gradient {
+    0%{background-position: 0% 50%}
+    50%{background-position: 100% 50%}
+    100%{background-position: 0% 50%}
+}
 .container{
-    background-color: white;
+    background-color: #effffc;
     margin-top: 106px;
     height: 500px;
     width: 400px;
     border-radius:5px;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .4);
 }
 
 .omb_authTitle{
     text-align: center;
-    margin-top: 12px
+    margin-top: 10px;
+    /*font-size:22px;*/
+    font-family:"Raleway",sans-serif;
 }
 
 .omb_login{
-    margin-top: 94px;
+    margin-top: 30px;
 }
 
 #my-signin2{
@@ -25,5 +35,5 @@ body{
 }
 
 #logo{
-    margin-top: 22px;
+    margin-top: 50px;
 }
