@@ -1,6 +1,6 @@
 <?php
 session_start();
-$redirect_uri = "https://" . $_SERVER['HTTP HOST'] . "/google_login/g_login.php";
+$redirect_uri = "https://" . $_SERVER['HTTP_HOST'] . "/google_login/g_login.php";
 
 if (isset($_SESSION['user'])) {
     $f_name = $_SESSION['user']['f_name'];
