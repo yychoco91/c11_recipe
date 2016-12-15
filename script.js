@@ -102,20 +102,20 @@ var getIngredients = function () {
 
     //-----On Go Button-----
     $(".btn.btn-danger").click(function () {
-        var ingredientInputSelected = $("#ingredientInput").val();
+        var ingredientInputSelected = $(".ingredientInput").val();
         var objectData = ingredientsObjForAutocomplete.data[ingredientInputSelected];
         ingredientCheck(objectData);
         console.log("Ingredients Added to Fridge From Input", ingredientsID);
-        $("#ingredientInput").val("");
+        $(".ingredientInput").val("");
     });
     // //-----On KeyPress Enter-----
-    // $('#ingredientInput').bind('keypress', function (enter) {
+    // $('.ingredientInput').bind('keypress', function (enter) {
     //     if (enter.keyCode == 13) {
-    //         var ingredientInputSelected = $("#ingredientInput").val();
+    //         var ingredientInputSelected = $(".ingredientInput").val();
     //         var objectData = ingredientsObjForAutocomplete.data[ingredientInputSelected];
     //         ingredientCheck(objectData);
     //         console.log("Ingredients Added to Fridge From Input", ingredientsID);
-    //         $("#ingredientInput").val("");
+    //         $(".ingredientInput").val("");
     //     }
     // });
 };
@@ -332,6 +332,7 @@ var buttonsPushedToMainDisplay = function () {
         };
         selectedIngredients[txt] = returnObject;
         getRecipe();
+        $(this).prop('disabled', true);
     });
 };
 /**
@@ -340,7 +341,7 @@ var buttonsPushedToMainDisplay = function () {
 var theValue;
 var txtArr = [];
 var getValue = function () {
-    $('#ingredientInput').each(function () {
+    $('.ingredientInput').each(function () {
         theValue = $(this).val();
         txtArr.push(theValue);
         newButtonCreation()
@@ -368,7 +369,7 @@ var removeIng = function () {
 
     /*removes class that was added when buttons from NAV are duplicated to Main Display;
      Then deletes text property in selectedIngredient */
-    selectedIngredients[text].list_button.removeClass('selected');
+    selectedIngredients[text].list_button.removeClass('selected').prop('disabled', false);/*sets button back to blue and enables it again*/
     delete selectedIngredients[text];
 };
 var addClickHandlerToRemovableIngredient = function (element) {
@@ -428,7 +429,7 @@ var clear = function () {
  */
 var autoCompleteFilter = function () {
     //var ingred = ingredientsObjForAutocomplete.data;
-    $("#ingredientInput").autocomplete({
+    $(".ingredientInput").autocomplete({
         //source: ingred,
         source: updatedIngredientsArray,
         select: function(e, ui){
