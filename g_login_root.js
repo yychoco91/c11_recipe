@@ -1,4 +1,5 @@
 function onSignIn(googleUser) {
+    console.log("ONSIGNIN function called");
     // Useful data for your client-side scripts:
     var profile = googleUser.getBasicProfile();
     console.log("ID: " + profile.getId()); // Don't send this directly to your server!
@@ -21,14 +22,13 @@ function onSignIn(googleUser) {
     };
 
     $.ajax({
-        url: 'save_user.php',
+        url: 'google_login/save_user.php',
         data: sendData,
         method: 'POST',
         cache: false,
         dataType: 'json',
         success: function(resp){
             console.log(resp);
-            window.location.href = "../jef_braintree/index.php";
         }, error: function(resp){
             console.log(resp);
         }
@@ -42,6 +42,7 @@ function signOut() {
     });
 }
 function renderButton() {
+    console.log("renderbutton function called");
     gapi.signin2.render('my-signin2', {
         'scope': 'profile email',
         'width': 240,
@@ -53,7 +54,7 @@ function renderButton() {
 
 function applyClickHandlers(){
     renderButton();
-    $('#my-signin2').click(onSignIn);
+    // $('#my-signin2').click(onSignIn);
     $('.g-signout').click(signOut);
 }
 

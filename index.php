@@ -9,7 +9,7 @@ session_start();
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="802478348342-ovn07tr2ulnqnqk06j94cga951pufnib.apps.googleusercontent.com">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,8 +20,8 @@ session_start();
 
     <!--Login Scripts (FB & Google)-->
 <!--    <script src="facebook_login/facebook.js"></script>-->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="google_login/g_login.js"></script>
+<!--    <script src="https://apis.google.com/js/platform.js" async defer></script>-->
+<!--    <script src="google_login/g_login.js" async defer></script>-->
 
     <link rel="stylesheet" href="style.css">
     <script src="./db_prototype/recipe/ingredients.js"></script>
@@ -59,6 +59,8 @@ session_start();
                 <li><a href="google_login/g_login.php">Feature Recipe</a></li>
                 <li class="signIn"><a id="my-signin2" data-onsuccess="onSignIn"></a></li>
                 <!--<li class="signOut"><a href="#" onclick="signOut();">Sign out</a></li>-->
+                <script src="https://apis.google.com/js/platform.js" defer></script>
+                <script src="g_login_root.js" defer></script>
             </ul>
         </div>
     </div>
