@@ -1,6 +1,5 @@
 
 body{
-    /*background-color:#1abc9c;*/
     background: linear-gradient(270deg,blanchedalmond,#1abc9c,#8cddcd);
     background-size: 600% 600%;
     animation: Gradient 60s ease infinite;
@@ -31,7 +30,7 @@ body{
 }
 
 #my-signin2{
-    margin:33px 0px 0px 76px /*top right bottom left*/
+    margin:33px 0 0 76px /*top right bottom left*/
 }
 
 #logo{
