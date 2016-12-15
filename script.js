@@ -22,6 +22,7 @@ var featuredRecipe = function () {
     var recipeName;
     var authorName;
     var url;
+    var instructions;
 
     for (var i = 0; i < featureRecipesList.data.length; i++) {
 
@@ -29,6 +30,7 @@ var featuredRecipe = function () {
         recipeName = featureRecipesList.data[i].name;
         authorName = featureRecipesList.data[i].author;
         url = featureRecipesList.data[i].url;
+        instructions=featureRecipesList.data[i].instructions;
 
         var theDiv = $("<div>", {
             class: "col-md-3 col-sm-6 col-xs-12"
@@ -59,6 +61,11 @@ var featuredRecipe = function () {
             class: 'ingDiv',
             style: 'height: 0; overflow: hidden'
         });
+        var steps = $("<div>", {
+            class: "steps-style",
+            html: "<h3>Instructions</h3>"+instructions
+        });
+
         $("#stuff").append(theDiv);
         theDiv.append(outterDiv);
         outterDiv.append(img, innerDiv);
@@ -74,7 +81,7 @@ var featuredRecipe = function () {
             });
             ingDiv.append(listItem)
         }
-        innerDiv.append(ingDiv.append(recipeUrl));
+        innerDiv.append(ingDiv.append(steps,recipeUrl));
     }
 };
 /**
@@ -101,16 +108,16 @@ var getIngredients = function () {
         console.log("Ingredients Added to Fridge From Input", ingredientsID);
         $("#ingredientInput").val("");
     });
-    //-----On KeyPress Enter-----
-    $('#ingredientInput').bind('keypress', function (enter) {
-        if (enter.keyCode == 13) {
-            var ingredientInputSelected = $("#ingredientInput").val();
-            var objectData = ingredientsObjForAutocomplete.data[ingredientInputSelected];
-            ingredientCheck(objectData);
-            console.log("Ingredients Added to Fridge From Input", ingredientsID);
-            $("#ingredientInput").val("");
-        }
-    });
+    // //-----On KeyPress Enter-----
+    // $('#ingredientInput').bind('keypress', function (enter) {
+    //     if (enter.keyCode == 13) {
+    //         var ingredientInputSelected = $("#ingredientInput").val();
+    //         var objectData = ingredientsObjForAutocomplete.data[ingredientInputSelected];
+    //         ingredientCheck(objectData);
+    //         console.log("Ingredients Added to Fridge From Input", ingredientsID);
+    //         $("#ingredientInput").val("");
+    //     }
+    // });
 };
 /**
  * getRecipe - Ajax call, dom creation when called
@@ -437,17 +444,10 @@ var autoCompleteFilter = function () {
 
             newButtonCreation();
             getRecipe();
-            $("#ingredientInput").text("")
 
+            $(this).val('');
+            return false;
 
-            // getValue()
-            //this.dataItem(e.item.index());
-            // $("[id$=hfCustomerId]").val(ui.item.val);
-            //
-            // var dataItem = this.dataItem(e.item.index());
-            //
-            // //output selected dataItem
-            // $("#result").html(kendo.stringify(dataItem));
         }
     });
 

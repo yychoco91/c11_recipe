@@ -27,6 +27,7 @@ session_start();
     <script src="./db_prototype/recipe/ingredients.js"></script>
     <script src="./db_prototype/recipe/popularIngredients.js"></script>
     <script src="./db_prototype/recipe/featuredRecipeList.js"></script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-582e2e9ffdf9c863"></script>
     <script src="script.js"></script>
 
     <style>
@@ -159,6 +160,7 @@ session_start();
                 <div class="row">
                 <img class=" .col-sm-4  pull-right showImage img-responsive" src="">
                 <div class=".col-sm-5  ingContainer"></div>
+                    <div class="  addthis_inline_share_toolbox_co79"></div>
                 </div>
             </div>
             <div class="modal-footer">
