@@ -13,10 +13,6 @@
     text-shadow: 2px 2px 6px #000000;
 }
 
-.row {
-    /*height: 1500px;*/
-}
-
 .ingContainer{
     padding-left: 20px;
     padding-right: 36px;
@@ -73,9 +69,6 @@
 .navbar-default .navbar-nav>li>a {
     color: white;
 }
-/*.navbar-nav  li a:hover {*/
-    /*color: #1abc9c !important;*/
-/*}*/
 
 .nav-menu{
     margin:0px 20px 0px 30px;    /*top right bottom left*/
@@ -170,12 +163,13 @@
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, .4);
     background-color: white;
     margin-bottom: 34px;
+    cursor: pointer;
 }
 
 .card-block {
     position: relative;
     padding: 1.5rem;
-    padding-top: 0px;
+    padding-top: 0;
     background-color: white;
 }
 
@@ -195,7 +189,7 @@
 }
 
 ol{
-    max-height: 120px;
+    max-height: 200px;
     overflow: auto;
 }
 
@@ -207,9 +201,6 @@ ol{
     margin-right: 15px;
     margin-left: 33px;
     padding: 15px;
-
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
 }
 
 .cover {
@@ -254,7 +245,12 @@ ol{
     margin-top: 20px
 }
 
+.addthis_inline_share_toolbox_co79{
+    margin-top:25px;
+    margin-left:20px;
+    margin-bottom:10px
 
+}
 
 
 
