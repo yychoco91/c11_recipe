@@ -13,10 +13,6 @@
     text-shadow: 2px 2px 6px #000000;
 }
 
-.row {
-    /*height: 1500px;*/
-}
-
 .ingContainer{
     padding-left: 20px;
     padding-right: 36px;
@@ -25,7 +21,6 @@
 .ingContainer>h3{
    color:#14967c
 }
-
 
 #myModal{
     font-family: 'Raleway', sans-serif;
@@ -74,9 +69,6 @@
 .navbar-default .navbar-nav>li>a {
     color: white;
 }
-/*.navbar-nav  li a:hover {*/
-    /*color: #1abc9c !important;*/
-/*}*/
 
 .nav-menu{
     margin:0px 20px 0px 30px;    /*top right bottom left*/
@@ -96,16 +88,13 @@
     margin-right: 5px;
 }
 
-#stuff{
-    background-color: blanchedalmond;
-}
-
 #site-wrapper {
     position: relative;
     overflow: hidden;
     width: 100%;
     height: auto; /* Temp: Simulates a tall page. */
 }
+
 #site-canvas {
     width: 100%;
     height: 100%;
@@ -113,7 +102,6 @@
     transform: translateX(0);
     transition: 300ms ease all;
     backface-visibility: hidden;
-
 }
 .show-nav #site-canvas {
     padding-right:300px;
@@ -137,6 +125,7 @@
 
 #main-container{
     background-color: blanchedalmond;
+    padding: 0;
 }
 
 #ingredientButtons .topIng{
@@ -180,7 +169,7 @@
 .card-block {
     position: relative;
     padding: 1.5rem;
-    padding-top: 0px;
+    padding-top: 0;
     background-color: white;
 }
 
@@ -200,9 +189,10 @@
 }
 
 ol{
-    max-height: 120px;
+    max-height: 200px;
     overflow: auto;
 }
+
 
 .showImage{
     width: 400px;
@@ -211,9 +201,6 @@ ol{
     margin-right: 15px;
     margin-left: 33px;
     padding: 15px;
-
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
 }
 
 .cover {
@@ -240,14 +227,55 @@ ol{
     margin-right: 12px;
 }
 
+#aboutImg{
+    width: 300px;
+    height: 300px;
+    margin-bottom: 20px;
+    margin-top: 20px
+}
+
+.addthis_inline_share_toolbox_co79{
+    margin-top:25px;
+    margin-left:20px;
+    margin-bottom:10px
+}
+/* CSS styling for feature recipe form */
 .addRecipe{
     text-align:center
 }
 
+.body-style{
+    /*background-color:#1abc9c;*/
+    background-image: url("images/add-form.jpg");
+    background-size: cover;
 
+}
+.container{
+    background-color: white;
+    font-family:"Raleway",sans-serif;
+    width: 630px;
+    height: auto;
+    margin-top:35px;
+    margin-bottom: 35px;
+    padding-bottom: 22px;
+    border-radius:5px;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .4);
+}
 
+.delete{
+    margin-left:10px
+}
 
+h2{
+    padding-top:30px;
+    margin-top:8px;
+}
 
+#clearBtn{
+    margin-right: 10px;
+}
 
-
+.form-control{
+    margin-bottom:10px;
+}
 

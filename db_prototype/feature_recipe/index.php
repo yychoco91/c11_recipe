@@ -1,10 +1,11 @@
+<?php session_start(); ?>
 <html>
 
 <?php require_once("head.php"); ?>
 
-<body>
-<h2 class="addRecipe">Add Your Recipe</h2>
+<body class="body-style">
 <div class="container">
+    <h2 class="addRecipe">Add Your Recipe</h2>
     <form action="" method="post" class="form-horizontal col-xs-offset-1 col-xs-10 ingredient-form">
         <legend>Recipe:</legend>
         <div class="form-group">
@@ -28,7 +29,7 @@
         <div class="form-group instruction-group">
             <label class="control-label col-xs-2" for="instructions">Instructions</label>
             <div class="col-xs-10">
-                <textarea class="form-control" name="instructions" id="instructions" style="width:100%" rows="10" placeholder="Please type your recipe directions here"></textarea>
+                <textarea class="form-control" name="instructions" id="instructions" style="width:100%" rows="7" placeholder="Please type your recipe directions here"></textarea>
             </div>
             <label class="control-label col-xs-2" for="cookTime">Cook Time</label>
             <div class="col-xs-4">
