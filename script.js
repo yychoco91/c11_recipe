@@ -79,7 +79,7 @@ var featuredRecipe = function () {
     }
 };
 /**
- * getIngredients - Ajax call, auto complete, auto complete filter
+ * getIngredients - auto complete
  * @returns - data from get_ingredients.php
  */
 var getIngredients = function () {
@@ -92,9 +92,8 @@ var getIngredients = function () {
         }
     }
     autoCompleteFilter();
-    //-----Input Field Ingredient Invert to ID Numbers-----
 
-    //-----On Go Button-----
+    //-----Input Field Ingredient Invert to ID Numbers-----
     $(".btn.btn-danger").click(function () {
         var ingredientInputSelected = $("#ingredientInput").val();
         var objectData = ingredientsObjForAutocomplete.data[ingredientInputSelected];
@@ -102,23 +101,13 @@ var getIngredients = function () {
         console.log("Ingredients Added to Fridge From Input", ingredientsID);
         $("#ingredientInput").val("");
     });
-    //-----On KeyPress Enter-----
-    $('#ingredientInput').bind('keypress', function (enter) {
-        if (enter.keyCode == 13) {
-            var ingredientInputSelected = $("#ingredientInput").val();
-            var objectData = ingredientsObjForAutocomplete.data[ingredientInputSelected];
-            ingredientCheck(objectData);
-            console.log("Ingredients Added to Fridge From Input", ingredientsID);
-            $("#ingredientInput").val("");
-        }
-    });
 };
 /**
  * getRecipe - Ajax call, dom creation when called
  * @returns - recipes from get_recipes.php
  */
 var getRecipe = function () {
-    loadStart();
+    $("#loading").show();
     $.ajax({
 
         url: "./db_prototype/get_recipes.php",
@@ -128,7 +117,7 @@ var getRecipe = function () {
             ingredients: ingredientsID
         },
         success: function (response) {
-            loadStop();
+            $("#loading").hide();
             console.log("data from get_recipes.php\n", response);
             clear();
             var authorName;
@@ -148,7 +137,7 @@ var getRecipe = function () {
                 recipeName = response.data[i].name;
                 imgSrc = response.data[i].img;
                 url = response.data[i].url;
-                instructions=response.data[i].instructions;
+                instructions = response.data[i].instructions;
 
                 var theDiv = $("<div>", {
                     class: "col-md-3 col-sm-6 col-xs-12"
@@ -170,10 +159,10 @@ var getRecipe = function () {
                 });
                 var h3 = $("<h3>", {
                     class: "card-title",
-                    html: recipeName + "<div class='addthis_inline_share_toolbox_co79'></div>"
+                    html: recipeName + " " + "<div class='addthis_inline_share_toolbox_co79'></div>"
                 });
                 var recipeUrl = $("<p>", {
-                    html: "<h3>Recipe Link</h3>"+'<a href="' + url + '" target="_blank">' + url + '</a>'
+                    html: "<h3>Recipe Link</h3>" + '<a href="' + url + '" target="_blank">' + url + '</a>'
 
                 });
 
@@ -184,7 +173,7 @@ var getRecipe = function () {
 
                 var steps = $("<div>", {
                     class: "steps-style",
-                    html: "<h3>Instructions</h3>"+instructions
+                    html: "<h3>Instructions</h3>" + instructions
                 });
 
                 $("#stuff").append(theDiv);
@@ -209,7 +198,7 @@ var getRecipe = function () {
                     $ingList.append(listItem);
                 }
                 ingDiv.append($ingList);
-                innerDiv.append(ingDiv.append(steps,recipeUrl));
+                innerDiv.append(ingDiv.append(steps, recipeUrl));
             }
         },
         error: function () {
@@ -275,7 +264,7 @@ var noExist = function () {
  * navIngredientButtons - Creates Buttons from mostCommonIngredients.js and displays them on Nav menu
  */
 var navIngredientButtons = function () {
-    console.log("navIngredientButtons()")
+    console.log("navIngredientButtons()");
     var mostCommonIngredients2 = mostCommonIngredients.data;
     var mostCommonIngredientsKeyNameArray = [];
     var mostCommonIngredientsKeyValueArray = [];
@@ -353,10 +342,10 @@ var removeIng = function () {
     ingredientsID.splice(indexS, 1);
 
     $(this).closest("button").remove();
-    console.log("Selected: ", $(this).text());
+    //console.log("Selected: ", $(this).text());
     console.log("Current Items in Fridge", ingredientsID);
 
-    if(ingredientsID.length > 0){
+    if (ingredientsID.length > 0) {
         getRecipe()
     }
     getBackItems();
@@ -404,15 +393,6 @@ var getBackItems = function () {
     }
 };
 /**
- * Loading - Starts and then ends loading image for Ajax Calls
- */
-var loadStart = function () {
-    $("#loading").show();
-};
-var loadStop = function () {
-    $("#loading").hide();
-};
-/**
  * clear - clears row of recipes
  */
 var clear = function () {
@@ -422,34 +402,24 @@ var clear = function () {
  * autoCompleteFilter - Filter For Auto Complete
  */
 var autoCompleteFilter = function () {
-    //var ingred = ingredientsObjForAutocomplete.data;
+
     $("#ingredientInput").autocomplete({
         //source: ingred,
         source: updatedIngredientsArray,
-        select: function(e, ui){
-            console.log("SELECTED");
+        select: function (e, ui) {
+            console.log("autoCompleteFilter() select:");
 
             var ingredient = ui.item.value;
             var value = ingredientsObjForAutocomplete.data[ingredient];
-            console.log(ingredient);
-            console.log(value);
 
             txtArr.push(ingredient);
             ingredientsID.push(value);
 
             newButtonCreation();
             getRecipe();
-            $("#ingredientInput").text("")
 
-
-            // getValue()
-            //this.dataItem(e.item.index());
-            // $("[id$=hfCustomerId]").val(ui.item.val);
-            //
-            // var dataItem = this.dataItem(e.item.index());
-            //
-            // //output selected dataItem
-            // $("#result").html(kendo.stringify(dataItem));
+            $(this).val('');
+            return false;
         }
     });
 
