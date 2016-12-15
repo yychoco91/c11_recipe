@@ -40,7 +40,7 @@ function addRow(){
                             )
                     ),
                 $('<button>', {
-                        class: "btn btn-danger col-xs-offset-1 removeIngredient",
+                        class: "btn btn-danger col-xs-offset-1 delete removeIngredient",
                         type: "button",
                         text: "Delete"
                     }
