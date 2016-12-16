@@ -107,6 +107,6 @@ input#expiration {
     color: #D0021B;
 }
 
-button#braintree-paypal-button.paypal.is-active.paypal--branded {
+div.add-payment-method-view button#coinbase-container, div.add-payment-method-view button.paypal, div.add-payment-method-view button.paypal-credit {
     margin: 1%;
 }
