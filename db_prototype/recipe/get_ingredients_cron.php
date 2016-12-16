@@ -8,7 +8,7 @@
  * get all ingredients and its ID from db
  */
 
-//require_once('../config/connect.php');
+require_once('../config/connect.php');
 
 $output = [
     'success' => false,
@@ -37,7 +37,7 @@ $result->close();
 //file write out test
 if($output['success']) {
     $output_json = json_encode($output);
-    $ingredientFile = fopen('./ingredients.js', "w") or die("Unable to open file");
+    $ingredientFile = fopen(__DIR__.'/ingredients.js', "w") or die("Unable to open file");
     fwrite($ingredientFile, "var ingredientsObjForAutocomplete = $output_json;");
     fclose($ingredientFile);
 }
