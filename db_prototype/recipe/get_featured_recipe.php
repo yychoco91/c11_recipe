@@ -6,7 +6,7 @@
  * Time: 12:29 PM
  */
 
-//require_once("../config/connect.php");
+require_once("../config/connect.php");
 
 if($conn->connect_errno){
     die("Failed to Connect: " . $conn->connect_error);
