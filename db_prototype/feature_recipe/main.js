@@ -69,7 +69,7 @@ function validateForm(){
         validForm = false;
     }
 
-    if(!validform){
+    if(!validForm){
         $(".container").append(
             $("<div id='alertBox' class='alert alert-danger alert-dismissable fade in col-xs-3 col-xs-offset-5'>").append(
                 $("<a href='#' class='close' data-dismiss='alert' aria-label='close'>").text("x"),
@@ -91,8 +91,8 @@ function sendFormData(){
 
     var recipe = {
         name: $('#recipeName').val(),
-        author: 'Arthur Dent',//todo grab from login
-        url: '',//todo need form
+        author: 'Kevin Chau',//todo grab from login
+        url: 'Not available',//todo need form
         img: '',//todo need file upload
         instructions: $('#instructions').val(),
         cookingTime: $('#cookTime').val(),

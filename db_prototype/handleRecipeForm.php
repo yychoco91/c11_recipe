@@ -29,7 +29,8 @@ if($conn->query("DELETE FROM `featuredRecipes`
     $output["success"]=true;
 }
 
-require_once("./recipe/get_featured_recipe.php");
+//require_once("./recipe/get_featured_recipe.php");
+//require_once("./recipe/get_ingredients_cron.php");
 
 $output["data"]="Recipe added.";
 

@@ -9,13 +9,14 @@
 <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500" rel="stylesheet">
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <!--jQuery UI-->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <!--Login Scripts (FB & Google)-->
 <!--<script src="../facebook_login/facebook.js"></script>-->
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<script src="g_login.js"></script>
+<script src="https://apis.google.com/js/platform.js" defer></script>
+<script src="g_login.js" defer></script>
 
 <link rel="stylesheet" href="g_login_style.css">

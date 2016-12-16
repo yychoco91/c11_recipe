@@ -1,20 +1,6 @@
 <?php
 session_start();
-//
-//echo '<pre>SESSION';
-//print_r($_SESSION);
-//echo '</pre>';
-//
-//echo '<pre>POST';
-//print_r($_POST);
-//echo '</pre>';
-//
-//echo '<pre>GET';
-//print_r($_GET);
-//echo '</pre>';
-//
-//echo '<br><br><br><br>';
-$redirect_uri = 'http://localhost:8888/lfz/c11_recipe/google_login/g_login.php';
+$redirect_uri = "https://" . $_SERVER['HTTP_HOST'] . "/google_login/g_login.php";
 
 if (isset($_SESSION['user'])) {
     $f_name = $_SESSION['user']['f_name'];
@@ -31,28 +17,24 @@ require_once("braintree_init.php");
 <?php require_once("braintree_head.php"); ?>
 
 <body>
-
-<?php require_once("braintree_header.php"); ?>
-
 <div class="wrapper">
+    <?php require_once("braintree_header.php"); ?>
     <div class="checkout container">
-
-        <header>
-            <h1 id="payment-header">Payment</h1>
-        </header>
-
+        <h1 id="payment-header">Payment</h1>
         <form method="post" id="payment-form" action="checkout.php">
             <section id="top-section">
                 <label for="first_name">
                     <span class="input-label">First Name</span>
                     <div class="input-wrapper first-name-wrapper">
-                        <input type="text" name="first_name" value="<?= $f_name; ?>" id="first_name" autocomplete="off"/>
+                        <input type="text" name="first_name" value="<?= $f_name; ?>" placeholder="First Name"
+                               id="first_name" autocomplete="off"/>
                     </div>
                 </label>
                 <label for="l_name" id="middle_border_fix">
                     <span class="input-label">Last Name</span>
                     <div class="input-wrapper last-name-wrapper">
-                        <input type="text" name="last_name" value="<?= $l_name; ?>" placeholder="Last Name" id="last_name"/>
+                        <input type="text" name="last_name" value="<?= $l_name; ?>" placeholder="Last Name"
+                               id="last_name"/>
                     </div>
                 </label>
                 <label for="email">
@@ -85,7 +67,6 @@ require_once("braintree_init.php");
         formID: 'payment-form'
     });
     var client_token = "<?php echo(Braintree\ClientToken::generate([
-//        "customerId" => "54027778"
     ])); ?>";
     braintree.setup(client_token, 'dropin', {
         container: 'dropin-container',

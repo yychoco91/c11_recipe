@@ -17,7 +17,7 @@ $query_temp = "
   FROM `featuredRecipes` f 
   JOIN recipes r 
   ON f.`recipe_ID`=r.`recipe_ID` 
-  ORDER BY f.`date_added` DESC
+  ORDER BY f.`recipe_ID` DESC
 ";
 
 //this part can be templated from get_recipes.php
@@ -59,7 +59,7 @@ if ($result = $conn->query($query_temp)) {
 
 if($output['success']) {
     $output_json = json_encode($output);
-    $featuredRecipeFile = fopen('./featuredRecipeList.js', "w") or die("Unable to open file");
+    $featuredRecipeFile = fopen(__DIR__.'/featuredRecipeList.js', "w") or die("Unable to open file");
     fwrite($featuredRecipeFile, "var featureRecipesList = $output_json;");
     fclose($featuredRecipeFile);
 }
