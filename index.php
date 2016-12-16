@@ -25,6 +25,7 @@ session_start();
 <!--    <script src="google_login/g_login.js" async defer></script>-->
 
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/fridge2plate.png">
     <script src="./db_prototype/recipe/ingredients.js"></script>
     <script src="./db_prototype/recipe/popularIngredients.js"></script>
     <script src="./db_prototype/recipe/featuredRecipeList.js"></script>

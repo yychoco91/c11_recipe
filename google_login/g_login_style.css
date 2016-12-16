@@ -11,9 +11,9 @@ body{
 }
 .container{
     background-color: #effffc;
-    margin-top: 106px;
+    margin-top: 80px;
     height: 500px;
-    width: 400px;
+    width: 346px;
     border-radius:5px;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, .4);
 }
@@ -30,9 +30,9 @@ body{
 }
 
 #my-signin2{
-    margin:33px 0 0 76px /*top right bottom left*/
+    margin:33px 0 0 55px /*top right bottom left*/
 }
 
 #logo{
-    margin-top: 50px;
+    margin-top: 70px;
 }
