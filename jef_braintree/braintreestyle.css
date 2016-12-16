@@ -107,6 +107,7 @@ input#expiration {
     color: #D0021B;
 }
 
-div.add-payment-method-view button#coinbase-container, div.add-payment-method-view button.paypal, div.add-payment-method-view button.paypal-credit {
-    margin: 1%;
-}
+/*div.add-payment-method-view button#coinbase-container, div.add-payment-method-view button.paypal, div.add-payment-method-view button.paypal-credit {*/
+    /*margin: 1%;*/
+/*}*/
+
