@@ -17,7 +17,7 @@ $query_temp = "
   FROM `featuredRecipes` f 
   JOIN recipes r 
   ON f.`recipe_ID`=r.`recipe_ID` 
-  ORDER BY f.`date_added` DESC
+  ORDER BY f.`recipe_ID` DESC
 ";
 
 //this part can be templated from get_recipes.php
