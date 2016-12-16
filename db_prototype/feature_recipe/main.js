@@ -13,18 +13,18 @@ function addRow(){
             id: count
         })
             .append(
-                $('<label class="control-label col-xs-2" for="ingredient">Ingredient:</label>'),
-                $('<div>', {class: 'col-xs-10', id:name})
+                $('<label class="control-label  col-sm-2" for="ingredient">Ingredient:</label>'),
+                $('<div>', {class: 'col-sm-10', id:name})
                     .append(
                         $('<input class="form-control" type="text">')
                     ),
-                $('<label class="control-label col-xs-2" for="quantity">Quantity:</label>'),
-                $('<div>', {class:"col-xs-3 ", id:amount})
+                $('<label class="control-label col-sm-2" for="quantity">Quantity:</label>'),
+                $('<div>', {class:"col-sm-3 ", id:amount})
                     .append(
-                        $('<input class="form-control col-xs-4" type="number" min="0" max="1000">')
+                        $('<input class="form-control col-sm-4" type="number" min="0" max="1000">')
                     ),
-                $('<label class="control-label col-xs-1" for="type">Type:</label>'),
-                $('<div>', {class:"col-xs-4", id:type})
+                $('<label class="control-label col-sm-1" for="type">Type:</label>'),
+                $('<div>', {class:"col-sm-4", id:type})
                     .append(
                         $('<select class="form-control">')
                             .append(
@@ -40,7 +40,7 @@ function addRow(){
                             )
                     ),
                 $('<button>', {
-                        class: "btn btn-danger col-xs-offset-1 delete removeIngredient",
+                        class: "btn btn-danger col-sm-offset-1 delete removeIngredient",
                         type: "button",
                         text: "Delete"
                     }
