@@ -59,7 +59,7 @@ if ($result = $conn->query($query_temp)) {
 
 if($output['success']) {
     $output_json = json_encode($output);
-    $featuredRecipeFile = fopen('./featuredRecipeList.js', "w") or die("Unable to open file");
+    $featuredRecipeFile = fopen(__DIR__.'/featuredRecipeList.js', "w") or die("Unable to open file");
     fwrite($featuredRecipeFile, "var featureRecipesList = $output_json;");
     fclose($featuredRecipeFile);
 }
