@@ -8,7 +8,7 @@
  * get all ingredients and its ID from db
  */
 
-require_once('../config/connect.php');
+//require_once('../config/connect.php');
 
 $output = [
     'success' => false,
