@@ -49,7 +49,7 @@ Demo.prototype.labelHander = function(element){
     var label = input.closest('label');
 
     window.setTimeout(function(){
-        var hasValue = (input.val().length > 0) ? true : false ;
+        var hasValue = (input.val().length > 0) ? true : false;
 
         if (hasValue) {
             label.addClass(self.valueClass);
@@ -79,3 +79,43 @@ Demo.prototype.notify = function(status){
         }, delay);
     }, 10);
 };
+
+/**
+ * function validateForm - checks that all required inputs are not empty
+ */
+function validateForm() {
+    // console.log('Validating');
+    var validForm = true;
+
+    $('input').each(function () {
+        var options = {
+            times: 2,
+            distance: 5
+        };
+        // console.log('Input: ', this);
+        if ($(this).val().length === 0 || $(this).val() === 0) {
+            $(this).closest('label').addClass("missing-input");//.effect("shake", "linear", 200, removeInvalidClasses);
+            $(this).addClass('missing-input-placeholder').effect("shake", options , 400);
+            validForm = false;
+        }
+    })
+}
+
+/**
+ * function removeInvalidClasses - removes all invalid inputs' classes set by validateForm function
+ */
+function removeInvalidClasses() {
+    // console.log('remove invalid class called');
+    $(this).closest('label').removeClass("missing-input");
+    $(this).removeClass('missing-input-placeholder');
+}
+
+/**
+ * function applyClickHandler - applies click handlers
+ */
+function applyClickHandler() {
+    $('#submit_button').click(validateForm);
+    $('input').on('focus', removeInvalidClasses);
+}
+
+$(document).ready(applyClickHandler, removeInvalidClasses);
